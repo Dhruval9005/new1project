@@ -31,7 +31,7 @@ const Phoneoptions = () => {
   }
 
   return (
-    <div className="phoneoptions h-screen">
+    <div className="phoneoptions h-fit md:mt-28 mb-28">
       <div className="md:container mx-auto">
         <div className="relative flex flex-col min-h-full justify-center">
           <div className="w-full p-6 m-auto lg:max-w-4xl flex flex-col">

@@ -2,7 +2,7 @@ import React from "react";
 
 export const LoginInfo = () => {
   return (
-    <div className="logininfo pt-40 h-screen">
+    <div className="logininfo md:pt-20 h-screen">
       <div className="container relative flex flex-col justify-center mt-10 overflow-hidden mx-auto">
         <div className="w-96 p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl sm:max-w-fit">
           <h1 className="text-3xl font-semibold text-center text-purple-700 underline">

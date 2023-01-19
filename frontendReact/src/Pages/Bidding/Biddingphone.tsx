@@ -39,7 +39,7 @@ const Biddingphone = () => {
     ],
   };
   return (
-    <div className="biddingphone">
+    <div className="biddingphone h-fit md:mt-28 mb-28">
       <div className="container w-full mx-auto">
         <h1 className="text-4xl mt-6 ml-3 ">
           Bid on

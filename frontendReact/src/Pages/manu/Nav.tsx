@@ -1,6 +1,5 @@
 import axios from "axios";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Dropdown, Avatar } from "flowbite-react";
 
@@ -78,14 +77,22 @@ const Nav = () => {
                   }
                 >
                   <Dropdown.Header>
-                    <span className="block text-sm">{user.name}</span>
+                    <span className="block text-sm text-purple-700">
+                      {user.name}
+                    </span>
                     <span className="block truncate text-sm font-medium">
                       {user.email}
                     </span>
                   </Dropdown.Header>
-                  <Dropdown.Item>Dashboard</Dropdown.Item>
-                  <Dropdown.Item>Settings</Dropdown.Item>
-                  <Dropdown.Item>Earnings</Dropdown.Item>
+                  <Link to={"/dashbord"}>
+                    <Dropdown.Item>Dashboard</Dropdown.Item>
+                  </Link>
+                  <Link to={"/settings"}>
+                    <Dropdown.Item>Settings</Dropdown.Item>
+                  </Link>
+                  <Link to={"/earning"}>
+                    <Dropdown.Item>Earnings</Dropdown.Item>
+                  </Link>
                   <Dropdown.Divider />
                   <Dropdown.Item onClick={singOut}>Sign out</Dropdown.Item>
                 </Dropdown>
@@ -101,16 +108,14 @@ const Nav = () => {
               <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
-              <Navbar.Link href="/navbars" active={true}>
-                Home
-              </Navbar.Link>
-              <Navbar.Link href="#">About</Navbar.Link>
-              <Navbar.Link href="#">Services</Navbar.Link>
-              <Navbar.Link href="#">Pricing</Navbar.Link>
-              <Navbar.Link href="#">Contact</Navbar.Link>
+              <Navbar.Link href="/">Home</Navbar.Link>
+              <Navbar.Link href="/sell">Sell Phone</Navbar.Link>
+              <Navbar.Link href="/buy">Buy Phone</Navbar.Link>
+              <Navbar.Link href="/repire">Repire Phone</Navbar.Link>
+              <Navbar.Link href="/store">Visit our store</Navbar.Link>
+              <Navbar.Link href="/bidding">Bidding</Navbar.Link>
             </Navbar.Collapse>
           </Navbar>
-
           {/* <Link to="/" className="flex items-center">
             <img src="" className="h-6 mr-3 sm:h-9" alt="" />
             <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">

@@ -21,7 +21,7 @@ const RepairPhone = () => {
     naviget(`/Repair/${phoneModel}`);
   }
   return (
-    <div className="repair pt-40 h-screen">
+    <div className="repair h-fit md:mt-28 mb-28">
       <div className="container mx-auto">
         <div className="relative flex flex-col min-h-full justify-center">
           <div className="w-full p-6 m-auto lg:max-w-4xl flex flex-col">

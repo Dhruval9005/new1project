@@ -117,7 +117,7 @@ const Buyphone = () => {
   }
 
   return (
-    <div className="buy h-fit">
+    <div className="buy h-fit md:mt-28 mb-28">
       <div className="container mx-auto">
         <h1 className="text-4xl mt-6 mx-10">Buy Old Phone </h1>
         <div className="flex md:flex-row flex-col">

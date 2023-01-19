@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Card = (phoneinfo) => {
+export const Card = (phoneinfo: {}) => {
   return (
     <div>
       <div>

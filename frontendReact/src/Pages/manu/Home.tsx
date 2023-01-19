@@ -18,7 +18,7 @@ const Home = () => {
   ]);
 
   return (
-    <div className="Home h-screen">
+    <div className="Home h-fit mb-28">
       <div className="banner">
         <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
           <Carousel slideInterval={3000} >
@@ -34,36 +34,36 @@ const Home = () => {
         <div className="flex flex-col justify-center overflow-hidden">
           <div className="w-full p-6 m-auto lg:max-w-4xl">
             <div className="flex flex-col justify-center flex-wrap">
-              <div className="link button flex justify-center content-center flex-wrap max-h-max">
-                <div className="mb-10">
-                  <Link to="/sell" className="m-4">
+              <div className="link button flex flex-col justify-center content-center flex-wrap max-h-max">
+                <div className="mb-10 grid md:grid-cols-4 grid-cols-2 gap-4">
+                  <Link to="/sell" className="">
                     <button className="w-40 h-36 text-center">
                       <img src={commerce} className="w-16 mx-auto mb-2" />
                       <span>Sell Phones</span>
                     </button>
                   </Link>
-                  <Link to="/buy" className="m-4">
+                  <Link to="/buy" className="">
                     <button className="w-40 h-36 text-center">
                       <img src={buying} className="w-16 mx-auto mb-2" />
                       <span>Buy Phone</span>
                     </button>
                   </Link>
-                  <Link to="/repair" className="m-4">
+                  <Link to="/repair" className="">
                     <button className="w-40 h-36 text-center">
                       <img src={repairing} className="w-16 mx-auto mb-2" />
                       <span>Repair Phone</span>
                     </button>
                   </Link>
-                  <Link to="/store" className="m-4">
+                  <Link to="/store" className="">
                     <button className="w-40 h-36 text-center">
                       <img src={visit} className="w-16 mx-auto mb-2" />
                       <span>Visit Our Store</span>
                     </button>
                   </Link>
                 </div>
-                <div>
-                  <Link to="/bidding" className="m-4">
-                    <button className="w-[362px] h-44 text-center">
+                <div className="flex justify-center">
+                  <Link to="/bidding" className="">
+                    <button className="w-[335px] h-44 text-center">
                       <img src={bidding} className="w-16 mx-auto mb-2" />
                       <span className="text-2xl">Bid on Phone</span>
                     </button>

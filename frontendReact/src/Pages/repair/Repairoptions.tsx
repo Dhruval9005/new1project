@@ -76,7 +76,7 @@ const Repairoptions = () => {
   };
 
   return (
-    <div className="repairoptions py-24 h-fit">
+    <div className="repairoptions h-fit md:mt-28 mb-28">
       <div className="md:container w-full mx-auto">
         <div className="w-3/4 my-6 flex flex-col md:flex-col mx-auto shadow-lg">
           <div className="p-6  justify-between">

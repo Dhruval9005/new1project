@@ -83,7 +83,7 @@ const Bidding = () => {
   }
 
   return (
-    <div className="bedding">
+    <div className="bedding h-fit md:mt-20 mb-28">
       <div className="container mx-auto">
         <div className="flex md:flex-row flex-col">
           <div className="main flex justify-center my-9 flex-wrap">

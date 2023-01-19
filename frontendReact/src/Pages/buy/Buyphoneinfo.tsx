@@ -39,13 +39,13 @@ const Buyphoneinfo = () => {
   };
 
   return (
-    <div className="buyphoneinfo">
+    <div className="buyphoneinfo h-fit">
       <div className="container w-full mx-auto">
         <h1 className="text-4xl mt-6">
           Buy Old
           <span className="text-purple-700"> {phoneinfo.name}</span>
         </h1>
-        <div className="w-3/4 flex flex-col md:flex-row mx-auto shadow-lg my-52">
+        <div className="w-3/4 flex flex-col md:flex-row mx-auto shadow-lg md:my-52">
           <img
             className="w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg m-4"
             src={phoneinfo.img}

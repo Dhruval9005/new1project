@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import mi from "../../assets/Mi10.jpg";
-import Card from "../../Components/Card";
 
 const PhoneInfo = () => {
   let navigate = useNavigate();
@@ -47,10 +46,7 @@ const PhoneInfo = () => {
           Sell Your Old
           <span className="text-purple-700"> {phoneinfo.name}</span>
         </h1>
-        <div className="md:w-3/4  flex flex-col md:flex-row mx-auto shadow-lg my-52">
-
-          {/* <Card phoneinfo={phoneinfo} /> */}
-
+        <div className="md:w-3/4 flex flex-col md:flex-row mx-auto shadow-lg md:my-52">
           <img
             className="w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg m-4"
             src={phoneinfo.img}
