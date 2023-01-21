@@ -36,7 +36,7 @@ const Phoneoptions = () => {
         <div className="relative flex flex-col min-h-full justify-center">
           <div className="w-full p-6 m-auto lg:max-w-4xl flex flex-col">
             <div className="mt-4">
-              <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
+              <h3 className="mb-5 md:text-lg text-sm font-medium text-gray-900 dark:text-white">
                 1. Are you able to make and receive calls?
               </h3>
               <ul className="grid w-full gap-6 md:grid-cols-2">
@@ -54,7 +54,9 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full text-lg font-semibold">Yes</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">
+                        Yes
+                      </div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -73,7 +75,9 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full text-lg font-semibold">No</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">
+                        No
+                      </div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -81,7 +85,7 @@ const Phoneoptions = () => {
               </ul>
             </div>
             <div className="mt-4">
-              <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
+              <h3 className="mb-5 md:text-lg text-sm font-medium text-gray-900 dark:text-white">
                 2. Is your device's touch screen working properly?
               </h3>
               <ul className="grid w-full gap-6 md:grid-cols-2">
@@ -99,7 +103,9 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full text-lg font-semibold">Yes</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">
+                        Yes
+                      </div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -118,7 +124,9 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full text-lg font-semibold">No</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">
+                        No
+                      </div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -126,7 +134,7 @@ const Phoneoptions = () => {
               </ul>
             </div>
             <div className="mt-4">
-              <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
+              <h3 className="mb-5 md:text-lg text-sm font-medium text-gray-900 dark:text-white">
                 3. Is your phone's screen original?
               </h3>
               <ul className="grid w-full gap-6 md:grid-cols-2">
@@ -144,7 +152,7 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full text-lg font-semibold">Yes</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">Yes</div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -163,7 +171,7 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full text-lg font-semibold">No</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">No</div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -171,7 +179,7 @@ const Phoneoptions = () => {
               </ul>
             </div>
             <div className="mt-4">
-              <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
+              <h3 className="mb-5 md:text-lg text-sm font-medium text-gray-900 dark:text-white">
                 4. Is your device under brand warranty?
               </h3>
               <ul className="grid w-full gap-6 md:grid-cols-2">
@@ -189,7 +197,7 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full text-lg font-semibold">Yes</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">Yes</div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -208,7 +216,7 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full text-lg font-semibold">No</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">No</div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -216,7 +224,7 @@ const Phoneoptions = () => {
               </ul>
             </div>
             <div className="mt-4">
-              <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
+              <h3 className="mb-5 md:text-lg text-sm font-medium text-gray-900 dark:text-white">
                 5. Do you have valid bill with same IMEI?
               </h3>
               <ul className="grid w-full gap-6 md:grid-cols-2">
@@ -234,7 +242,7 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full text-lg font-semibold">Yes</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">Yes</div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -253,7 +261,7 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full text-lg font-semibold">No</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">No</div>
                       <div className="w-full"></div>
                     </div>
                   </label>

@@ -22,8 +22,8 @@ const Buyphone = () => {
         "16.94cm (6.67) 3D Curved E3 AMOLED Display",
       ],
       value: [
-        { for: "128 GB", price: "21000" },
-        { for: "246 GB", price: "25000" },
+        { for: "128 GB", price: "1000" },
+        { for: "246 GB", price: "5000" },
       ],
     },
     {
@@ -36,8 +36,8 @@ const Buyphone = () => {
         "16.94cm (6.67) 3D Curved E3 AMOLED Display",
       ],
       value: [
-        { for: "128 GB", price: "21,000" },
-        { for: "246 GB", price: "25,000" },
+        { for: "128 GB", price: "11,000" },
+        { for: "246 GB", price: "15,000" },
       ],
     },
     {
@@ -50,8 +50,8 @@ const Buyphone = () => {
         "16.94cm (6.67) 3D Curved E3 AMOLED Display",
       ],
       value: [
-        { for: "128 GB", price: "21,000" },
-        { for: "246 GB", price: "25,000" },
+        { for: "128 GB", price: "25,000" },
+        { for: "246 GB", price: "27,000" },
       ],
     },
     {
@@ -64,8 +64,8 @@ const Buyphone = () => {
         "16.94cm (6.67) 3D Curved E3 AMOLED Display",
       ],
       value: [
-        { for: "128 GB", price: "21,000" },
-        { for: "246 GB", price: "25,000" },
+        { for: "128 GB", price: "15,000" },
+        { for: "246 GB", price: "17,000" },
       ],
     },
     {
@@ -78,8 +78,8 @@ const Buyphone = () => {
         "16.94cm (6.67) 3D Curved E3 AMOLED Display",
       ],
       value: [
-        { for: "128 GB", price: "21,000" },
-        { for: "246 GB", price: "25,000" },
+        { for: "128 GB", price: "30,000" },
+        { for: "246 GB", price: "35,000" },
       ],
     },
   ]);
@@ -97,8 +97,8 @@ const Buyphone = () => {
     setPhoneinfo(
       phoneInfo.filter(
         (phoneInfo) =>
-          max > Number(phoneInfo.value[0].price) &&
-          min < Number(phoneInfo.value[0].price)
+          min < Number(phoneInfo.value[0].price) &&
+          max > Number(phoneInfo.value[0].price)
       )
     );
   }
@@ -117,15 +117,15 @@ const Buyphone = () => {
   }
 
   return (
-    <div className="buy h-fit md:mt-28 mb-28">
+    <div className="buy h-fit md:mt-10 mb-28">
       <div className="container mx-auto">
-        <h1 className="text-4xl mt-6 mx-10">Buy Old Phone </h1>
+        <h1 className="md:text-4xl text-2xl mt-6 mx-10">Buy Old Phone </h1>
         <div className="flex md:flex-row flex-col">
-          <div className="filter md:w-96 my-9 mx-10">
+          <div className="filter md:w-56 my-9 mx-10">
             <div className="brand flex flex-col my-5 gap-3">
               <label
                 htmlFor="steps-range"
-                className="block mb-2 text-2xl font-bold text-gray-900 dark:text-white"
+                className="block mb-2 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
               >
                 Brand
               </label>
@@ -163,32 +163,16 @@ const Buyphone = () => {
             <hr className="border-purple-700" />
             <div className="price my-5">
               <div>
-                <label
-                  htmlFor="steps-range"
-                  className="block mb-2 text-2xl font-bold text-gray-900 dark:text-white"
-                >
-                  Price
-                </label>
-                {/* <input
-                  type="range"
-                  name="max"
-                  id="max"
-                  min={1000}
-                  max={100000}
-                  value={max}
-                  onChange={(e) => setMax(Number(e.target.value))}
-                  className="w-40 cursor-pointer focus:border-purple-700"
-                /> */}
                 <input
                   id="range"
-                  type="text"
+                  type="number"
                   placeholder="Min ₹"
                   onChange={(e) => setMin(Number(e.target.value))}
                   className="w-20 cursor-pointer focus:border-purple-700"
                 />
                 <input
                   id="range"
-                  type="text"
+                  type="number"
                   placeholder="Max ₹"
                   onChange={(e) => setMax(Number(e.target.value))}
                   className="w-20 cursor-pointer focus:border-purple-700"
@@ -205,7 +189,7 @@ const Buyphone = () => {
             <hr className="border-purple-700" />
             <div className="ram my-5">
               <label
-                className="block mb-2 text-2xl font-bold text-gray-900 dark:text-white"
+                className="block mb-2 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
                 htmlFor=""
               >
                 RAM
@@ -254,7 +238,7 @@ const Buyphone = () => {
             <hr className="border-purple-700" />
             <div className="storage my-5">
               <label
-                className="block mb-2 text-2xl font-bold text-gray-900 dark:text-white"
+                className="block mb-2 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
                 htmlFor=""
               >
                 STORAGE

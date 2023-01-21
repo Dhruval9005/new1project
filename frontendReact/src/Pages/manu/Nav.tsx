@@ -2,13 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Dropdown, Avatar } from "flowbite-react";
+import Sidebir from "./Sidebir";
 
 const Nav = () => {
   let [user, setUser] = useState({
-    name: "vedant",
+    fname: "vedant",
+    lname: "pandya",
     email: "pandyavedant@gmail.com",
+    address: "ved",
   });
-
   // useEffect(() => {
   //   getUser();
   // }, []);
@@ -21,8 +23,6 @@ const Nav = () => {
     setUser(null);
   }
 
-  function Login() {}
-
   async function getUser() {
     // let user = await axios.get("http://localhost:3000/login");
     console.log(user);
@@ -30,9 +30,161 @@ const Nav = () => {
 
   return (
     <div className="nav">
-      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-        <div className="container mx-auto">
-          <Navbar fluid={true} rounded={true}>
+      <Sidebir />
+      <div className="mx-auto">
+        <nav className=" relative w-full m-2 flex flex-wrap items-center justify-between py-4  text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light ">
+          <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+            <button
+              className=" text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="bars"
+                className="w-6"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                ></path>
+              </svg>
+            </button>
+            {/* <button
+              className=" navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="bars"
+                className="w-6"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                ></path>
+              </svg>
+            </button> */}
+            <a
+              className=" flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1 ml-5"
+              href="/"
+            >
+              <img src="" style={{ height: 15 }} loading="lazy" />
+              <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
+                Tran<span className="text-purple-700">x</span>
+              </span>
+            </a>
+            <div
+              className="collapse navbar-collapse flex-grow items-center"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav flex flex-col list-style-none ml-40">
+                <li className="nav-item p-2">
+                  <a
+                    className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    href="/sell"
+                  >
+                    Sell phone
+                  </a>
+                </li>
+                <li className="nav-item p-2">
+                  <a
+                    className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    href="/buy"
+                  >
+                    Buy phone
+                  </a>
+                </li>
+                <li className="nav-item p-2">
+                  <a
+                    className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    href="/repair"
+                  >
+                    Repair phone
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="flex items-center relative">
+              <div className="dropdown relative"></div>
+              <div className="dropdown relative">
+                <a
+                  className="dropdown-toggle flex items-center hidden-arrow right-full"
+                  href="#"
+                  id="dropdownMenuButton2"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    src="https://mdbootstrap.com/img/new/avatars/2.jpg"
+                    className="rounded-full"
+                    style={{ height: 25, width: 25 }}
+                    alt=""
+                    loading="lazy"
+                  />
+                </a>
+                <ul
+                  className="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                  aria-labelledby="dropdownMenuButton2"
+                >
+                  <p className="dropdown-item text-sm px-4 font-normal block w-full whitespace-nowrap bg-transparent">
+                    {user.fname}
+                  </p>
+                  <p className="dropdown-item text-sm px-4 font-normal block w-full whitespace-nowrap bg-transparent">
+                    {user.email}
+                  </p>
+                  <li>
+                    <a
+                      className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
+                      href="#"
+                    >
+                      Cart
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
+                      href="#"
+                    >
+                      Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
+                      href="#"
+                    >
+                      Something else here
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      {/* <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 fixed top-0 left-0 right-0 z-10">*/}
+      {/* <div className="container mx-auto"> */}
+      {/* <Navbar fluid={true} rounded={true}>
             <Navbar.Brand href="/">
               <img src="" className="h-6 mr-3 sm:h-9" alt="" />
               <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
@@ -62,7 +214,7 @@ const Nav = () => {
                   id="search-navbar"
                   className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
                   placeholder="Search..."
-                />
+                /> 
               </div>
               {user ? (
                 <Dropdown
@@ -78,7 +230,7 @@ const Nav = () => {
                 >
                   <Dropdown.Header>
                     <span className="block text-sm text-purple-700">
-                      {user.name}
+                      {user.fname}
                     </span>
                     <span className="block truncate text-sm font-medium">
                       {user.email}
@@ -97,7 +249,7 @@ const Nav = () => {
                   <Dropdown.Item onClick={singOut}>Sign out</Dropdown.Item>
                 </Dropdown>
               ) : (
-                <div className="">
+                <div className="mx-3">
                   <Link to="/login">
                     <button className="text-sm w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
                       Login
@@ -111,12 +263,12 @@ const Nav = () => {
               <Navbar.Link href="/">Home</Navbar.Link>
               <Navbar.Link href="/sell">Sell Phone</Navbar.Link>
               <Navbar.Link href="/buy">Buy Phone</Navbar.Link>
-              <Navbar.Link href="/repire">Repire Phone</Navbar.Link>
+              <Navbar.Link href="/repair">Repire Phone</Navbar.Link>
               <Navbar.Link href="/store">Visit our store</Navbar.Link>
               <Navbar.Link href="/bidding">Bidding</Navbar.Link>
             </Navbar.Collapse>
-          </Navbar>
-          {/* <Link to="/" className="flex items-center">
+          </Navbar> */}
+      {/* <Link to="/" className="flex items-center">
             <img src="" className="h-6 mr-3 sm:h-9" alt="" />
             <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
               Tran<span className="text-purple-700">x</span>
@@ -363,9 +515,8 @@ const Nav = () => {
               </li>
             </ul>
           </div> */}
-        </div>
-      </nav>
-      <hr className="border-purple-700" />
+      {/* </div> */}
+      {/* </nav> */}
     </div>
   );
 };

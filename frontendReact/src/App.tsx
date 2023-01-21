@@ -18,6 +18,7 @@ import Buyphoneinfo from "./Pages/buy/Buyphoneinfo";
 import Bidding from "./Pages/Bidding/Bidding";
 import Store from "./Pages/store/Store";
 import Biddingphone from "./Pages/Bidding/Biddingphone";
+import Sidebir from "./Pages/manu/Sidebir";
 
 function App() {
   return (

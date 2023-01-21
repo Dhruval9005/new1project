@@ -42,17 +42,17 @@ const PhoneInfo = () => {
   return (
     <div className="phoneInfo h-fit">
       <div className="container w-full mx-auto">
-        <h1 className="text-4xl mt-6 ml-3 ">
+        <h1 className="md:text-4xl text-2xl mt-6 ml-3 ">
           Sell Your Old
           <span className="text-purple-700"> {phoneinfo.name}</span>
         </h1>
-        <div className="md:w-3/4 flex flex-col md:flex-row mx-auto shadow-lg md:my-52">
+        <div className="md:w-3/4 w-full flex flex-col md:flex-row mx-auto shadow-lg md:my-52">
           <img
-            className="w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg m-4"
+            className="w-full h-48 md:h-auto object-contain rounded-t-lg md:rounded-none md:rounded-l-lg m-4 mx-auto"
             src={phoneinfo.img}
             alt=""
           />
-          <div className="p-6 flex flex-col justify-between">
+          <div className="md:p-6 p-10 flex flex-col justify-between">
             <div className="justify-start">
               <h1 className="text-gray-900 font-bold mb-2 text-2xl">
                 {phoneinfo.name}

@@ -1,61 +1,61 @@
-import { Navbar, Dropdown, Avatar } from "flowbite-react";
-import React, { useState } from "react";
+import React from "react";
 
-const Expr = () => {
+const Sidebir = () => {
   return (
-    <div className="exp">
-      <div>
-        <div className="flex space-x-2">
-          <div>
-            <div
-              className="offcanvas offcanvas-start fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 border-none w-96"
-              tabIndex={-1}
-              id="offcanvasExample"
-              aria-labelledby="offcanvasExampleLabel"
-            >
-              <div className="offcanvas-header flex items-center justify-between p-4">
-                <h5
-                  className="offcanvas-title mb-0 leading-normal font-semibold"
-                  id="offcanvasExampleLabel"
-                >
-                  Tranx
-                </h5>
-                <button
-                  type="button"
-                  className="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                  data-bs-dismiss="offcanvas"
-                  aria-label="Close"
-                />
-              </div>
-              <div className="offcanvas-body flex-grow p-4 overflow-y-auto">
-                <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
-                  <li className="nav-item p-2">
-                    <a
-                      className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
-                      href="/sell"
-                    >
-                      Sell phone
-                    </a>
-                  </li>
-                  <li className="nav-item p-2">
-                    <a
-                      className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
-                      href="/buy"
-                    >
-                      Buy phone
-                    </a>
-                  </li>
-                  <li className="nav-item p-2">
-                    <a
-                      className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
-                      href="/repair"
-                    >
-                      Repair phone
-                    </a>
-                  </li>
-                </ul>
+    <div className="siderbir">
+      <div className="flex space-x-2">
+        <div>
+          <div
+            className="offcanvas offcanvas-start fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 border-none w-96"
+            tabIndex={-1}
+            id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel"
+          >
+            <div className="offcanvas-header flex items-center justify-between p-4">
+              <h5
+                className="offcanvas-title mb-0 leading-normal font-semibold"
+                id="offcanvasExampleLabel"
+              >
+                <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
+                  Tran<span className="text-purple-700">x</span>
+                </span>
+              </h5>
+              <button
+                type="button"
+                className="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              />
+            </div>
+            <div className="offcanvas-body flex-grow p-4 overflow-y-auto">
+              <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+                <li className="nav-item p-2">
+                  <a
+                    className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    href="/sell"
+                  >
+                    Sell phone
+                  </a>
+                </li>
+                <li className="nav-item p-2">
+                  <a
+                    className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    href="/buy"
+                  >
+                    Buy phone
+                  </a>
+                </li>
+                <li className="nav-item p-2">
+                  <a
+                    className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    href="/repair"
+                  >
+                    Repair phone
+                  </a>
+                </li>
+              </ul>
 
-                {/* <div
+              {/* <div
                   className="w-full h-full shadow-md bg-white absolute"
                   id="sidenavSecExample"
                 >
@@ -392,7 +392,6 @@ const Expr = () => {
                     </p>
                   </div>
                 </div> */}
-              </div>
             </div>
           </div>
         </div>
@@ -401,4 +400,4 @@ const Expr = () => {
   );
 };
 
-export default Expr;
+export default Sidebir;

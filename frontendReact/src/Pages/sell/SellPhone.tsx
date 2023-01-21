@@ -31,7 +31,7 @@ const SellPhone = () => {
           <div className="w-full p-6 m-auto lg:max-w-4xl flex flex-col">
             <div className="brand p-3">
               <Select
-                className="text-2xl"
+                className="md:text-2xl"
                 classNamePrefix="select Brand"
                 isClearable={true}
                 isSearchable={true}
@@ -42,7 +42,7 @@ const SellPhone = () => {
             </div>
             <div className="model p-3">
               <Select
-                className="text-2xl"
+                className="md:text-2xl"
                 classNamePrefix="select Model"
                 isClearable={true}
                 isSearchable={true}
@@ -53,7 +53,7 @@ const SellPhone = () => {
             </div>
             <div className="p-3">
               <button
-                className="text-2xl w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
+                className="md:text-2xl w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
                 onClick={next}
               >
                 Next

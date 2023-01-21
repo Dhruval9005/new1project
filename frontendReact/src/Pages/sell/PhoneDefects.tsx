@@ -58,7 +58,7 @@ const PhoneDefects = () => {
         <div className="relative flex flex-col min-h-full justify-center">
           <div className="w-full p-6 m-auto lg:max-w-4xl flex flex-col">
             <div className="mt-4 text-center">
-              <h3 className="mb-5 text-2xl font-medium text-gray-900 dark:text-white">
+              <h3 className="mb-5 md:text-lg text-sm font-medium text-gray-900 dark:text-white">
                 Select screen/body defects that are applicable!
               </h3>
               <ul className="grid w-full gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
@@ -81,7 +81,7 @@ const PhoneDefects = () => {
                         alt=""
                       />
                       <hr className="w-full mb-4" />
-                      <div className="w-full text-lg font-semibold text-center">
+                      <div className="w-full md:text-lg text-sm font-semibold text-center">
                         Broken/scratch on device screen
                       </div>
                       <div className="w-full"></div>
@@ -107,7 +107,7 @@ const PhoneDefects = () => {
                         alt=""
                       />
                       <hr className="w-full mb-4" />
-                      <div className="w-full text-lg font-semibold text-center">
+                      <div className="w-full md:text-lg text-sm font-semibold text-center">
                         Dead spot/visible lines on screen
                       </div>
                       <div className="w-full"></div>
@@ -133,7 +133,7 @@ const PhoneDefects = () => {
                         alt=""
                       />
                       <hr className="w-full mb-4" />
-                      <div className="w-full text-lg font-semibold text-center">
+                      <div className="w-full md:text-lg text-sm font-semibold text-center">
                         Scratch/Dent on device body
                       </div>
                       <div className="w-full"></div>
@@ -159,7 +159,7 @@ const PhoneDefects = () => {
                         alt=""
                       />
                       <hr className="w-full mb-4" />
-                      <div className="w-full text-lg font-semibold text-center">
+                      <div className="w-full md:text-lg text-sm font-semibold text-center">
                         Device panel missing/broken
                       </div>
                       <div className="w-full"></div>
