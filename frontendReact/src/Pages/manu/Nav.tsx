@@ -1,7 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Navbar, Dropdown, Avatar } from "flowbite-react";
 import Sidebir from "./Sidebir";
 
 const Nav = () => {
@@ -20,7 +18,7 @@ const Nav = () => {
   }
 
   function singOut() {
-    setUser(null);
+    // setUser(null);
   }
 
   async function getUser() {
@@ -30,16 +28,16 @@ const Nav = () => {
 
   return (
     <div className="nav">
-      <Sidebir />
       <div className="mx-auto">
-        <nav className=" relative w-full m-2 flex flex-wrap items-center justify-between py-4  text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light ">
+        <Sidebir />
+        <nav className="relative w-full flex flex-wrap items-center justify-between py-4  text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light ">
           <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
             <button
               className=" text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
               type="button"
               data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasExample"
-              aria-controls="offcanvasExample"
+              data-bs-target="#offcanvas"
+              aria-controls="offcanvas"
             >
               <svg
                 aria-hidden="true"
@@ -57,31 +55,6 @@ const Nav = () => {
                 ></path>
               </svg>
             </button>
-            {/* <button
-              className=" navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="bars"
-                className="w-6"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                ></path>
-              </svg>
-            </button> */}
             <a
               className=" flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1 ml-5"
               href="/"
@@ -123,60 +96,78 @@ const Nav = () => {
               </ul>
             </div>
             <div className="flex items-center relative">
-              <div className="dropdown relative"></div>
-              <div className="dropdown relative">
-                <a
-                  className="dropdown-toggle flex items-center hidden-arrow right-full"
-                  href="#"
-                  id="dropdownMenuButton2"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <img
-                    src="https://mdbootstrap.com/img/new/avatars/2.jpg"
-                    className="rounded-full"
-                    style={{ height: 25, width: 25 }}
-                    alt=""
-                    loading="lazy"
-                  />
-                </a>
-                <ul
-                  className="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
-                  aria-labelledby="dropdownMenuButton2"
-                >
-                  <p className="dropdown-item text-sm px-4 font-normal block w-full whitespace-nowrap bg-transparent">
-                    {user.fname}
-                  </p>
-                  <p className="dropdown-item text-sm px-4 font-normal block w-full whitespace-nowrap bg-transparent">
-                    {user.email}
-                  </p>
-                  <li>
-                    <a
-                      className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
-                      href="#"
-                    >
-                      Cart
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
-                      href="#"
-                    >
-                      Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
-                      href="#"
-                    >
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              {user ? (
+                <div className="dropdown relative">
+                  <a
+                    className="dropdown-toggle flex items-center hidden-arrow right-full"
+                    href="#"
+                    id="dropdownMenuButton2"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src="https://mdbootstrap.com/img/new/avatars/2.jpg"
+                      className="rounded-full w-32"
+                      style={{ height: 50, width: 50 }}
+                      alt="Avatar"
+                      loading="lazy"
+                    />
+                  </a>
+                  <ul
+                    className="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                    aria-labelledby="dropdownMenuButton2"
+                  >
+                    <p className="dropdown-item text-sm px-4 font-normal block w-full whitespace-nowrap bg-transparent">
+                      {user.fname}
+                    </p>
+                    <p className="dropdown-item text-sm px-4 font-normal block w-full whitespace-nowrap bg-transparent">
+                      {user.email}
+                    </p>
+                    <li>
+                      <a
+                        className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
+                        href="#"
+                      >
+                        Cart
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
+                        href="#"
+                      >
+                        Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                        href="#"
+                      >
+                        Something else here
+                      </a>
+                    </li>
+                    <hr />
+                    <li>
+                      <button
+                        className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                        onClick={singOut}
+                      >
+                        Sign out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <div className="mx-3">
+                  <a href="/login">
+                    <button className="text-sm w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                      Login
+                    </button>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </nav>

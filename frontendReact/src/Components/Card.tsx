@@ -1,6 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import mi from "../../assets/Mi10.jpg";
 
-export const Card = (phoneinfo: {}) => {
+export const Card = () => {
+  let navigate = useNavigate();
+  let [price, setPrice] = useState("");
+  let [phoneInfo, setPhoneinfo] = useState();
+  let { model } = useParams();
+
+  useEffect(() => {
+    getPhoneInfo();
+  }, []);
+
+  async function getPhoneInfo() {
+    // let response = await axios.get("");
+    // setPhoneinfo(response.data.data);
+  }
+
+  function next() {
+    navigate(`${window.location.pathname}/opti`);
+  }
+
+  const phoneinfo = {
+    name: model,
+    img: mi,
+    info: [
+      "108MP Quad Camera + OIS",
+      "Qualcomm® Snapdragon™ 865",
+      "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      "LiquidCool 2.0 Vapor Chamber + 6 Stack Graphite + Graphene Cooling System",
+      "LPDDR5 RAM + UFS 3.0 Storage",
+      "30W Wireless Charging + 10W Reverse Charging",
+    ],
+    value: [
+      { for: "128 Gb", price: "21,000" },
+      { for: "246 Gb", price: "25,000" },
+    ],
+  };
+
   return (
     <div>
       <div>
@@ -24,7 +62,7 @@ export const Card = (phoneinfo: {}) => {
             {phoneinfo.value.map((i) => (
               <button
                 className="mx-4 my-4 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
-                onClick={(e) => setPrice(e.target.value)}
+                // onClick={(e) => setPrice(e.target.value)}
                 value={i.price}
               >
                 {i.for}

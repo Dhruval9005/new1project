@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import Select from "react-select";
 
 const SellPhone = () => {
@@ -8,7 +8,7 @@ const SellPhone = () => {
   let [phoneModel, setphoneModel] = useState("");
 
   function next() {
-    if (phoneModel != undefined || phoneModel != null) {
+    if (phoneModel != undefined && phoneModel != null) {
       naviget(`/sell/${phoneModel}`);
     }
   }

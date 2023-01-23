@@ -1,11 +1,13 @@
 import { Carousel } from "flowbite-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import buying from "../../assets/buying.png";
 import commerce from "../../assets/commerce.png";
 import repairing from "../../assets/repairing.png";
 import visit from "../../assets/visit.png";
 import bidding from "../../assets/auction.png";
+import mi from "../../assets/Mi10.jpg";
+import PhoneCard from "../../Components/PhoneCard";
 
 const Home = () => {
   let [banner, setBanner] = useState([
@@ -15,6 +17,78 @@ const Home = () => {
     "https://flowbite.com/docs/images/carousel/carousel-4.svg",
     "https://flowbite.com/docs/images/carousel/carousel-5.svg",
   ]);
+  let phoneInfo = [
+    {
+      name: "Xiaomi 13",
+      img: mi,
+      grand: "mi",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "1000" },
+        { for: "246 GB", price: "5000" },
+      ],
+    },
+    {
+      name: "Xiaomi 13",
+      img: mi,
+      grand: "mi",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "11,000" },
+        { for: "246 GB", price: "15,000" },
+      ],
+    },
+    {
+      name: "iphone 14",
+      img: mi,
+      grand: "apple",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "25,000" },
+        { for: "246 GB", price: "27,000" },
+      ],
+    },
+    {
+      name: "samsung s22",
+      img: mi,
+      grand: "samsung",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "15,000" },
+        { for: "246 GB", price: "17,000" },
+      ],
+    },
+    {
+      name: "samsung s20",
+      img: mi,
+      grand: "samsung",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "30,000" },
+        { for: "246 GB", price: "35,000" },
+      ],
+    },
+  ];
 
   return (
     <div className="Home h-fit mb-28">
@@ -84,6 +158,10 @@ const Home = () => {
           </Carousel>
         </div>
       </div>
+      <PhoneCard name="Most Search" phones={phoneInfo} />
+      <PhoneCard name="Latest Phone" phones={phoneInfo} />
+      <PhoneCard name="UpComing Phone" phones={phoneInfo} />
+      <PhoneCard name="Xiaomi" phones={phoneInfo} />
     </div>
   );
 };
