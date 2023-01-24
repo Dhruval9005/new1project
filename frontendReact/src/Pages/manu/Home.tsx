@@ -22,6 +22,7 @@ const Home = () => {
       name: "Xiaomi 13",
       img: mi,
       grand: "mi",
+      link: "/Xiami 13",
       info: [
         "108MP Quad Camera + OIS",
         "Qualcomm® Snapdragon™ 865",
@@ -35,6 +36,7 @@ const Home = () => {
     {
       name: "Xiaomi 13",
       img: mi,
+      link: "/Xiami 13",
       grand: "mi",
       info: [
         "108MP Quad Camera + OIS",
@@ -50,6 +52,7 @@ const Home = () => {
       name: "iphone 14",
       img: mi,
       grand: "apple",
+      link: "/Xiami 13",
       info: [
         "108MP Quad Camera + OIS",
         "Qualcomm® Snapdragon™ 865",
@@ -64,6 +67,7 @@ const Home = () => {
       name: "samsung s22",
       img: mi,
       grand: "samsung",
+      link: "/Xiami 13",
       info: [
         "108MP Quad Camera + OIS",
         "Qualcomm® Snapdragon™ 865",
@@ -78,6 +82,7 @@ const Home = () => {
       name: "samsung s20",
       img: mi,
       grand: "samsung",
+      link: "/Xiami 13",
       info: [
         "108MP Quad Camera + OIS",
         "Qualcomm® Snapdragon™ 865",
@@ -88,6 +93,12 @@ const Home = () => {
         { for: "246 GB", price: "35,000" },
       ],
     },
+  ];
+  let brand = [
+    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/2e7cdc22-5a5f.jpg" },
+    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/cb96df6e-080f.jpg" },
+    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/406a512d-e8dd.jpg" },
+    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/dacc50a2-77a9.jpg" },
   ];
 
   return (
@@ -105,10 +116,10 @@ const Home = () => {
       </div>
       <div className="container mx-auto pt-10 h-fit">
         <div className="flex flex-col justify-center overflow-hidden">
-          <div className="w-full p-6 m-auto lg:max-w-4xl">
+          <div className="w-full p-2 m-auto lg:max-w-4xl">
             <div className="flex flex-col justify-center flex-wrap">
               <div className="link button flex flex-col justify-center content-center flex-wrap max-h-max">
-                <div className="mb-10 grid md:grid-cols-4 grid-cols-2 gap-4">
+                <div className="mb-10 flex flex-wrap gap-4 justify-center">
                   <a href="/sell" className="">
                     <button className="w-40 h-36 text-center">
                       <img src={commerce} className="w-16 mx-auto mb-2" />
@@ -158,10 +169,35 @@ const Home = () => {
           </Carousel>
         </div>
       </div>
-      <PhoneCard name="Most Search" phones={phoneInfo} />
-      <PhoneCard name="Latest Phone" phones={phoneInfo} />
-      <PhoneCard name="UpComing Phone" phones={phoneInfo} />
-      <PhoneCard name="Xiaomi" phones={phoneInfo} />
+      <div className="ml-3">
+        <PhoneCard name="Most Search" phones={phoneInfo} path="/buy" />
+        <PhoneCard name="Latest Phone" phones={phoneInfo} path="/buy" />
+        <PhoneCard name="UpComing Phone" phones={phoneInfo} path="/buy" />
+        <PhoneCard name="Xiaomi" phones={phoneInfo} path="/buy" />
+        <div>
+          <div className="container mx-auto pt-10">
+            <h2 className="text-3xl">Brand</h2>
+            <div className="mt-10 flex gap-10 overflow-y-auto">
+              {brand.map((x) => (
+                <div className="flex justify-center">
+                  <div className="rounded-lg shadow-lg bg-white w-40 h-40">
+                    <a href="">
+                      <img
+                        className="rounded-t-lg mx-auto w-40 h-40"
+                        src={x.img}
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                </div>
+              ))}
+              <div className="mt-auto underline text-purple-700 mr-10">
+                <a href="\">view all</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

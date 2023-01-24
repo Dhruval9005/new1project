@@ -39,7 +39,7 @@ const PhoneDefects = () => {
     }
   }
 
-  async function Senddata() {
+  async function SendData() {
     try {
       let res = await axios.post("/", {
         scratch,
@@ -170,7 +170,7 @@ const PhoneDefects = () => {
             </div>
             <div className="mt-10">
               <button
-                // onClick={sendphoneinfo}
+                onClick={SendData}
                 className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
               >
                 Continue

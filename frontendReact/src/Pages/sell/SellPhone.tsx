@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 
 const SellPhone = () => {
@@ -18,6 +18,7 @@ const SellPhone = () => {
     { value: "Apple", label: "Apple" },
     { value: "Xiaomi", label: "Xiaomi" },
   ];
+
   const model = [
     { value: "samsung S22", label: "Samsung S22" },
     { value: "Iphone 14", label: "Iphone 14" },
@@ -29,7 +30,7 @@ const SellPhone = () => {
       <div className="container mx-auto">
         <div className="relative flex flex-col min-h-full justify-center">
           <div className="w-full p-6 m-auto lg:max-w-4xl flex flex-col">
-            <div className="brand p-3">
+            <div className="brand p-3"> 
               <Select
                 className="md:text-2xl"
                 classNamePrefix="select Brand"

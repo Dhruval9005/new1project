@@ -7,8 +7,10 @@ const Nav = () => {
     fname: "vedant",
     lname: "pandya",
     email: "pandyavedant@gmail.com",
+    numver: "0123456789",
     address: "ved",
   });
+
   // useEffect(() => {
   //   getUser();
   // }, []);
@@ -33,7 +35,7 @@ const Nav = () => {
         <nav className="relative w-full flex flex-wrap items-center justify-between py-4  text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light ">
           <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
             <button
-              className=" text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+              className="text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
               type="button"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvas"
@@ -56,7 +58,7 @@ const Nav = () => {
               </svg>
             </button>
             <a
-              className=" flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1 ml-5"
+              className="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1 ml-5"
               href="/"
             >
               <img src="" style={{ height: 15 }} loading="lazy" />
@@ -115,27 +117,27 @@ const Nav = () => {
                     />
                   </a>
                   <ul
-                    className="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                    className="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0 w-40"
                     aria-labelledby="dropdownMenuButton2"
                   >
                     <p className="dropdown-item text-sm px-4 font-normal block w-full whitespace-nowrap bg-transparent">
                       {user.fname}
                     </p>
                     <p className="dropdown-item text-sm px-4 font-normal block w-full whitespace-nowrap bg-transparent">
-                      {user.email}
+                      {/* {user.email} */}
                     </p>
                     <li>
                       <a
-                        className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
-                        href="#"
+                        className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
+                        href="/cart"
                       >
                         Cart
                       </a>
                     </li>
                     <li>
                       <a
-                        className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
-                        href="#"
+                        className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
+                        href="/profile"
                       >
                         Profile
                       </a>
@@ -144,9 +146,7 @@ const Nav = () => {
                       <a
                         className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
                         href="#"
-                      >
-                        Something else here
-                      </a>
+                      ></a>
                     </li>
                     <hr />
                     <li>
