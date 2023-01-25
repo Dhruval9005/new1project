@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Card } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { RangeSlider } from "@mantine/core";
 
 import xiaomi from "../../assets/Mi10.jpg";
 
 const Buyphone = () => {
+  const [rangeValue, setRangeValue] = useState<[number, number]>([
+    20000, 80000,
+  ]);
   let naviget = useNavigate();
   let [price, setPrice] = useState("");
-  let [min, setMin] = useState(Number);
-  let [max, setMax] = useState(Number);
   let [filter, setFilter] = useState([{}]);
   let [phoneInfo, setPhoneinfo] = useState([
     {
@@ -121,7 +123,7 @@ const Buyphone = () => {
       <div className="container mx-auto">
         <h1 className="md:text-4xl text-2xl mt-6 mx-10">Buy Old Phone </h1>
         <div className="flex md:flex-row flex-col">
-          <div className="filter md:w-56 my-9 mx-10">
+          <div className="filter md:w-1/4 my-9 mx-10">
             <div className="brand flex flex-col my-5 gap-3">
               <label
                 htmlFor="steps-range"
@@ -161,9 +163,24 @@ const Buyphone = () => {
               </div>
             </div>
             <hr className="border-purple-700" />
-            <div className="price my-5">
+            <div className="price my-10">
               <div>
-                <input
+                <RangeSlider
+                  color="violet"
+                  size="lg"
+                  radius="lg"
+                  min={1000}
+                  max={100000}
+                  step={5000}
+                  marks={[
+                    { value: 20000, label: "₹ 20,000" },
+                    { value: 50000, label: "₹ 50,000" },
+                    { value: 80000, label: "₹ 80,000" },
+                  ]}
+                  value={rangeValue}
+                  onChange={setRangeValue}
+                />
+                {/* <input
                   id="range"
                   type="number"
                   placeholder="Min ₹"
@@ -183,7 +200,7 @@ const Buyphone = () => {
                   className="w-40 my-4 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
                 >
                   FILTERS
-                </button>
+                </button> */}
               </div>
             </div>
             <hr className="border-purple-700" />
