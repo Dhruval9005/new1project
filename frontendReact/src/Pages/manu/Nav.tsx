@@ -1,31 +1,25 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Sidebir from "./Sidebir";
+import { useCookies } from "react-cookie";
 
 const Nav = () => {
-  let [user, setUser] = useState({
-    fname: "vedant",
-    lname: "pandya",
-    email: "pandyavedant@gmail.com",
-    numver: "0123456789",
-    address: "ved",
-  });
+  const [cookies, setCookie, removeCookie] = useCookies(["user", "userdata"]);
+  let [user, setUser] = useState({});
+  useEffect(() => {
+    setUser(cookies.userdata);
+  }, []);
 
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
+  console.log(cookies);
 
   function darkmod() {
     document.body.classList.toggle("dark");
   }
 
   function singOut() {
-    // setUser(null);
-  }
-
-  async function getUser() {
-    // let user = await axios.get("http://localhost:3000/login");
-    console.log(user);
+    removeCookie("userdata");
+    removeCookie("user");
+    removeCookie("otp");
   }
 
   return (
@@ -73,7 +67,7 @@ const Nav = () => {
               <ul className="navbar-nav flex flex-col list-style-none ml-40">
                 <li className="nav-item p-2">
                   <a
-                    className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    className="nav-link text-lg text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
                     href="/sell"
                   >
                     Sell phone
@@ -81,7 +75,7 @@ const Nav = () => {
                 </li>
                 <li className="nav-item p-2">
                   <a
-                    className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    className="nav-link text-lg text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
                     href="/buy"
                   >
                     Buy phone
@@ -89,7 +83,7 @@ const Nav = () => {
                 </li>
                 <li className="nav-item p-2">
                   <a
-                    className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    className="nav-link text-lg text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
                     href="/repair"
                   >
                     Repair phone
@@ -121,7 +115,7 @@ const Nav = () => {
                     aria-labelledby="dropdownMenuButton2"
                   >
                     <p className="dropdown-item text-sm px-4 font-normal block w-full whitespace-nowrap bg-transparent">
-                      {user.fname}
+                      {user.phone_number}
                     </p>
                     <p className="dropdown-item text-sm px-4 font-normal block w-full whitespace-nowrap bg-transparent">
                       {/* {user.email} */}

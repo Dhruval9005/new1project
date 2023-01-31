@@ -95,15 +95,7 @@ const Buyphone = () => {
     setPhoneinfo(phoneInfo.filter((x) => {}));
   }
 
-  function Price() {
-    setPhoneinfo(
-      phoneInfo.filter(
-        (phoneInfo) =>
-          min < Number(phoneInfo.value[0].price) &&
-          max > Number(phoneInfo.value[0].price)
-      )
-    );
-  }
+  function Price() {}
 
   async function getPhoneInfo() {
     // let response = await axios.get("");
@@ -121,7 +113,7 @@ const Buyphone = () => {
   return (
     <div className="buy h-fit md:mt-10 mb-28">
       <div className="container mx-auto">
-        <h1 className="md:text-4xl text-2xl mt-6 mx-10">Buy Old Phone </h1>
+        <h1 className="md:text-4xl text-2xl mt-6 mx-10">Buy Old Phone</h1>
         <div className="flex md:flex-row flex-col">
           <div className="filter md:w-1/4 my-9 mx-10">
             <div className="brand flex flex-col my-5 gap-3">
@@ -180,27 +172,6 @@ const Buyphone = () => {
                   value={rangeValue}
                   onChange={setRangeValue}
                 />
-                {/* <input
-                  id="range"
-                  type="number"
-                  placeholder="Min ₹"
-                  onChange={(e) => setMin(Number(e.target.value))}
-                  className="w-20 cursor-pointer focus:border-purple-700"
-                />
-                <input
-                  id="range"
-                  type="number"
-                  placeholder="Max ₹"
-                  onChange={(e) => setMax(Number(e.target.value))}
-                  className="w-20 cursor-pointer focus:border-purple-700"
-                />
-                <br />
-                <button
-                  onClick={Price}
-                  className="w-40 my-4 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
-                >
-                  FILTERS
-                </button> */}
               </div>
             </div>
             <hr className="border-purple-700" />

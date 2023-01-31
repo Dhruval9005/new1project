@@ -1,25 +1,49 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const numAuth = new RegExp(
   "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
 );
 
-const Login = () => {
+const Login = (props: any) => {
   let naviget = useNavigate();
   let [mobileNumber, setMobileNumber] = useState("");
   let [massage, setMassage] = useState("");
+  const [cookies, setCookie] = useCookies(["otp", "user"]);
 
   async function SendMobile() {
     if (numAuth.test(mobileNumber)) {
       setMassage("");
       try {
-        // let res = await axios.post("http://localhost:8080/login", {
-        //   mobileNumber,
-        // });
-
-        naviget(`/otp`);
+        let response = await axios.get(
+          `http://localhost:3000/user/find-user/${mobileNumber}`
+        );
+        if (response.data.success) {
+          try {
+            let res = await axios.post(`http://localhost:3000/user/send-otp`, {
+              mobileNo: Number(response.data.data.phone_number),
+              id: response.data.data._id,
+            });
+            naviget(`/otp`);
+            setCookie("user", response, { path: "/" });
+            setCookie("otp", res, { path: "/otp" });
+          } catch (err) {
+            console.log(err);
+          }
+        } else {
+          try {
+            let res = await axios.post(`http://localhost:3000/user/send-otp`, {
+              mobileNo: mobileNumber,
+            });
+            naviget(`/logininfo`);
+            setCookie("user", response, { path: "/" });
+            setCookie("otp", res, { path: "/otp" });
+          } catch (err) {
+            console.log(err);
+          }
+        }
       } catch (err) {
         console.log(err);
       }
@@ -40,7 +64,7 @@ const Login = () => {
             <input
               name="Mobile"
               id="Mobile"
-              className="input w-full"
+              className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
               type="text"
               onChange={(e) => setMobileNumber(e.target.value)}
               required

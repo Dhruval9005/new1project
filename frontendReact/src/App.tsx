@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import "./index.css";
 import Login from "./Pages/login/Login";
 import Home from "./Pages/manu/Home";
 import Nav from "./Pages/manu/Nav";
@@ -8,17 +9,15 @@ import Expr from "./Expr";
 import PhoneInfo from "./Pages/sell/PhoneInfo";
 import RepairPhone from "./Pages/repair/RepairPhone";
 import Buyphone from "./Pages/buy/Buyphone";
-import "./index.css";
 import Phoneoptions from "./Pages/sell/Phoneoptions";
 import Foter from "./Pages/manu/Foter";
-import { LoginInfo } from "./Pages/login/LoginInfo";
+import LoginInfo from "./Pages/login/LoginInfo";
 import PhoneDefects from "./Pages/sell/PhoneDefects";
 import Repairoptions from "./Pages/repair/Repairoptions";
 import Buyphoneinfo from "./Pages/buy/Buyphoneinfo";
 import Bidding from "./Pages/Bidding/Bidding";
 import Store from "./Pages/store/Store";
 import Biddingphone from "./Pages/Bidding/Biddingphone";
-import Sidebir from "./Pages/manu/Sidebir";
 
 function App() {
   return (
