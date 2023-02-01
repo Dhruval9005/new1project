@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
 
-export const Card = (props: any) => {
+const Card = ({ phoneinfo }: any) => {
   let [price, setPrice] = useState("");
   return (
     <div>
       <div>
         <img
           className="w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg m-4"
-          src={props.phoneinfo.img}
+          src={phoneinfo.img}
           alt=""
         />
         <div className="p-6 flex flex-col justify-between">
           <div className="justify-start">
             <h1 className="text-gray-900 font-bold mb-2 text-2xl">
-              {props.phoneinfo.name}
+              {phoneinfo.name}
             </h1>
             <ul className="font-medium list-disc">
-              {props.phoneinfo.info.map((i) => (
+              {phoneinfo.info.map((i: any) => (
                 <li>{i}</li>
               ))}
             </ul>
           </div>
           <div>
-            {props.phoneinfo.value.map((i) => (
+            {phoneinfo.value.map((i :any) => (
               <button
                 className="mx-4 my-4 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
                 onClick={(e) => setPrice(e.target.value)}
@@ -62,3 +62,5 @@ export const Card = (props: any) => {
     </div>
   );
 };
+
+export default Card;

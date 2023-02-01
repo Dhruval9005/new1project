@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 
 const app = express();
-app.use(cors());
 const connectDB = require("./config/db");
 const routes = require("./routes");
 const { port } = require("./config/keys");

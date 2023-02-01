@@ -6,7 +6,11 @@ import { useCookies } from "react-cookie";
 
 const Otp = () => {
   const navigate = useNavigate();
-  const [cookies, setCookie] = useCookies(["otp", "user", "userdata"]);
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "otp",
+    "user",
+    "userdata",
+  ]);
   const [OTP, setOTP] = useState("");
   let [massage, setMassage] = useState("");
   let user = cookies.user.data.data;
@@ -21,6 +25,7 @@ const Otp = () => {
         });
         if (res.data.success) {
           navigate("/");
+          removeCookie("otp");
         }
       } catch (err) {
         console.log(err);
@@ -34,6 +39,7 @@ const Otp = () => {
         });
         if (res.data.success) {
           navigate("/");
+          removeCookie("otp");
         }
         console.log(res);
       } catch (err) {
@@ -61,7 +67,7 @@ const Otp = () => {
       <div className="container relative flex flex-col justify-center mt-10 overflow-hidden mx-auto">
         <div className="w-96 p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl sm:max-w-fit">
           <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
-            Login
+            {cookies.user.data.success ? "Login" : "SignUp"}
           </h1>
           <div className="input-group w-full mt-10 text-center">
             <label className="label">OTP</label>

@@ -6,9 +6,9 @@ const LoginInfo = () => {
   let naviget = useNavigate();
   let [fname, setFname] = useState("");
   let [lname, setLname] = useState("");
-  let [mobile, setMobile] = useState("");
-  let userdata = { fname: fname, lname: lname, phone_number: mobile };
-  const [cookies, setCookie] = useCookies(["otp", "user", "userdata"]);
+  let [phone_number, setPhone_Number] = useState("");
+  let userdata = { fname, lname, phone_number };
+  const [cookies, setCookie] = useCookies(["userdata"]);
 
   function sendData() {
     setCookie("userdata", userdata, { path: "/" });
@@ -43,7 +43,7 @@ const LoginInfo = () => {
             />
             <label className="label">Mobile Number</label>
             <input
-              onChange={(e) => setMobile(e.target.value)}
+              onChange={(e) => setPhone_Number(e.target.value)}
               name="mobile"
               id="mobile"
               className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"

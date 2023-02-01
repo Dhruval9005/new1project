@@ -20,11 +20,11 @@ router.get("/find-user/:phone_number", async (req, res) => {
 
     const user = await User.findOne(
       { phone_number: phone_number },
-      "phone_number"
+      // "phone_number"
     );
 
     if (!user) {
-      return res.status(200).json({
+      return res.status(400).json({
         success: false,
         error: "No user found with this phone number.",
       });

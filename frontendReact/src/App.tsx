@@ -22,9 +22,7 @@ import Biddingphone from "./Pages/Bidding/Biddingphone";
 function App() {
   return (
     <div className="App">
-      <Routes location={"/"}>
-        <Route path="/" element={<Nav />} />
-      </Routes>
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sell" element={<SellPhone />} />
@@ -43,9 +41,7 @@ function App() {
         <Route path="/bidding" element={<Bidding />} />
         <Route path="/bidding/:id" element={<Biddingphone />} />
       </Routes>
-      <Routes location={"/"}>
-        <Route path="/" element={<Foter />} />
-      </Routes>
+      <Foter />
     </div>
   );
 }
