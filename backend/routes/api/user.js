@@ -20,7 +20,7 @@ router.get("/find-user/:phone_number", async (req, res) => {
 
     const user = await User.findOne(
       { phone_number: phone_number },
-      // "phone_number"
+      "phone_number"
     );
 
     if (!user) {

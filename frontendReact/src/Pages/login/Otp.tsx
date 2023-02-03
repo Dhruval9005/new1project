@@ -26,6 +26,7 @@ const Otp = () => {
         if (res.data.success) {
           navigate("/");
           removeCookie("otp");
+          setCookie("userdata", res.data.userData, { path: "/" });
         }
       } catch (err) {
         console.log(err);
@@ -40,6 +41,7 @@ const Otp = () => {
         if (res.data.success) {
           navigate("/");
           removeCookie("otp");
+          setCookie("userdata", res.data.userData, { path: "/" });
         }
         console.log(res);
       } catch (err) {
@@ -52,8 +54,7 @@ const Otp = () => {
   async function Resendotp() {
     try {
       let res = await axios.post(`http://localhost:3000/user/send-otp`, {
-        mobileNo: Number(user.data.data.phone_number),
-        id: user.data.data._id,
+        mobileNo: Number(user.phone_number),
       });
       setCookie("otp", res, { path: "/otp" });
       setCookie("user", user, { path: "/otp" });
@@ -74,7 +75,7 @@ const Otp = () => {
             <div className="p-3 flex justify-center">
               <OTPInput
                 inputStyles={{ padding: "0px" }}
-                value={OTP}
+                value={OTP.toUpperCase()}
                 onChange={setOTP}
                 autoFocus
                 OTPLength={6}
@@ -90,7 +91,7 @@ const Otp = () => {
               onClick={login}
               className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
             >
-              Login
+              {cookies.user.data.success ? "Login" : "SignUp"}
             </button>
           </div>
         </div>

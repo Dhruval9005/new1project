@@ -18,6 +18,7 @@ import Buyphoneinfo from "./Pages/buy/Buyphoneinfo";
 import Bidding from "./Pages/Bidding/Bidding";
 import Store from "./Pages/store/Store";
 import Biddingphone from "./Pages/Bidding/Biddingphone";
+import ComparePhones from "./Pages/compare/ComparePhones";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/store" element={<Store />} />
         <Route path="/bidding" element={<Bidding />} />
         <Route path="/bidding/:id" element={<Biddingphone />} />
+        <Route path="/compare" element={<ComparePhones />} />
       </Routes>
       <Foter />
     </div>

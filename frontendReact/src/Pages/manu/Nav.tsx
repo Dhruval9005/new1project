@@ -1,19 +1,14 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Sidebir from "./Sidebir";
-import { Cookies, useCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import Nevbutt from "../../assets/svg/Nevbutt.svg";
 
 const Nav = () => {
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "otp",
-    "user",
-    "userdata",
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(["user", "userdata"]);
   let [user, setUser] = useState();
 
   useEffect(() => {
-    getUser();
+    setUser(cookies?.userdata);
   }, [cookies]);
 
   function darkmod() {
@@ -25,16 +20,11 @@ const Nav = () => {
     removeCookie("user");
   }
 
-  async function getUser() {
-    if (cookies === undefined) return;
-    setUser(cookies?.user?.data?.data);
-  }
-
   return (
     <div className="nav">
       <div className="mx-auto">
         <Sidebir />
-        <nav className="relative w-full flex flex-wrap items-center justify-between py-4  text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light ">
+        <nav className="relative w-full flex flex-wrap items-center justify-between py-4  text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light">
           <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
             <button
               className="text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"

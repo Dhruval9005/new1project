@@ -7,7 +7,7 @@ const numAuth = new RegExp(
   "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
 );
 
-const Login = (props: any) => {
+const Login = () => {
   let naviget = useNavigate();
   let [mobileNumber, setMobileNumber] = useState("");
   let [massage, setMassage] = useState("");

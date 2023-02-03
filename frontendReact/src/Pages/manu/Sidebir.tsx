@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import Select from "react-select";
 
 const Sidebir = () => {
+  let [firstPhone, setFirstPhone] = useState({});
+  let [secondPhone, setSecondPhone] = useState({});
+  const model = [
+    { value: "samsung S22", label: "Samsung S22" },
+    { value: "Iphone 14", label: "Iphone 14" },
+    { value: "Xiaomi 13", label: "Xiaomi 13" },
+  ];
   return (
     <div className="siderbir">
       <div className="flex space-x-2">
@@ -225,19 +233,23 @@ const Sidebir = () => {
                         <div className="accordion-body py-4 px-5">
                           <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
                             <li className="nav-item p-2">
-                              <input
-                                type="text"
-                                id="search-navbar"
-                                className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-                                placeholder=""
+                              <Select
+                                classNamePrefix="select Brand"
+                                isClearable={true}
+                                isSearchable={true}
+                                name="brand"
+                                options={model}
+                                onChange={(e) => setFirstPhone(e?.value)}
                               />
                             </li>
                             <li className="nav-item p-2">
-                              <input
-                                type="text"
-                                id="search-navbar"
-                                className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-                                placeholder=""
+                              <Select
+                                classNamePrefix="select Brand"
+                                isClearable={true}
+                                isSearchable={true}
+                                name="brand"
+                                options={model}
+                                onChange={(e) => setSecondPhone(e?.value)}
                               />
                             </li>
                             <li className="nav-item p-2">
