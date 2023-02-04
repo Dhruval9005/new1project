@@ -5,12 +5,16 @@ import Select from "react-select";
 
 const SellPhone = () => {
   let naviget = useNavigate();
-  let [phoneModel, setphoneModel] = useState("");
+  let [phoneModel, setphoneModel] = useState();
 
   function next() {
     if (phoneModel != undefined && phoneModel != null) {
       naviget(`/sell/${phoneModel}`);
     }
+  }
+
+  function SelectModel(selectedOption: any) {
+    setphoneModel(selectedOption);
   }
 
   const brand = [
@@ -30,7 +34,7 @@ const SellPhone = () => {
       <div className="container mx-auto">
         <div className="relative flex flex-col min-h-full justify-center">
           <div className="w-full p-6 m-auto lg:max-w-4xl flex flex-col">
-            <div className="brand p-3"> 
+            <div className="brand p-3">
               <Select
                 className="md:text-2xl"
                 classNamePrefix="select Brand"
@@ -38,7 +42,6 @@ const SellPhone = () => {
                 isSearchable={true}
                 name="brand"
                 options={brand}
-                // onChange={(e) => console.log(e?.label)}
               />
             </div>
             <div className="model p-3">
@@ -49,7 +52,7 @@ const SellPhone = () => {
                 isSearchable={true}
                 name="model"
                 options={model}
-                onChange={(e) => setphoneModel(e?.value)}
+                onChange={SelectModel}
               />
             </div>
             <div className="p-3">

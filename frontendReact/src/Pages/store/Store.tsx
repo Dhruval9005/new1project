@@ -21,7 +21,7 @@ const Store = () => {
                   </p>
                   <a
                     href="#"
-                    className="inline-flex items-center text-blue-600 hover:underline"
+                    className="inline-flex items-center text-purple-600 hover:underline"
                   >
                     show on map
                     <RiExternalLinkFill className="w-5 h-5 ml-2" />
@@ -41,7 +41,7 @@ const Store = () => {
                   </p>
                   <a
                     href="#"
-                    className="inline-flex items-center text-blue-600 hover:underline"
+                    className="inline-flex items-center text-purple-600 hover:underline"
                   >
                     show on map
                     <RiExternalLinkFill className="w-5 h-5 ml-2" />
@@ -61,7 +61,7 @@ const Store = () => {
                   </p>
                   <a
                     href="#"
-                    className="inline-flex items-center text-blue-600 hover:underline"
+                    className="inline-flex items-center text-purple-600 hover:underline"
                   >
                     show on map
                     <RiExternalLinkFill className="w-5 h-5 ml-2" />
@@ -81,7 +81,7 @@ const Store = () => {
                   </p>
                   <a
                     href="#"
-                    className="inline-flex items-center text-blue-600 hover:underline"
+                    className="inline-flex items-center text-purple-600 hover:underline"
                   >
                     show on map
                     <RiExternalLinkFill className="w-5 h-5 ml-2" />

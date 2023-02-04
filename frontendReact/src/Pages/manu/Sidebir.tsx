@@ -9,6 +9,14 @@ const Sidebir = () => {
     { value: "Iphone 14", label: "Iphone 14" },
     { value: "Xiaomi 13", label: "Xiaomi 13" },
   ];
+
+  function FirstSelect(selectedOption: any) {
+    setFirstPhone(selectedOption);
+  }
+  function SecondSelect(selectedOption: any) {
+    setSecondPhone(selectedOption);
+  }
+
   return (
     <div className="siderbir">
       <div className="flex space-x-2">
@@ -239,7 +247,7 @@ const Sidebir = () => {
                                 isSearchable={true}
                                 name="brand"
                                 options={model}
-                                onChange={(e) => setFirstPhone(e?.value)}
+                                onChange={FirstSelect}
                               />
                             </li>
                             <li className="nav-item p-2">
@@ -249,7 +257,7 @@ const Sidebir = () => {
                                 isSearchable={true}
                                 name="brand"
                                 options={model}
-                                onChange={(e) => setSecondPhone(e?.value)}
+                                onChange={SecondSelect}
                               />
                             </li>
                             <li className="nav-item p-2">

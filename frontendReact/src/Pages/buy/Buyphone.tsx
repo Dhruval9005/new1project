@@ -3,6 +3,7 @@ import { Card } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { RangeSlider } from "@mantine/core";
+import { Chip } from "@mantine/core";
 
 import xiaomi from "../../assets/Mi10.jpg";
 
@@ -116,14 +117,43 @@ const Buyphone = () => {
         <h1 className="md:text-4xl text-2xl mt-6 mx-10">Buy Old Phone</h1>
         <div className="flex md:flex-row flex-col">
           <div className="filter md:w-1/4 my-9 mx-10">
-            <div className="brand flex flex-col my-5 gap-3">
+            <div className="brand flex flex-col my-5">
               <label
                 htmlFor="steps-range"
                 className="block mb-2 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
               >
                 Brand
               </label>
-              <div>
+              <Chip.Group multiple mt={15}>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="apple"
+                >
+                  Apple
+                </Chip>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="mi"
+                >
+                  Mi
+                </Chip>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="samsung"
+                >
+                  Samsung
+                </Chip>
+              </Chip.Group>
+              {/* <div>
                 <input
                   type="checkbox"
                   name="brand"
@@ -152,7 +182,7 @@ const Buyphone = () => {
                   className="text-purple-700 mr-3"
                 />
                 <label htmlFor="samsung">Samsung</label>
-              </div>
+              </div> */}
             </div>
             <hr className="border-purple-700" />
             <div className="price my-10">
@@ -161,7 +191,7 @@ const Buyphone = () => {
                   color="violet"
                   size="lg"
                   radius="lg"
-                  min={1000}
+                  min={5000}
                   max={100000}
                   step={5000}
                   marks={[
@@ -182,7 +212,54 @@ const Buyphone = () => {
               >
                 RAM
               </label>
-              <div>
+              <Chip.Group multiple mt={15}>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="2"
+                >
+                  2 GB
+                </Chip>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="3"
+                >
+                  3 GB
+                </Chip>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="4"
+                >
+                  4 GB
+                </Chip>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="6"
+                >
+                  6 GB
+                </Chip>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="8"
+                >
+                  8 GB
+                </Chip>
+              </Chip.Group>
+              {/* <div>
                 <input
                   type="checkbox"
                   name="ram"
@@ -221,7 +298,7 @@ const Buyphone = () => {
                   className="text-purple-700 mr-3"
                 />
                 <label htmlFor="12">12 GB</label>
-              </div>
+              </div> */}
             </div>
             <hr className="border-purple-700" />
             <div className="storage my-5">
@@ -231,7 +308,54 @@ const Buyphone = () => {
               >
                 STORAGE
               </label>
-              <div>
+              <Chip.Group multiple mt={15}>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="16"
+                >
+                  16 GB
+                </Chip>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="32"
+                >
+                  32 GB
+                </Chip>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="64"
+                >
+                  64 GB
+                </Chip>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="128"
+                >
+                  128 GB
+                </Chip>
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="256"
+                >
+                  256 GB
+                </Chip>
+              </Chip.Group>
+              {/* <div>
                 <input
                   type="checkbox"
                   name="ram"
@@ -280,7 +404,7 @@ const Buyphone = () => {
                   className="text-purple-700 mr-3"
                 />
                 <label htmlFor="256">256 GB</label>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="main flex justify-center my-9 flex-wrap">

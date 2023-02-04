@@ -4,7 +4,7 @@ import Select from "react-select";
 
 const RepairPhone = () => {
   let naviget = useNavigate();
-  let [phoneModel, setphoneModel] = useState([{}]);
+  let [phoneModel, setphoneModel] = useState();
 
   const brand = [
     { value: "samsung", label: "Samsung" },
@@ -16,6 +16,10 @@ const RepairPhone = () => {
     { value: "Iphone 14", label: "Iphone 14" },
     { value: "Xiaomi 13", label: "Xiaomi 13" },
   ];
+
+  function SelectModel(selectedOption: any) {
+    setphoneModel(selectedOption);
+  }
 
   function next() {
     naviget(`/Repair/${phoneModel}`);
@@ -44,7 +48,7 @@ const RepairPhone = () => {
                 isSearchable={true}
                 name="model"
                 options={model}
-                onChange={(e) => setphoneModel(e?.value)}
+                onChange={SelectModel}
               />
             </div>
             <div className="p-3">

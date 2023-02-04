@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sidebir from "./Sidebir";
 import { useCookies } from "react-cookie";
-import Nevbutt from "../../assets/svg/Nevbutt.svg";
 
 const Nav = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user", "userdata"]);
@@ -33,7 +32,6 @@ const Nav = () => {
               data-bs-target="#offcanvas"
               aria-controls="offcanvas"
             >
-              {/* <Nevbutt /> */}
               <svg
                 aria-hidden="true"
                 focusable="false"

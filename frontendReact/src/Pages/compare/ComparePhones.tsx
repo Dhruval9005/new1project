@@ -31,9 +31,17 @@ const ComparePhones = () => {
       { for: "246 Gb", price: "25,000" },
     ],
   };
+
+  function FirstSelect(selectedOption: any) {
+    setFirstPhone(selectedOption);
+  }
+  function SecondSelect(selectedOption: any) {
+    setSecondPhone(selectedOption);
+  }
+
   return (
     <div className="compare-phones">
-      <div className="container w-full mx-auto">
+      <div className="container mx-auto">
         <div className="md:w-fit w-full flex flex-col md:flex-row mx-auto shadow-lg md:my-40">
           <div className="flex gap-3">
             <div className="w-96">
@@ -43,7 +51,7 @@ const ComparePhones = () => {
                 isSearchable={true}
                 name="brand"
                 options={model}
-                onChange={(e) => setFirstPhone(e?.value)}
+                onChange={FirstSelect}
               />
               {firstPhone && (
                 <div className="flex justify-center">
@@ -77,7 +85,7 @@ const ComparePhones = () => {
                 isSearchable={true}
                 name="brand"
                 options={model}
-                onChange={(e) => setSecondPhone(e?.value)}
+                onChange={SecondSelect}
               />
               {secondPhone && (
                 <div className="flex justify-center">
