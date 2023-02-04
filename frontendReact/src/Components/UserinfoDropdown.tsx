@@ -6,7 +6,6 @@ import {
   Group,
   Text,
   Menu,
-  Tabs,
 } from "@mantine/core";
 import {
   IconLogout,
@@ -21,22 +20,6 @@ import {
 } from "@tabler/icons";
 
 const useStyles = createStyles((theme) => ({
-  header: {
-    paddingTop: theme.spacing.sm,
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
-        : theme.colors.gray[0],
-    borderBottom: `1px solid ${
-      theme.colorScheme === "dark" ? "transparent" : theme.colors.gray[2]
-    }`,
-    marginBottom: 120,
-  },
-
-  mainSection: {
-    paddingBottom: theme.spacing.sm,
-  },
-
   user: {
     color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
     padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
@@ -53,55 +36,17 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
-  burger: {
-    [theme.fn.largerThan("xs")]: {
-      display: "none",
-    },
-  },
-
   userActive: {
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
   },
-
-  tabs: {
-    [theme.fn.smallerThan("sm")]: {
-      display: "none",
-    },
-  },
-
-  tabsList: {
-    borderBottom: "0 !important",
-  },
-
-  tab: {
-    fontWeight: 500,
-    height: 38,
-    backgroundColor: "transparent",
-
-    "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[5]
-          : theme.colors.gray[1],
-    },
-
-    "&[data-active]": {
-      backgroundColor:
-        theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-      borderColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[7]
-          : theme.colors.gray[2],
-    },
-  },
 }));
 
 interface HeaderTabsProps {
-  user: { name: string; image: string };
+  user: { fname: string; lname: string; image: string };
 }
 
-export function HeaderTabs({ user }: HeaderTabsProps) {
+const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
   const { classes, theme, cx } = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
 
@@ -121,9 +66,13 @@ export function HeaderTabs({ user }: HeaderTabsProps) {
             })}
           >
             <Group spacing={7}>
-              <Avatar src={user.image} alt={user.name} radius="xl" size={20} />
+              {/* <div className="rounded-full w-7 h-7 bg-purple-700 grid justify-center content-center uppercase font-bold text-lg text-white">
+                {user.fname.charAt(0)}
+                {user.lname.charAt(0)}
+              </div> */}
+              <Avatar src={user.image} alt={user.fname} radius="xl" size={20} />
               <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
-                {user.name}
+                {user.fname + " " + user.lname}
               </Text>
               <IconChevronDown size={12} stroke={1.5} />
             </Group>
@@ -160,24 +109,23 @@ export function HeaderTabs({ user }: HeaderTabsProps) {
           <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
             Account settings
           </Menu.Item>
-          <Menu.Item icon={<IconSwitchHorizontal size={14} stroke={1.5} />}>
-            Change account
-          </Menu.Item>
-          <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>
+          <Menu.Item icon={<IconLogout size={14} stroke={1.5}/>}>
             Logout
           </Menu.Item>
 
           <Menu.Divider />
 
-          <Menu.Label>Danger zone</Menu.Label>
+          {/* <Menu.Label>Danger zone</Menu.Label>
           <Menu.Item icon={<IconPlayerPause size={14} stroke={1.5} />}>
             Pause subscription
           </Menu.Item>
           <Menu.Item color="red" icon={<IconTrash size={14} stroke={1.5} />}>
             Delete account
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu.Dropdown>
       </Menu>
     </div>
   );
-}
+};
+
+export default UserinfoDropdown;

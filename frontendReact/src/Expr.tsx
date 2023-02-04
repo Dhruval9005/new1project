@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import mi from "./assets/Mi10.jpg";
 import { Card, Image, Text, Badge, Button, Group, List } from "@mantine/core";
-import { HeaderTabs } from "./Components/HeaderTabs";
+// import { HeaderTabs } from "./Components/HeaderTabs";
 import { Demo } from "./Components/Demo";
 import { NotificationsProvider } from "@mantine/notifications";
+import { Phone } from "./Components/Phone";
+import Sidebar from "./Components/SideBar";
 
 const Expr = () => {
   const phoneinfo = {
@@ -41,15 +43,16 @@ const Expr = () => {
 
   return (
     <div>
-      {/* <HeaderTabs tabs={tabs} user={user} /> */}
       <NotificationsProvider position="top-right" zIndex={2077} limit={5}>
         <Demo />
       </NotificationsProvider>
-      {/* <div className="container mx-auto pt-10 h-fit mb-10">
+      <Sidebar />
+      <div className="container mx-auto pt-10 h-fit mb-10">
         <div className="flex flex-col justify-center overflow-hidden">
           <div className="w-full p-2 m-auto lg:max-w-4xl">
             <div className="flex flex-col justify-center flex-wrap">
               <div className="link button flex flex-col justify-center content-center flex-wrap max-h-max">
+                <Phone />
                 <Card
                   className="w-96"
                   shadow="sm"
@@ -97,7 +100,7 @@ const Expr = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

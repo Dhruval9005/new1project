@@ -116,7 +116,7 @@ const Buyphone = () => {
       <div className="container mx-auto">
         <h1 className="md:text-4xl text-2xl mt-6 mx-10">Buy Old Phone</h1>
         <div className="flex md:flex-row flex-col">
-          <div className="filter md:w-1/4 my-9 mx-10">
+          <div className="filter md:w-1/4 my-9 mx-10 hidden md:block">
             <div className="brand flex flex-col my-5">
               <label
                 htmlFor="steps-range"
@@ -416,8 +416,8 @@ const Buyphone = () => {
                   </h5>
                   <div>
                     <ul className="font-medium list-disc">
-                      {x.info.map((i) => (
-                        <li>{i}</li>
+                      {x.info.map((i, n) => (
+                        <li key={n}>{i}</li>
                       ))}
                     </ul>
                   </div>
