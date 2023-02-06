@@ -1,59 +1,54 @@
 import React, { useState } from "react";
 import mi from "./assets/Mi10.jpg";
 import { Card, Image, Text, Badge, Button, Group, List } from "@mantine/core";
-// import { HeaderTabs } from "./Components/HeaderTabs";
 import { Demo } from "./Components/Demo";
 import { NotificationsProvider } from "@mantine/notifications";
 import { Phone } from "./Components/Phone";
-import Sidebar from "./Components/SideBar";
+import { Navbar } from "./Components/esxrComp/Navbar";
+import {
+  IconGasStation,
+  IconGauge,
+  IconManualGearbox,
+  IconUsers,
+  IconCamera,
+  TablerIcon,
+} from "@tabler/icons";
 
 const Expr = () => {
   const phoneinfo = {
     name: "Mi 10",
     img: mi,
+    brand: "Mi",
     info: [
-      "108MP Quad Camera + OIS",
-      "Qualcomm® Snapdragon™ 865",
-      "16.94cm (6.67) 3D Curved E3 AMOLED Display",
-      "LiquidCool 2.0 Vapor Chamber + 6 Stack Graphite + Graphene Cooling System",
-      "LPDDR5 RAM + UFS 3.0 Storage",
-      "30W Wireless Charging + 10W Reverse Charging",
+      { label: "108MP Quad Camera + OIS", icon: IconUsers },
+      { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
+      { label: "16.94cm (6.67) 3D Curved E3 AMOLED Display", icon: IconUsers },
+      {
+        label: "LiquidCool 2.0 Vapor Chamber + 6 Stack Graphite + Graphene Cooling System",
+        icon: IconUsers,
+      },
+      { label: "LPDDR5 RAM + UFS 3.0 Storage", icon: IconUsers },
+      { label: "30W Wireless Charging + 10W Reverse Charging", icon: IconUsers },
     ],
     value: [
       { for: "128 Gb", price: "21,000" },
       { for: "246 Gb", price: "25,000" },
     ],
   };
-  let user = {
-    name: "Jane Spoonfighter",
-    email: "janspoon@fighter.dev",
-    image:
-      "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80",
-  };
-  let tabs = [
-    "Home",
-    "Orders",
-    "Education",
-    "Community",
-    "Forums",
-    "Support",
-    "Account",
-    "Helpdesk",
-  ];
 
   return (
     <div>
-      <NotificationsProvider position="top-right" zIndex={2077} limit={5}>
+      {/* <Navbar links={link} user={users} /> */}
+      <NotificationsProvider position="bottom-right" zIndex={2077} limit={5}>
         <Demo />
       </NotificationsProvider>
-      <Sidebar />
       <div className="container mx-auto pt-10 h-fit mb-10">
         <div className="flex flex-col justify-center overflow-hidden">
           <div className="w-full p-2 m-auto lg:max-w-4xl">
             <div className="flex flex-col justify-center flex-wrap">
               <div className="link button flex flex-col justify-center content-center flex-wrap max-h-max">
-                <Phone />
-                <Card
+                <Phone data={phoneinfo} info="sell phone" />
+                {/* <Card
                   className="w-96"
                   shadow="sm"
                   p="lg"
@@ -95,7 +90,7 @@ const Expr = () => {
                   >
                     Book classic tour now
                   </Button>
-                </Card>
+                </Card> */}
               </div>
             </div>
           </div>

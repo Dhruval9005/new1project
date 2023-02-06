@@ -28,7 +28,7 @@ export function Demo() {
               icon: <IconCheck size={16} />,
               autoClose: 2000,
             });
-          }, 3000);
+          }, 2000);
         }}
       >
         Show update notification

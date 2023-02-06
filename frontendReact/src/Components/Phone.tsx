@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   Image,
@@ -14,6 +15,7 @@ import {
   IconManualGearbox,
   IconUsers,
   IconCamera,
+  TablerIcon,
 } from "@tabler/icons";
 import mi from "../assets/Mi10.jpg";
 
@@ -67,36 +69,54 @@ const mockdata = [
   { label: "20-megapixel", icon: IconCamera },
 ];
 
-export function Phone() {
+interface phoneInfo {
+  data: {
+    name: string;
+    img: string;
+    brand: string;
+    info: { label: string; icon: TablerIcon }[];
+    value: { for: string; price: string }[];
+  };
+  info: string;
+}
+
+export function Phone({ data, info }: phoneInfo) {
+  const naviget = useNavigate();
   const { classes } = useStyles();
-  const features = mockdata.map((feature) => (
+  const features = data.info.map((feature) => (
     <Center key={feature.label}>
       <feature.icon size={18} className={classes.icon} stroke={1.5} />
       <Text size="xs">{feature.label}</Text>
     </Center>
   ));
 
+  function badding(phone: string) {
+    naviget(`${window.location.pathname}/${phone}`);
+  }
+
   return (
     <Card withBorder radius="md" className={classes.card}>
       <Card.Section className={classes.imageSection}>
-        <Image src={mi} alt="Tesla Model S" />
+        <Image src={data.img} alt="Tesla Model S" />
       </Card.Section>
 
       <Group position="apart" mt="md">
         <div>
-          <Text className="text-3xl" weight={500}>Mi 10</Text>
+          <Text className="text-3xl" weight={500}>
+            {data.name}
+          </Text>
           {/* <Text size="xs" color="dimmed">
             Free recharge at any station
-          </Text> */}              
+          </Text> */}
         </div>
-        <Badge color="indigo" variant="outline">
+        <Badge color="red" variant="outline">
           25% off
         </Badge>
       </Group>
 
       <Card.Section className={classes.section} mt="md">
         <Text size="sm" color="dimmed" className={classes.label}>
-          Basic configuration
+          Basic Info
         </Text>
 
         <Group spacing={8} mb={-8}>
@@ -108,7 +128,7 @@ export function Phone() {
         <Group spacing={30}>
           <div>
             <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
-              ₹ 31,000
+              {data.value[0].price}
             </Text>
             {/* <Text
               size="sm"
@@ -126,8 +146,9 @@ export function Phone() {
             radius="xl"
             variant="outline"
             style={{ flex: 1 }}
+            onClick={(e) => badding(data.name)}
           >
-            Buy now
+            {info}
           </Button>
         </Group>
       </Card.Section>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Drawer, Group, Burger } from "@mantine/core";
-// import { MantineLogo } from "@mantine/ds";
 import { SideBarManu } from "./SideBarManu";
 
 function Sidebar({ user }: any) {
@@ -8,13 +7,7 @@ function Sidebar({ user }: any) {
 
   return (
     <>
-      <Drawer
-        opened={opened}
-        onClose={() => setOpened(false)}
-        // title="Tranx"
-        // padding="xl"
-        // size="xl"
-      >
+      <Drawer opened={opened} onClose={() => setOpened(false)}>
         <SideBarManu user={user} />
       </Drawer>
 

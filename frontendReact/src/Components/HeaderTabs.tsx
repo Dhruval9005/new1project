@@ -97,11 +97,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface HeaderTabsProps {
+interface UserTabsProps {
   user: { name: string; image: string };
 }
 
-export function HeaderTabs({ user }: HeaderTabsProps) {
+export function HeaderTabs({ user }: UserTabsProps) {
   const { classes, theme, cx } = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
 
@@ -109,7 +109,7 @@ export function HeaderTabs({ user }: HeaderTabsProps) {
     <div>
       <Menu
         width={260}
-        position="bottom-end"
+        position="right-end"
         transition="pop-top-right"
         onClose={() => setUserMenuOpened(false)}
         onOpen={() => setUserMenuOpened(true)}

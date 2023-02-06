@@ -4,8 +4,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { RangeSlider } from "@mantine/core";
 import { Chip } from "@mantine/core";
+import {
+  IconGasStation,
+  IconGauge,
+  IconManualGearbox,
+  IconUsers,
+  IconCamera,
+  TablerIcon,
+} from "@tabler/icons";
 
 import xiaomi from "../../assets/Mi10.jpg";
+import { Phone } from "../../Components/Phone";
 
 const Buyphone = () => {
   const [rangeValue, setRangeValue] = useState<[number, number]>([
@@ -16,73 +25,138 @@ const Buyphone = () => {
   let [filter, setFilter] = useState([{}]);
   let [phoneInfo, setPhoneinfo] = useState([
     {
-      name: "Xiaomi 13",
+      name: "Mi 10",
       img: xiaomi,
-      grand: "mi",
+      brand: "Mi",
       info: [
-        "108MP Quad Camera + OIS",
-        "Qualcomm® Snapdragon™ 865",
-        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+        { label: "108MP Quad Camera + OIS", icon: IconUsers },
+        { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
+        {
+          label: "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+          icon: IconUsers,
+        },
+        {
+          label:
+            "LiquidCool 2.0 Vapor Chamber + 6 Stack Graphite + Graphene Cooling System",
+          icon: IconUsers,
+        },
+        { label: "LPDDR5 RAM + UFS 3.0 Storage", icon: IconUsers },
+        {
+          label: "30W Wireless Charging + 10W Reverse Charging",
+          icon: IconUsers,
+        },
       ],
       value: [
-        { for: "128 GB", price: "1000" },
-        { for: "246 GB", price: "5000" },
+        { for: "128 Gb", price: "21,000" },
+        { for: "246 Gb", price: "25,000" },
       ],
     },
     {
-      name: "Xiaomi 13",
+      name: "Mi 10",
       img: xiaomi,
-      grand: "mi",
+      brand: "Mi",
       info: [
-        "108MP Quad Camera + OIS",
-        "Qualcomm® Snapdragon™ 865",
-        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+        { label: "108MP Quad Camera + OIS", icon: IconUsers },
+        { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
+        {
+          label: "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+          icon: IconUsers,
+        },
+        {
+          label:
+            "LiquidCool 2.0 Vapor Chamber + 6 Stack Graphite + Graphene Cooling System",
+          icon: IconUsers,
+        },
+        { label: "LPDDR5 RAM + UFS 3.0 Storage", icon: IconUsers },
+        {
+          label: "30W Wireless Charging + 10W Reverse Charging",
+          icon: IconUsers,
+        },
       ],
       value: [
-        { for: "128 GB", price: "11,000" },
-        { for: "246 GB", price: "15,000" },
+        { for: "128 Gb", price: "21,000" },
+        { for: "246 Gb", price: "25,000" },
       ],
     },
     {
-      name: "iphone 14",
+      name: "Mi 10",
       img: xiaomi,
-      grand: "apple",
+      brand: "Mi",
       info: [
-        "108MP Quad Camera + OIS",
-        "Qualcomm® Snapdragon™ 865",
-        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+        { label: "108MP Quad Camera + OIS", icon: IconUsers },
+        { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
+        {
+          label: "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+          icon: IconUsers,
+        },
+        {
+          label:
+            "LiquidCool 2.0 Vapor Chamber + 6 Stack Graphite + Graphene Cooling System",
+          icon: IconUsers,
+        },
+        { label: "LPDDR5 RAM + UFS 3.0 Storage", icon: IconUsers },
+        {
+          label: "30W Wireless Charging + 10W Reverse Charging",
+          icon: IconUsers,
+        },
       ],
       value: [
-        { for: "128 GB", price: "25,000" },
-        { for: "246 GB", price: "27,000" },
+        { for: "128 Gb", price: "21,000" },
+        { for: "246 Gb", price: "25,000" },
       ],
     },
     {
-      name: "samsung s22",
+      name: "Mi 10",
       img: xiaomi,
-      grand: "samsung",
+      brand: "Mi",
       info: [
-        "108MP Quad Camera + OIS",
-        "Qualcomm® Snapdragon™ 865",
-        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+        { label: "108MP Quad Camera + OIS", icon: IconUsers },
+        { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
+        {
+          label: "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+          icon: IconUsers,
+        },
+        {
+          label:
+            "LiquidCool 2.0 Vapor Chamber + 6 Stack Graphite + Graphene Cooling System",
+          icon: IconUsers,
+        },
+        { label: "LPDDR5 RAM + UFS 3.0 Storage", icon: IconUsers },
+        {
+          label: "30W Wireless Charging + 10W Reverse Charging",
+          icon: IconUsers,
+        },
       ],
       value: [
-        { for: "128 GB", price: "15,000" },
-        { for: "246 GB", price: "17,000" },
+        { for: "128 Gb", price: "21,000" },
+        { for: "246 Gb", price: "25,000" },
       ],
     },
     {
-      name: "samsung s20",
+      name: "Mi 10",
       img: xiaomi,
-      grand: "samsung",
+      brand: "Mi",
       info: [
-        "108MP Quad Camera + OIS",
-        "Qualcomm® Snapdragon™ 865",
-        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+        { label: "108MP Quad Camera + OIS", icon: IconUsers },
+        { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
+        {
+          label: "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+          icon: IconUsers,
+        },
+        {
+          label:
+            "LiquidCool 2.0 Vapor Chamber + 6 Stack Graphite + Graphene Cooling System",
+          icon: IconUsers,
+        },
+        { label: "LPDDR5 RAM + UFS 3.0 Storage", icon: IconUsers },
+        {
+          label: "30W Wireless Charging + 10W Reverse Charging",
+          icon: IconUsers,
+        },
       ],
       value: [
-        { for: "128 GB", price: "30,000" },
-        { for: "246 GB", price: "35,000" },
+        { for: "128 Gb", price: "21,000" },
+        { for: "246 Gb", price: "25,000" },
       ],
     },
   ]);
@@ -407,10 +481,11 @@ const Buyphone = () => {
               </div> */}
             </div>
           </div>
-          <div className="main flex justify-center my-9 flex-wrap">
+          <div className="main flex justify-center my-9 flex-wrap gap-2">
             {phoneInfo.map((x, n) => (
-              <div className="m-4">
-                <Card imgSrc={x.img} className="p-4">
+              <div className="">
+                <Phone data={x} info="Buy Phone" />
+                {/* <Card imgSrc={x.img} className="p-4">
                   <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {x.name}
                   </h5>
@@ -421,7 +496,7 @@ const Buyphone = () => {
                       ))}
                     </ul>
                   </div>
-                  {/* <div>
+                  <div>
                   {x.value.map((i) => (
                     <button
                       className="mx-4 my-4 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
@@ -431,7 +506,7 @@ const Buyphone = () => {
                       {i.for}
                     </button>
                   ))}
-                  </div> */}
+                  </div>
                   <div>
                     <h1 className="text-2xl font-bold text-red-600">
                       ₹ {x.value[0].price}
@@ -448,7 +523,7 @@ const Buyphone = () => {
                       <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
                     </button>
                   </div>
-                </Card>
+                </Card> */}
               </div>
             ))}
           </div>

@@ -9,7 +9,8 @@ const SellPhone = () => {
 
   function next() {
     if (phoneModel != undefined && phoneModel != null) {
-      naviget(`/sell/${phoneModel}`);
+      let model = phoneModel.label;
+      naviget(`/sell/${model}`);
     }
   }
 

@@ -1,50 +1,69 @@
 import { Navbar, Group, ScrollArea, createStyles, Text } from "@mantine/core";
-import {
-  IconNotes,
-  IconCalendarStats,
-  IconGauge,
-  IconPresentationAnalytics,
-  IconFileAnalytics,
-  IconAdjustments,
-  IconLock,
-} from "@tabler/icons";
+import { IconGauge } from "@tabler/icons";
 import { UserButton } from "./userButton";
 import { LinksGroup } from "./NavbarLinksGroup";
-// import { Logo } from "./Logo";
+import { BsPhone } from "react-icons/bs";
 
 const mockdata = [
-  { label: "Dashboard", icon: IconGauge },
   {
-    label: "Market news",
-    icon: IconNotes,
-    // initiallyOpened: true,
+    label: "New Phone",
+    icon: IconGauge,
     links: [
-      { label: "Overview", link: "/" },
-      { label: "Forecasts", link: "/" },
-      { label: "Outlook", link: "/" },
-      { label: "Real time", link: "/" },
+      { label: "Serch New Phone", link: "/newphone" },
+      {
+        label: "Porupar Phone",
+        link: "/porupar",
+      },
+      {
+        label: "Letest phone",
+        link: "/letest",
+      },
+      {
+        label: "Upcoming phone",
+        link: "/upcoming",
+      },
     ],
   },
   {
-    label: "Releases",
-    icon: IconCalendarStats,
+    label: "Used phone",
+    icon: IconGauge,
     links: [
-      { label: "Upcoming releases", link: "/" },
-      { label: "Previous releases", link: "/" },
-      { label: "Releases schedule", link: "/" },
+      { label: "Serch New Phone", link: "/newphone" },
+      {
+        label: "Buy Used phone",
+        link: "/buyused",
+      },
+      {
+        label: "used phone lone",
+        link: "/buyused",
+      },
+      {
+        label: "service center",
+        link: "/service",
+      },
     ],
   },
-  { label: "Analytics", icon: IconPresentationAnalytics },
-  { label: "Contracts", icon: IconFileAnalytics },
-  { label: "Settings", icon: IconAdjustments },
   {
-    label: "Security",
-    icon: IconLock,
+    label: "Sell phone",
+    icon: IconGauge,
     links: [
-      { label: "Enable 2FA", link: "/" },
-      { label: "Change password", link: "/" },
-      { label: "Recovery codes", link: "/" },
+      { label: "Sell phone", link: "/sell" },
+      {
+        label: "Scrap phone",
+        link: "/scrap",
+      },
     ],
+  },
+  {
+    label: "Compare phone",
+    icon: IconGauge,
+    // links: [
+    //   { label: "Sell phone", link: "/sell" },
+    //   {
+    //     label: "Scrap phone",
+    //     link: "/scrap",
+    //   },
+    // ],
   },
 ];
 
@@ -90,13 +109,23 @@ export function SideBarManu({ user }: any) {
   const links = mockdata.map((item) => (
     <LinksGroup {...item} key={item.label} />
   ));
+  const Logo = () => (
+    <a
+      className="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900"
+      href="/"
+    >
+      <img src="" style={{ height: 15 }} loading="lazy" />
+      <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
+        Tran<span className="text-purple-700">x</span>
+      </span>
+    </a>
+  );
 
   return (
-    <Navbar p="lg" mt="-50px" className={classes.navbar}>
-      <Navbar.Section className={classes.header}>
+    <Navbar p="lg" className={classes.navbar}>
+      <Navbar.Section mt="-50px" className={classes.header}>
         <Group position="apart">
-          {/* <Logo width={120} /> */}
-          <Text fz="xl">Tranx</Text>
+          <Logo />
         </Group>
       </Navbar.Section>
 

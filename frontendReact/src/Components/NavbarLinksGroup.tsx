@@ -100,7 +100,7 @@ export function LinksGroup({
       >
         <Group position="apart" spacing={0}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <ThemeIcon variant="light" size={30}>
+            <ThemeIcon variant="outline" color="violet" size={30}>
               <Icon size={18} />
             </ThemeIcon>
             <Box ml="md">{label}</Box>
@@ -108,6 +108,7 @@ export function LinksGroup({
           {hasLinks && (
             <ChevronIcon
               className={classes.chevron}
+              color="purple"
               size={20}
               stroke={2}
               style={{

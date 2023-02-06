@@ -13,9 +13,6 @@ import {
   IconStar,
   IconMessage,
   IconSettings,
-  IconPlayerPause,
-  IconTrash,
-  IconSwitchHorizontal,
   IconChevronDown,
 } from "@tabler/icons";
 
@@ -53,7 +50,7 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
   return (
     <div>
       <Menu
-        width={260}
+        width={220}
         position="bottom-end"
         transition="pop-top-right"
         onClose={() => setUserMenuOpened(false)}
@@ -109,7 +106,7 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
           <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
             Account settings
           </Menu.Item>
-          <Menu.Item icon={<IconLogout size={14} stroke={1.5}/>}>
+          <Menu.Item icon={<IconLogout size={20} color="red" stroke={1.5}/>}>
             Logout
           </Menu.Item>
 
