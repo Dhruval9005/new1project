@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "flowbite-react";
+// import { Card } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { RangeSlider } from "@mantine/core";
 import { Chip } from "@mantine/core";
 import {
-  IconGasStation,
-  IconGauge,
-  IconManualGearbox,
+  // IconGasStation,
+  // IconGauge,
+  // IconManualGearbox,
   IconUsers,
-  IconCamera,
-  TablerIcon,
+  // IconCamera,
+  // TablerIcon,
 } from "@tabler/icons";
 
 import xiaomi from "../../assets/Mi10.jpg";
@@ -21,7 +21,7 @@ const Buyphone = () => {
     20000, 80000,
   ]);
   let naviget = useNavigate();
-  let [price, setPrice] = useState("");
+  // let [price, setPrice] = useState("");
   let [filter, setFilter] = useState([{}]);
   let [phoneInfo, setPhoneinfo] = useState([
     {

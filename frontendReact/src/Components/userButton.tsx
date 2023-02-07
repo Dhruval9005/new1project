@@ -41,17 +41,12 @@ const useStyles = createStyles((theme) => ({
 interface UserButtonProps extends UnstyledButtonProps {
   image: string;
   name: string;
-  email: string;
   icon?: React.ReactNode;
 }
 
-export function UserButton({
-  image,
-  name,
-  email,
-  icon,
-  ...others
-}: UserButtonProps) {
+export function UserButton({ image, name, icon, ...others }: UserButtonProps) {
+  const defoltimage =
+    "https://png.pngtree.com/png-vector/20190909/ourlarge/pngtree-outline-user-icon-png-image_1727916.jpg";
   const { classes, theme, cx } = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
 
@@ -66,15 +61,13 @@ export function UserButton({
       <Menu.Target>
         <UnstyledButton className={classes.user} {...others}>
           <Group>
-            <Avatar src={image} radius="xl" />
+            {<Avatar src={image} alt={name} radius="xl" size={20} /> || (
+              <Avatar src={defoltimage} alt={name} radius="xl" size={20} />
+            )}
 
             <div style={{ flex: 1 }}>
-              <Text size="sm" weight={500}>
+              <Text size="md" weight={500}>
                 {name}
-              </Text>
-
-              <Text color="dimmed" size="xs">
-                {email}
               </Text>
             </div>
 

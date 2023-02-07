@@ -24,11 +24,12 @@ router.get("/find-user/:phone_number", async (req, res) => {
     );
 
     if (!user) {
-      return res.status(400).json({
+      return res.status(200).json({
         success: false,
         error: "No user found with this phone number.",
       });
     }
+
     console.log(`response:>>`, user);
     res.status(200).json({ success: true, data: user });
   } catch (error) {

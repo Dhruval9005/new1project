@@ -7,6 +7,7 @@ export function Demo() {
     <Group position="center">
       <Button
         variant="outline"
+        color="violet"
         onClick={() => {
           showNotification({
             id: "load-data",

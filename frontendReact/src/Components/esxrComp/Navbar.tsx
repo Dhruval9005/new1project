@@ -1,4 +1,11 @@
-import { createStyles, Header, Autocomplete, Group, Text } from "@mantine/core";
+import {
+  createStyles,
+  Header,
+  // Autocomplete,
+  Group,
+  // Text,
+  // Button,
+} from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 import UserinfoDropdown from "../UserinfoDropdown";
 import Sidebar from "../SideBar";
@@ -44,8 +51,12 @@ const useStyles = createStyles((theme) => ({
     "&:hover": {
       backgroundColor:
         theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
+          ? theme.colors.violet[6]
+          : theme.colors.violet[0],
+      color:
+        theme.colorScheme === "dark"
+          ? theme.colors.violet[0]
+          : theme.colors.violet[7],
     },
   },
 }));
@@ -59,6 +70,7 @@ export function Navbar({ links, user }: HeaderSearchProps) {
   const { classes } = useStyles();
 
   const items = links.map((link) => (
+    // <Button variant="outline" color="violet">
     <a
       key={link.label}
       href={link.link}
@@ -67,7 +79,9 @@ export function Navbar({ links, user }: HeaderSearchProps) {
     >
       {link.label}
     </a>
+    // </Button>
   ));
+
   const Logo = () => (
     <a
       className="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900"
@@ -107,7 +121,17 @@ export function Navbar({ links, user }: HeaderSearchProps) {
             ]}
           /> */}
         </Group>
-        <UserinfoDropdown user={user} />
+        {user ? (
+          <UserinfoDropdown user={user} />
+        ) : (
+          <div className="mx-3">
+            <a href="/login">
+              <button className="text-sm w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-500 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                Login
+              </button>
+            </a>
+          </div>
+        )}
       </div>
     </Header>
   );

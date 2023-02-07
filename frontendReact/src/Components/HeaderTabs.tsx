@@ -6,7 +6,6 @@ import {
   Group,
   Text,
   Menu,
-  Tabs,
 } from "@mantine/core";
 import {
   IconLogout,
@@ -19,6 +18,7 @@ import {
   IconSwitchHorizontal,
   IconChevronDown,
 } from "@tabler/icons";
+import { BsCart } from "react-icons/bs";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -132,7 +132,7 @@ export function HeaderTabs({ user }: UserTabsProps) {
         <Menu.Dropdown>
           <Menu.Item
             icon={
-              <IconHeart size={14} color={theme.colors.red[6]} stroke={1.5} />
+              <BsCart size={14} color={theme.colors.red[6]} />
             }
           >
             Liked posts

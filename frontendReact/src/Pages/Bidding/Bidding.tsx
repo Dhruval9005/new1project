@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Card } from "flowbite-react";
+// import { Card } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import mi from "../../assets/Mi10.jpg";
 import {
-  IconGasStation,
-  IconGauge,
-  IconManualGearbox,
+  // IconGasStation,
+  // IconGauge,
+  // IconManualGearbox,
   IconUsers,
-  IconCamera,
-  TablerIcon,
+  // IconCamera,
+  // TablerIcon,
 } from "@tabler/icons";
 import { Phone } from "../../Components/Phone";
 

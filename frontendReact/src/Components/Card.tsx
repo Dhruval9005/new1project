@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Card = ({ phoneinfo }: any) => {
   let [price, setPrice] = useState("");
@@ -22,10 +22,10 @@ const Card = ({ phoneinfo }: any) => {
             </ul>
           </div>
           <div>
-            {phoneinfo.value.map((i :any) => (
+            {phoneinfo.value.map((i: any) => (
               <button
                 className="mx-4 my-4 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
-                onClick={(e) => setPrice(e.target.value)}
+                onClick={(e) => setPrice(i.price)}
                 value={i.price}
               >
                 {i.for}

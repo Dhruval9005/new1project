@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import mi from "../../assets/Mi10.jpg";
 import Select from "react-select";
 

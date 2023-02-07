@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const PhoneDefects = () => {
   let [scratch, setScracth] = useState("");
@@ -62,7 +62,7 @@ const PhoneDefects = () => {
                 Select screen/body defects that are applicable!
               </h3>
               <ul className="grid w-full gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
-                <li className="w-48">
+                <li className="md:w-48">
                   <input
                     type="checkbox"
                     id="scratch"
@@ -88,7 +88,7 @@ const PhoneDefects = () => {
                     </div>
                   </label>
                 </li>
-                <li className="w-48">
+                <li className="md:w-48">
                   <input
                     type="checkbox"
                     id="Dead-spot"
@@ -114,7 +114,7 @@ const PhoneDefects = () => {
                     </div>
                   </label>
                 </li>
-                <li className="w-48">
+                <li className="md:w-48">
                   <input
                     type="checkbox"
                     id="Scratch/Dent"
@@ -140,7 +140,7 @@ const PhoneDefects = () => {
                     </div>
                   </label>
                 </li>
-                <li className="w-48">
+                <li className="md:w-48">
                   <input
                     type="checkbox"
                     id="missing/broken"

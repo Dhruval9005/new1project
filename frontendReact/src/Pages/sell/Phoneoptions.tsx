@@ -1,12 +1,12 @@
-import axios from "axios";
-import { Label } from "flowbite-react";
-import React, { useState } from "react";
+// import axios from "axios";
+// import { Label } from "flowbite-react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TransitionGroup } from "semantic-ui-react";
+// import { TransitionGroup } from "semantic-ui-react";
 
 const Phoneoptions = () => {
   let navigate = useNavigate();
-  let [options, setOptions] = useState([]);
+  // let [options, setOptions] = useState([]);
 
   let [call, setCall] = useState("");
   let [touch, setTouch] = useState("");

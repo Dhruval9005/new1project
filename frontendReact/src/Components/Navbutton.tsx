@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import buying from "../assets/buying.png";
 import commerce from "../assets/commerce.png";
 import repairing from "../assets/repairing.png";

@@ -2,7 +2,6 @@ import { Navbar, Group, ScrollArea, createStyles, Text } from "@mantine/core";
 import { IconGauge } from "@tabler/icons";
 import { UserButton } from "./userButton";
 import { LinksGroup } from "./NavbarLinksGroup";
-import { BsPhone } from "react-icons/bs";
 
 const mockdata = [
   {
@@ -133,13 +132,23 @@ export function SideBarManu({ user }: any) {
         <div className={classes.linksInner}>{links}</div>
       </Navbar.Section>
 
-      <Navbar.Section className={classes.footer}>
-        <UserButton
-          image={user.image}
-          name={user.fname + " " + user.lname}
-          email={user.email}
-        />
-      </Navbar.Section>
+      {user ? (
+        <Navbar.Section className={classes.footer}>
+          <UserButton
+            image={user.image}
+            name={user.fname + " " + user.lname}
+            // email={user.email}
+          />
+        </Navbar.Section>
+      ) : (
+        <div className="mx-3">
+          {/* <a href="/login">
+              <button className="text-sm w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-500 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                Login
+              </button>
+            </a> */}
+        </div>
+      )}
     </Navbar>
   );
 }

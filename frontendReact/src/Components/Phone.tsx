@@ -17,7 +17,7 @@ import {
   IconCamera,
   TablerIcon,
 } from "@tabler/icons";
-import mi from "../assets/Mi10.jpg";
+// import mi from "../assets/Mi10.jpg";
 
 const useStyles = createStyles((theme) => ({
   card: {

@@ -9,12 +9,14 @@ import {
 } from "@mantine/core";
 import {
   IconLogout,
-  IconHeart,
+  // IconHeart,
   IconStar,
   IconMessage,
   IconSettings,
   IconChevronDown,
 } from "@tabler/icons";
+import { useCookies } from "react-cookie";
+import { BsCart } from "react-icons/bs";
 
 const useStyles = createStyles((theme) => ({
   user: {
@@ -26,10 +28,6 @@ const useStyles = createStyles((theme) => ({
     "&:hover": {
       backgroundColor:
         theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
-    },
-
-    [theme.fn.smallerThan("xs")]: {
-      display: "none",
     },
   },
 
@@ -44,8 +42,13 @@ interface HeaderTabsProps {
 }
 
 const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
+  const [cookies, setCookie, removeCookie] = useCookies(["user", "userdata"]);
   const { classes, theme, cx } = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+  function Logout() {
+    removeCookie("userdata");
+    removeCookie("user");
+  }
 
   return (
     <div>
@@ -63,7 +66,7 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
             })}
           >
             <Group spacing={7}>
-              {/* <div className="rounded-full w-7 h-7 bg-purple-700 grid justify-center content-center uppercase font-bold text-lg text-white">
+              {/* <div className="rounded-full w-7 h-7 bg-purple-500 grid justify-center content-center uppercase font-bold text-lg- text-white">
                 {user.fname.charAt(0)}
                 {user.lname.charAt(0)}
               </div> */}
@@ -76,12 +79,8 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
           </UnstyledButton>
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item
-            icon={
-              <IconHeart size={14} color={theme.colors.red[6]} stroke={1.5} />
-            }
-          >
-            Liked posts
+          <Menu.Item icon={<BsCart size={14} color={theme.colors.violet[6]} />}>
+            Cart
           </Menu.Item>
           <Menu.Item
             icon={
@@ -106,7 +105,10 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
           <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
             Account settings
           </Menu.Item>
-          <Menu.Item icon={<IconLogout size={20} color="red" stroke={1.5}/>}>
+          <Menu.Item
+            icon={<IconLogout size={20} color="red" stroke={1.5} />}
+            onClick={Logout}
+          >
             Logout
           </Menu.Item>
 

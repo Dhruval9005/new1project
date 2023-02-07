@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PhoneCard from "../../Components/PhoneCard";
 import Banner from "../../Components/Banner";
 import Navbutton from "../../Components/Navbutton";
@@ -91,10 +91,10 @@ const Home = () => {
     },
   ];
   let brand = [
-    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/2e7cdc22-5a5f.jpg" },
-    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/cb96df6e-080f.jpg" },
-    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/406a512d-e8dd.jpg" },
-    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/dacc50a2-77a9.jpg" },
+    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/2e7cdc22-5a5f.jpg", link: "/apple"},
+    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/cb96df6e-080f.jpg", link: "/mi"},
+    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/406a512d-e8dd.jpg", link: "/samsung"},
+    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/dacc50a2-77a9.jpg", link: "/google"},
   ];
 
   return (
@@ -114,7 +114,7 @@ const Home = () => {
               {brand.map((x) => (
                 <div className="flex justify-center">
                   <div className="rounded-lg shadow-lg bg-white w-40 h-40">
-                    <a href="">
+                    <a href={x.link}>
                       <img
                         className="rounded-t-lg mx-auto w-40 h-40"
                         src={x.img}
