@@ -8,7 +8,6 @@ const Card = ({ phoneinfo }: any) => {
         <img
           className="w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg m-4"
           src={phoneinfo.img}
-          alt=""
         />
         <div className="p-6 flex flex-col justify-between">
           <div className="justify-start">

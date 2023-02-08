@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import mi from "../../assets/Mi10.jpg";
 // import axios from "axios";
 
 const Biddingphone = () => {
@@ -23,7 +24,7 @@ const Biddingphone = () => {
 
   const phoneinfo = {
     name: id,
-    img: "../public/Mi10.jpg",
+    img: mi,
     info: [
       "108MP Quad Camera + OIS",
       "Qualcomm® Snapdragon™ 865",
@@ -57,8 +58,8 @@ const Biddingphone = () => {
                 {phoneinfo.name}
               </h1>
               <ul className="font-medium list-disc">
-                {phoneinfo.info.map((i) => (
-                  <li>{i}</li>
+                {phoneinfo.info.map((i, n) => (
+                  <li key={n}>{i}</li>
                 ))}
               </ul>
             </div>

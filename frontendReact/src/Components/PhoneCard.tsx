@@ -1,7 +1,17 @@
 import React from "react";
-import mi from "../assets/Mi10.jpg";
 
-const PhoneCard = ({ name, phones, path }: any) => {
+interface PhoneProps {
+  name: string;
+  phones: {
+    name: string;
+    img: string;
+    link: string;
+    value: { for: string; price: string }[];
+  }[];
+  path: string;
+}
+
+const PhoneCard = ({ name, phones, path }: PhoneProps) => {
   return (
     <div className="container mx-auto pt-10">
       <h2 className="text-3xl">{name}</h2>

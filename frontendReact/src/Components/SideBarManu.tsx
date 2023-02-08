@@ -1,4 +1,4 @@
-import { Navbar, Group, ScrollArea, createStyles, Text } from "@mantine/core";
+import { Navbar, Group, ScrollArea, createStyles } from "@mantine/core";
 import { IconGauge } from "@tabler/icons";
 import { UserButton } from "./userButton";
 import { LinksGroup } from "./NavbarLinksGroup";
@@ -55,14 +55,8 @@ const mockdata = [
   },
   {
     label: "Compare phone",
+    link: "/compare",
     icon: IconGauge,
-    // links: [
-    //   { label: "Sell phone", link: "/sell" },
-    //   {
-    //     label: "Scrap phone",
-    //     link: "/scrap",
-    //   },
-    // ],
   },
 ];
 
@@ -134,11 +128,7 @@ export function SideBarManu({ user }: any) {
 
       {user ? (
         <Navbar.Section className={classes.footer}>
-          <UserButton
-            image={user.image}
-            name={user.fname + " " + user.lname}
-            // email={user.email}
-          />
+          <UserButton image={user.image} name={user.fname + " " + user.lname} />
         </Navbar.Section>
       ) : (
         <div className="mx-3">

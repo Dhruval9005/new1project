@@ -66,11 +66,11 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
             })}
           >
             <Group spacing={7}>
-              {/* <div className="rounded-full w-7 h-7 bg-purple-500 grid justify-center content-center uppercase font-bold text-lg- text-white">
+              <div className="rounded-md w-7 h-7 bg-purple-500 grid justify-center content-center uppercase font-bold text-md text-white">
                 {user.fname.charAt(0)}
                 {user.lname.charAt(0)}
-              </div> */}
-              <Avatar src={user.image} alt={user.fname} radius="xl" size={20} />
+              </div>
+              {/* <Avatar src={user.image} alt={user.fname} radius="xl" size={20} /> */}
               <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
                 {user.fname + " " + user.lname}
               </Text>
@@ -82,14 +82,14 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
           <Menu.Item icon={<BsCart size={14} color={theme.colors.violet[6]} />}>
             Cart
           </Menu.Item>
-          <Menu.Item
+          {/* <Menu.Item
             icon={
               <IconStar size={14} color={theme.colors.yellow[6]} stroke={1.5} />
             }
           >
             Saved posts
-          </Menu.Item>
-          <Menu.Item
+          </Menu.Item> */}
+          {/* <Menu.Item
             icon={
               <IconMessage
                 size={14}
@@ -99,8 +99,7 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
             }
           >
             Your comments
-          </Menu.Item>
-
+          </Menu.Item> */}
           <Menu.Label>Settings</Menu.Label>
           <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
             Account settings
@@ -112,7 +111,7 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
             Logout
           </Menu.Item>
 
-          <Menu.Divider />
+          {/* <Menu.Divider /> */}
 
           {/* <Menu.Label>Danger zone</Menu.Label>
           <Menu.Item icon={<IconPlayerPause size={14} stroke={1.5} />}>

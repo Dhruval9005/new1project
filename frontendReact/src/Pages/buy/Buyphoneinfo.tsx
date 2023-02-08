@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import axios from "axios";
-
+import mi from "../../assets/Mi10.jpg";
 const Buyphoneinfo = () => {
   let navigate = useNavigate();
   let [price, setPrice] = useState("");
@@ -23,7 +23,7 @@ const Buyphoneinfo = () => {
 
   const phoneinfo = {
     name: model,
-    img: "../public/Mi10.jpg",
+    img: mi,
     info: [
       "108MP Quad Camera + OIS",
       "Qualcomm® Snapdragon™ 865",

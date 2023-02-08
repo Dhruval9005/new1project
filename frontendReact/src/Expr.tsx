@@ -49,37 +49,30 @@ const Expr = () => {
         <Demo />
       </NotificationsProvider> */}
 
-      <Carousel
-        // sx={{ maxWidth: "full" }}
-        // mx="auto"
+      {/* <Carousel
+        // slideSize="10%"
+        orientation="vertical"
+        height="30vh"
+        slideGap="md"
+        controlsOffset="xs"
+        controlSize={20}
+        loop
         withIndicators
-        // height={200}
-        styles={{
-          indicator: {
-            width: 12,
-            height: 4,
-            transition: "width 250ms ease",
-
-            "&[data-active]": {
-              width: 40,
-            },
-          },
-        }}
       >
         {banner.map((x) => (
           <Carousel.Slide key={x}>
             <Image src={x} />
           </Carousel.Slide>
         ))}
-      </Carousel>
+      </Carousel> */}
 
-      {/* <div className="container mx-auto pt-10 h-fit mb-10">
+      <div className="container mx-auto pt-10 h-fit mb-10">
         <div className="flex flex-col justify-center overflow-hidden">
           <div className="w-full p-2 m-auto lg:max-w-4xl">
             <div className="flex flex-col justify-center flex-wrap">
               <div className="link button flex flex-col justify-center content-center flex-wrap max-h-max">
                 <Phone data={phoneinfo} info="sell phone" />
-                <Autocomplete
+                {/* <Autocomplete
                   placeholder="Pick one"
                   label="Your favorite framework/library"
                   radius="md"
@@ -129,12 +122,12 @@ const Expr = () => {
                   >
                     Book classic tour now
                   </Button>
-                </Card>
+                </Card> */}
               </div>
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

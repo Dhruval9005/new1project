@@ -66,6 +66,7 @@ const useStyles = createStyles((theme) => ({
 interface LinksGroupProps {
   icon: TablerIcon;
   label: string;
+  link?: string;
   initiallyOpened?: boolean;
   links?: { label: string; link: string }[];
 }
@@ -73,6 +74,7 @@ interface LinksGroupProps {
 export function LinksGroup({
   icon: Icon,
   label,
+  link,
   initiallyOpened,
   links,
 }: LinksGroupProps) {
@@ -86,7 +88,7 @@ export function LinksGroup({
       className={classes.link}
       href={link.link}
       key={link.label}
-      onClick={(event) => event.preventDefault()}
+      // onClick={(event) => event.preventDefault()}
     >
       {link.label}
     </Text>
@@ -103,7 +105,13 @@ export function LinksGroup({
             <ThemeIcon variant="outline" color="violet" size={30}>
               <Icon size={18} />
             </ThemeIcon>
-            <Box ml="md">{label}</Box>
+            {link ? (
+              <Box<"a"> component="a" ml="md" href={link} key={label}>
+                {label}
+              </Box>
+            ) : (
+              <Box ml="md">{label}</Box>
+            )}
           </Box>
           {hasLinks && (
             <ChevronIcon
@@ -125,27 +133,27 @@ export function LinksGroup({
   );
 }
 
-const mockdata = {
-  label: "Releases",
-  icon: IconCalendarStats,
-  links: [
-    { label: "Upcoming releases", link: "/" },
-    { label: "Previous releases", link: "/" },
-    { label: "Releases schedule", link: "/" },
-  ],
-};
+// const mockdata = {
+//   label: "Releases",
+//   icon: IconCalendarStats,
+//   links: [
+//     { label: "Upcoming releases", link: "/" },
+//     { label: "Previous releases", link: "/" },
+//     { label: "Releases schedule", link: "/" },
+//   ],
+// };
 
-export function NavbarLinksGroup() {
-  return (
-    <Box
-      sx={(theme) => ({
-        minHeight: 220,
-        padding: theme.spacing.md,
-        backgroundColor:
-          theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
-      })}
-    >
-      <LinksGroup {...mockdata} />
-    </Box>
-  );
-}
+// export function NavbarLinksGroup() {
+//   return (
+//     <Box
+//       sx={(theme) => ({
+//         minHeight: 220,
+//         padding: theme.spacing.md,
+//         backgroundColor:
+//           theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
+//       })}
+//     >
+//       <LinksGroup {...mockdata} />
+//     </Box>
+//   );
+// }

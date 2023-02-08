@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PhoneDefects = () => {
+  let navigate = useNavigate();
   let [scratch, setScracth] = useState("");
   let [deadspot, setDeadspot] = useState("");
   let [scratchDent, setScratchDent] = useState("");
@@ -40,16 +42,17 @@ const PhoneDefects = () => {
   }
 
   async function SendData() {
-    try {
-      let res = await axios.post("/", {
-        scratch,
-        deadspot,
-        scratchDent,
-        missingbroken,
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   let res = await axios.post("/", {
+    //     scratch,
+    //     deadspot,
+    //     scratchDent,
+    //     missingbroken,
+    //   });
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    navigate(`${window.location.pathname}/price`);
   }
 
   return (

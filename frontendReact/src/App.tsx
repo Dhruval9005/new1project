@@ -19,6 +19,7 @@ import Bidding from "./Pages/Bidding/Bidding";
 import Store from "./Pages/store/Store";
 import Biddingphone from "./Pages/Bidding/Biddingphone";
 import ComparePhones from "./Pages/compare/ComparePhones";
+import Phonesell from "./Pages/sell/Phonesell";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/sell/:model" element={<PhoneInfo />} />
         <Route path="/sell/:model/opti" element={<Phoneoptions />} />
         <Route path="/sell/:model/opti/defects" element={<PhoneDefects />} />
+        <Route path="/sell/:model/opti/defects/price" element={<Phonesell />} />
         <Route path="/repair" element={<RepairPhone />} />
         <Route path="/repair/:model" element={<Repairoptions />} />
         <Route path="/buy" element={<Buyphone />} />
