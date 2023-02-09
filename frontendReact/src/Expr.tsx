@@ -5,9 +5,11 @@ import { Carousel } from "@mantine/carousel";
 import { Demo } from "./Components/Demo";
 import { NotificationsProvider } from "@mantine/notifications";
 import { Phone } from "./Components/Phone";
+import { BuyPhone } from "./Components/BuyPhone";
 import { IconUsers } from "@tabler/icons";
 
 import mi from "./assets/Mi10.jpg";
+import Buyphone from "./Pages/buy/Buyphone";
 
 const Expr = () => {
   let [banner, setBanner] = useState([
@@ -71,7 +73,8 @@ const Expr = () => {
           <div className="w-full p-2 m-auto lg:max-w-4xl">
             <div className="flex flex-col justify-center flex-wrap">
               <div className="link button flex flex-col justify-center content-center flex-wrap max-h-max">
-                <Phone data={phoneinfo} info="sell phone" />
+                <BuyPhone />
+                {/* <Phone data={phoneinfo} info="sell phone" /> */}
                 {/* <Autocomplete
                   placeholder="Pick one"
                   label="Your favorite framework/library"

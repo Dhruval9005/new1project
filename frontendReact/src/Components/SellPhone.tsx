@@ -23,7 +23,7 @@ const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-    width: "600px",
+    width: "700px",
     height: "500px",
     display: "flex",
   },
@@ -63,20 +63,13 @@ const useStyles = createStyles((theme) => ({
         ? theme.colors.dark[2]
         : theme.colors.gray[9],
   },
+
   group: {
     display: "flex",
     marginTop: "100px",
     justifyContent: "center",
   },
 }));
-
-const mockdata = [
-  { label: "4 passengers", icon: IconUsers },
-  { label: "100 km/h in 4 seconds", icon: IconGauge },
-  { label: "Automatic gearbox", icon: IconManualGearbox },
-  { label: "Electric", icon: IconGasStation },
-  { label: "20-megapixel", icon: IconCamera },
-];
 
 interface phoneInfo {
   data: {
