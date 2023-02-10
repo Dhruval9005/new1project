@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Navbar } from "../../Components/esxrComp/Navbar";
-// import Sidebir from "./Sidebir";
-// import UserinfoDropdown from "../../Components/UserinfoDropdown";
-// import Sidebar from "../../Components/SideBar";
 
 const Nav = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user", "userdata"]);
@@ -15,11 +12,6 @@ const Nav = () => {
 
   function darkmod() {
     document.body.classList.toggle("dark");
-  }
-
-  function singOut() {
-    removeCookie("userdata");
-    removeCookie("user");
   }
 
   let link = [
@@ -48,17 +40,6 @@ const Nav = () => {
     image:
       "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80",
   };
-
-  let tabs = [
-    "Home",
-    "Orders",
-    "Education",
-    "Community",
-    "Forums",
-    "Support",
-    "Account",
-    "Helpdesk",
-  ];
 
   return (
     <div className="nav">

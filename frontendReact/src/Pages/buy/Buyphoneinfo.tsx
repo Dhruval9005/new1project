@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import axios from "axios";
 import mi from "../../assets/Mi10.jpg";
+import { IconUsers } from "@tabler/icons";
+import { BuyPhone } from "../../Components/BuyPhone";
+
 const Buyphoneinfo = () => {
   let navigate = useNavigate();
   let [price, setPrice] = useState("");
@@ -22,15 +25,36 @@ const Buyphoneinfo = () => {
   }
 
   const phoneinfo = {
-    name: model,
-    img: mi,
+    name: "Mi 10",
+    img: [
+      {
+        img: "https://m.media-amazon.com/images/I/71yXShgxvpL._SX679_.jpg",
+        label: "1",
+      },
+      {
+        img: "https://m.media-amazon.com/images/I/71JDQBpNROL._SX569_.jpg",
+        label: "2",
+      },
+      {
+        img: "https://m.media-amazon.com/images/I/61RG72HmHGL._SX679_.jpg",
+        label: "3",
+      },
+    ],
+    brand: "Mi",
     info: [
-      "108MP Quad Camera + OIS",
-      "Qualcomm® Snapdragon™ 865",
-      "16.94cm (6.67) 3D Curved E3 AMOLED Display",
-      "LiquidCool 2.0 Vapor Chamber + 6 Stack Graphite + Graphene Cooling System",
-      "LPDDR5 RAM + UFS 3.0 Storage",
-      "30W Wireless Charging + 10W Reverse Charging",
+      { label: "108MP Quad Camera + OIS", icon: IconUsers },
+      { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
+      { label: "16.94cm (6.67) 3D Curved E3 AMOLED Display", icon: IconUsers },
+      {
+        label:
+          "LiquidCool 2.0 Vapor Chamber + 6 Stack Graphite + Graphene Cooling System",
+        icon: IconUsers,
+      },
+      { label: "LPDDR5 RAM + UFS 3.0 Storage", icon: IconUsers },
+      {
+        label: "30W Wireless Charging + 10W Reverse Charging",
+        icon: IconUsers,
+      },
     ],
     value: [
       { for: "128 Gb", price: "21,000" },
@@ -41,6 +65,11 @@ const Buyphoneinfo = () => {
   return (
     <div className="buyphoneinfo h-fit">
       <div className="container w-full mx-auto">
+        <div className="md:w-3/4 flex flex-col md:flex-row mx-auto shadow-lg md:my-32">
+          <BuyPhone info={phoneinfo} />
+        </div>
+      </div>
+      {/* <div className="container w-full mx-auto">
         <h1 className="text-4xl mt-6">
           Buy Old
           <span className="text-purple-700"> {phoneinfo.name}</span>
@@ -100,7 +129,7 @@ const Buyphoneinfo = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

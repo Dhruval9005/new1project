@@ -10,6 +10,7 @@ import { IconUsers } from "@tabler/icons";
 
 import mi from "./assets/Mi10.jpg";
 import Buyphone from "./Pages/buy/Buyphone";
+import Phoneinfo from "./Components/Phoneinfo";
 
 const Expr = () => {
   let [banner, setBanner] = useState([
@@ -67,13 +68,13 @@ const Expr = () => {
           </Carousel.Slide>
         ))}
       </Carousel> */}
-
+      <Phoneinfo />
       <div className="container mx-auto pt-10 h-fit mb-10">
         <div className="flex flex-col justify-center overflow-hidden">
           <div className="w-full p-2 m-auto lg:max-w-4xl">
             <div className="flex flex-col justify-center flex-wrap">
               <div className="link button flex flex-col justify-center content-center flex-wrap max-h-max">
-                <BuyPhone />
+                {/* <BuyPhone info={phoneinfo} /> */}
                 {/* <Phone data={phoneinfo} info="sell phone" /> */}
                 {/* <Autocomplete
                   placeholder="Pick one"

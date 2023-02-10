@@ -16,6 +16,7 @@ import {
   IconChevronUp,
 } from "@tabler/icons";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 
 const useStyles = createStyles((theme) => ({
   user: {
@@ -45,10 +46,16 @@ interface UserButtonProps extends UnstyledButtonProps {
 }
 
 export function UserButton({ image, name, icon, ...others }: UserButtonProps) {
+  const [cookies, setCookie, removeCookie] = useCookies(["user", "userdata"]);
   const defoltimage =
     "https://png.pngtree.com/png-vector/20190909/ourlarge/pngtree-outline-user-icon-png-image_1727916.jpg";
   const { classes, theme, cx } = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+
+  function Logout() {
+    removeCookie("userdata");
+    removeCookie("user");
+  }
 
   return (
     <Menu
@@ -97,24 +104,18 @@ export function UserButton({ image, name, icon, ...others }: UserButtonProps) {
         >
           Your comments
         </Menu.Item>
-
-        <Menu.Label>Settings</Menu.Label>
+        {/* <Menu.Label>Settings</Menu.Label> */}
         <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
           Account settings
         </Menu.Item>
-        <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>
+        <Menu.Divider />
+        <Menu.Item
+          icon={<IconLogout size={14} stroke={1.5} color="red" />}
+          color="red"
+          onClick={Logout}
+        >
           Logout
         </Menu.Item>
-
-        <Menu.Divider />
-
-        {/* <Menu.Label>Danger zone</Menu.Label>
-          <Menu.Item icon={<IconPlayerPause size={14} stroke={1.5} />}>
-            Pause subscription
-          </Menu.Item>
-          <Menu.Item color="red" icon={<IconTrash size={14} stroke={1.5} />}>
-            Delete account
-          </Menu.Item> */}
       </Menu.Dropdown>
     </Menu>
   );

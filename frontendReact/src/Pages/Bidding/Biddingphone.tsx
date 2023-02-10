@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import mi from "../../assets/Mi10.jpg";
 // import axios from "axios";
@@ -6,17 +6,13 @@ import mi from "../../assets/Mi10.jpg";
 const Biddingphone = () => {
   let navigate = useNavigate();
   let [price, setPrice] = useState("");
-  // let [phoneInfo, setPhoneinfo] = useState();
   let { id } = useParams();
 
   useEffect(() => {
     getPhoneInfo();
   }, []);
 
-  async function getPhoneInfo() {
-    // let response = await axios.get("");
-    // setPhoneinfo(response.data.data);
-  }
+  async function getPhoneInfo() {}
 
   function next() {
     navigate(`${window.location.pathname}/cart`);

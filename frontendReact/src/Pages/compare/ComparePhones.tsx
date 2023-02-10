@@ -1,15 +1,17 @@
-import { useState } from "react";
 import mi from "../../assets/Mi10.jpg";
 import Select from "react-select";
+import { useState } from "react";
 
 const ComparePhones = () => {
   let [firstPhone, setFirstPhone] = useState({});
   let [secondPhone, setSecondPhone] = useState({});
+
   const model = [
     { value: "samsung S22", label: "Samsung S22" },
     { value: "Iphone 14", label: "Iphone 14" },
     { value: "Xiaomi 13", label: "Xiaomi 13" },
   ];
+
   const phoneinfo = {
     name: "Xiaomi Mi 10 Ultra",
     img: mi,
@@ -35,6 +37,7 @@ const ComparePhones = () => {
   function FirstSelect(selectedOption: any) {
     setFirstPhone(selectedOption);
   }
+  
   function SecondSelect(selectedOption: any) {
     setSecondPhone(selectedOption);
   }

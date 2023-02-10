@@ -15,6 +15,7 @@ import {
   IconGauge,
   IconManualGearbox,
   IconUsers,
+  TablerIcon,
 } from "@tabler/icons";
 
 const useStyles = createStyles((theme) => ({
@@ -25,16 +26,13 @@ const useStyles = createStyles((theme) => ({
 
     [theme.fn.smallerThan("md")]: {
       display: "block",
-      width: "100%"
+      width: "100%",
     },
   },
 
   imageSection: {
     padding: theme.spacing.md,
-    width: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    width: "fit-content",
 
     [theme.fn.smallerThan("md")]: {
       width: "100%",
@@ -48,11 +46,14 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.xs,
     letterSpacing: -0.25,
     textTransform: "uppercase",
+    width: "fit-content",
   },
 
   section: {
     marginLeft: "20px",
     padding: theme.spacing.md,
+    width: "fit-content",
+    display: "grid",
 
     [theme.fn.smallerThan("md")]: {
       width: "100%",
@@ -69,70 +70,32 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const image = [
-  {
-    img: "https://m.media-amazon.com/images/I/71yXShgxvpL._SX679_.jpg",
-    label: "1",
-  },
-  {
-    img: "https://m.media-amazon.com/images/I/71JDQBpNROL._SX569_.jpg",
-    label: "2",
-  },
-  {
-    img: "https://m.media-amazon.com/images/I/61RG72HmHGL._SX679_.jpg",
-    label: "3",
-  },
-];
+interface phoneInfo {
+  info: {
+    name: string;
+    img: { label: string; img: string }[];
+    brand: string;
+    info: { label: string; icon: TablerIcon }[];
+    value: { for: string; price: string }[];
+  };
+}
 
-const mockdata = [
-  {
-    label: "13MP+2MP dual rear camera | 8MP front facing camera",
-    icon: IconUsers,
-  },
-  {
-    label: "15.79 centimeters (6.22-inch) with 1520 x 720 pixels resolution",
-    icon: IconGauge,
-  },
-  {
-    label:
-      "Memory, Storage & SIM: 3GB RAM | 64GB internal memory expandable up to 512GB | Dual SIM (nano+nano) dual-standby (4G+4G)",
-    icon: IconManualGearbox,
-  },
-  {
-    label:
-      "Android Pie v9.0 operating system with 1.95Ghz Snapdragon 439 processor",
-    icon: IconGasStation,
-  },
-  {
-    label: "5000mAH lithium polymer large battery",
-    icon: IconGasStation,
-  },
-  {
-    label:
-      "1 year manufacturer warranty for device and 6 months manufacturer warranty for in-box accessories including batteries from the date of purchase",
-    icon: IconGasStation,
-  },
-  {
-    label:
-      "Box also Includes: Power adapter, USB cable, SIM eject tool, warranty card and user guide. The box does not include earphones",
-    icon: IconGasStation,
-  },
-];
-
-export function BuyPhone() {
+export function BuyPhone({ info }: phoneInfo) {
   const { classes } = useStyles();
-  const features = mockdata.map((feature) => (
-    <Center className="text-left" key={feature.label}>
+  const features = info.info.map((feature) => (
+    <div className="w-full flex" key={feature.label}>
       <feature.icon size={18} className={classes.icon} stroke={1.5} />
-      <Text size="xs">{feature.label}</Text>
-    </Center>
+      <Text size="xs" className="text-start">
+        {feature.label}
+      </Text>
+    </div>
   ));
 
   return (
     <Card withBorder radius="md" className={classes.card} shadow="lg">
       <Card.Section className={classes.imageSection} ml={0}>
-        <Tabs defaultValue={image[0].label} inverted className="">
-          {image.map((x) => (
+        <Tabs defaultValue={info.img[0].label} inverted className="">
+          {info.img.map((x) => (
             <Tabs.Panel value={x.label} pb="xs">
               <Image
                 width={300}
@@ -144,7 +107,7 @@ export function BuyPhone() {
             </Tabs.Panel>
           ))}
           <Tabs.List className="w-fit mx-auto">
-            {image.map((x) => (
+            {info.img.map((x) => (
               <Tabs.Tab value={x.label}>
                 <Image
                   width={50}
@@ -160,18 +123,18 @@ export function BuyPhone() {
       </Card.Section>
 
       <Card.Section className={classes.section}>
-        <Group my="md">
+        <Group my="md" className="w-fit">
           <div>
             <Text className="text-3xl" weight={500}>
-              Redmi 8A
+              {info.name}
             </Text>
           </div>
         </Group>
 
-        <Group my="md" spacing={30}>
+        <Group my="md" spacing={30} className="w-fit">
           <div>
             <Text className="text-3xl mb-2" weight={400} sx={{ lineHeight: 1 }}>
-              ₹ 9,490
+              ₹ {info.value[0].price}
             </Text>
             <Rating fractions={5} defaultValue={4.1} size="md" />
           </div>
@@ -184,21 +147,34 @@ export function BuyPhone() {
           Basic Information
         </Text>
 
-        <Group ml={9} spacing={8}>
+        <Group ml={9} spacing={8} className="w-fit">
           {features}
         </Group>
 
-        <Button
-          className="w-full mb-5"
-          mt={20}
-          size="md"
-          radius="md"
-          variant="outline"
-          color="violet"
-          style={{ flex: 1 }}
-        >
-          Buy now
-        </Button>
+        <div className="grid grid-cols-2">
+          <Button
+            className="w-fit mb-5"
+            mt={20}
+            size="md"
+            radius="md"
+            variant="outline"
+            color="violet"
+            style={{ flex: 1 }}
+          >
+            Add To Card
+          </Button>
+          <Button
+            className="w-fit mb-5"
+            mt={20}
+            size="md"
+            radius="md"
+            variant="outline"
+            color="violet"
+            style={{ flex: 1 }}
+          >
+            Buy Now
+          </Button>
+        </div>
       </Card.Section>
     </Card>
   );

@@ -1,7 +1,7 @@
-import { useState } from "react";
-import OTPInput, { ResendOTP } from "otp-input-react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import OTPInput, { ResendOTP } from "otp-input-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 const Otp = () => {
