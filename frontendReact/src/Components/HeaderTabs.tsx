@@ -130,11 +130,7 @@ export function HeaderTabs({ user }: UserTabsProps) {
           </UnstyledButton>
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item
-            icon={
-              <BsCart size={14} color={theme.colors.red[6]} />
-            }
-          >
+          <Menu.Item icon={<BsCart size={14} color={theme.colors.red[6]} />}>
             Liked posts
           </Menu.Item>
           <Menu.Item

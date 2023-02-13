@@ -3,8 +3,6 @@ import {
   Header,
   Autocomplete,
   Group,
-  Text,
-  Button,
 } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 import UserinfoDropdown from "../UserinfoDropdown";
@@ -63,25 +61,16 @@ const useStyles = createStyles((theme) => ({
 
 interface HeaderSearchProps {
   links: { link: string; label: string }[];
-  user: { fname: string; lname: string; image: string };
+  user?: { fname: string; lname: string; image: string };
 }
 
 export function Navbar({ links, user }: HeaderSearchProps) {
   const { classes } = useStyles();
-
   const items = links.map((link) => (
-    // <Button variant="outline" color="violet">
-    <a
-      key={link.label}
-      href={link.link}
-      className={classes.link}
-      // onClick={(event) => event.preventDefault()}
-    >
+    <a key={link.label} href={link.link} className={classes.link}>
       {link.label}
     </a>
-    // </Button>
   ));
-
   const Logo = () => (
     <a
       className="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900"

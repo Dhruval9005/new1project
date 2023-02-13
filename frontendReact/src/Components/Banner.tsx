@@ -1,7 +1,6 @@
 import React from "react";
 import { Carousel } from "flowbite-react";
 
-
 const Banner = ({ banner }: any) => {
   return (
     <div className="Banner">

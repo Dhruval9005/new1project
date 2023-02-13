@@ -32,7 +32,7 @@ const useStyles = createStyles((theme) => ({
 
   imageSection: {
     padding: theme.spacing.md,
-    width: "fit-content",
+    width: "50%",
 
     [theme.fn.smallerThan("md")]: {
       width: "100%",
@@ -52,7 +52,7 @@ const useStyles = createStyles((theme) => ({
   section: {
     marginLeft: "20px",
     padding: theme.spacing.md,
-    width: "fit-content",
+    width: "50%",
     display: "grid",
 
     [theme.fn.smallerThan("md")]: {
@@ -93,7 +93,7 @@ export function BuyPhone({ info }: phoneInfo) {
 
   return (
     <Card withBorder radius="md" className={classes.card} shadow="lg">
-      <Card.Section className={classes.imageSection} ml={0}>
+      <Card.Section className={classes.imageSection} mb={-16}>
         <Tabs defaultValue={info.img[0].label} inverted className="">
           {info.img.map((x) => (
             <Tabs.Panel value={x.label} pb="xs">
@@ -122,7 +122,7 @@ export function BuyPhone({ info }: phoneInfo) {
         </Tabs>
       </Card.Section>
 
-      <Card.Section className={classes.section}>
+      <Card.Section className={classes.section} p={0} mt={-16}>
         <Group my="md" className="w-fit">
           <div>
             <Text className="text-3xl" weight={500}>
@@ -147,13 +147,13 @@ export function BuyPhone({ info }: phoneInfo) {
           Basic Information
         </Text>
 
-        <Group ml={9} spacing={8} className="w-fit">
+        <Group my="md" spacing={8} className="w-fit">
           {features}
         </Group>
 
-        <div className="grid grid-cols-2">
+        <div className=" w-fit">
           <Button
-            className="w-fit mb-5"
+            className="w-fit mb-5 mr-5"
             mt={20}
             size="md"
             radius="md"

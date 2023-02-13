@@ -34,15 +34,15 @@ function App() {
         <Route path="/repair" element={<RepairPhone />} />
         <Route path="/repair/:model" element={<Repairoptions />} />
         <Route path="/buy" element={<Buyphone />} />
+        <Route path="/buy/:model" element={<Buyphoneinfo />} />
         <Route path="/login" element={<Login />} />
         <Route path="/otp" element={<Otp />} />
-        <Route path="/buy/:model" element={<Buyphoneinfo />} />
         <Route path="/logininfo" element={<LoginInfo />} />
-        <Route path="/expr" element={<Expr />} />
         <Route path="/store" element={<Store />} />
         <Route path="/bidding" element={<Bidding />} />
         <Route path="/bidding/:id" element={<Biddingphone />} />
         <Route path="/compare" element={<ComparePhones />} />
+        <Route path="/expr" element={<Expr />} />
       </Routes>
       <Foter />
     </div>

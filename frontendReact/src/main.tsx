@@ -1,9 +1,9 @@
+import App from "./App";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { CookiesProvider } from "react-cookie";
 import { BrowserRouter } from "react-router-dom";
 import { MantineProvider } from "@mantine/core";
-import App from "./App";
 import "./index.css";
 import "tw-elements";
 

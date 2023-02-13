@@ -44,9 +44,9 @@ const PhoneInfo = () => {
       <div className="container w-full mx-auto">
         <h1 className="md:text-4xl text-2xl mt-6 ml-3 ">
           Sell Your Old
-          <span className="text-purple-700"> {phoneinfo.name}</span>
+          <span className="text-purple-700">{phoneinfo.name}</span>
         </h1>
-        <div className="md:w-3/4 w-full flex flex-col md:flex-row mx-auto shadow-lg md:my-40">
+        <div className="md:w-3/4 w-fit flex flex-col md:flex-row mx-auto shadow-lg md:my-40">
           <img
             className="w-96 h-48 md:h-96 object-contain rounded-t-lg md:rounded-none md:rounded-l-lg m-4 mx-auto"
             src={phoneinfo.img}

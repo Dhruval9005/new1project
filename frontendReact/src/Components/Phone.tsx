@@ -97,7 +97,7 @@ export function Phone({ data, info }: phoneInfo) {
   return (
     <Card withBorder radius="md" className={classes.card}>
       <Card.Section className={classes.imageSection}>
-        <Image src={data.img} alt="Tesla Model S" />
+        <Image src={data.img} />
       </Card.Section>
 
       <Group position="apart" mt="md">

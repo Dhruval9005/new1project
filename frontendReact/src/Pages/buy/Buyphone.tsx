@@ -12,6 +12,7 @@ import {
   // IconCamera,
   // TablerIcon,
 } from "@tabler/icons";
+import { NumberInput } from "@mantine/core";
 
 import xiaomi from "../../assets/Mi10.jpg";
 import { Phone } from "../../Components/Phone";
@@ -276,6 +277,17 @@ const Buyphone = () => {
                   value={rangeValue}
                   onChange={setRangeValue}
                 />
+                {/* <NumberInput
+                  label="Price"
+                  defaultValue={1000}
+                  variant="unstyled"
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                  formatter={(value) =>
+                    !Number.isNaN(parseFloat(value))
+                      ? `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                      : "$ "
+                  }
+                /> */}
               </div>
             </div>
             <hr className="border-purple-700" />

@@ -17,26 +17,21 @@ import {
   IconCamera,
   TablerIcon,
 } from "@tabler/icons";
-// import mi from "../assets/Mi10.jpg";
 
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-    width: "700px",
-    height: "500px",
-    display: "flex",
   },
 
   imageSection: {
     padding: theme.spacing.md,
-    width: "300px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    // borderBottom: `1px solid ${
-    //   theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    // }`,
+    borderBottom: `1px solid ${
+      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
+    }`,
   },
 
   label: {
@@ -49,11 +44,10 @@ const useStyles = createStyles((theme) => ({
   },
 
   section: {
-    width: "300px",
     padding: theme.spacing.md,
-    // borderTop: `1px solid ${
-    //   theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    // }`,
+    borderTop: `1px solid ${
+      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
+    }`,
   },
 
   icon: {
@@ -61,13 +55,7 @@ const useStyles = createStyles((theme) => ({
     color:
       theme.colorScheme === "dark"
         ? theme.colors.dark[2]
-        : theme.colors.gray[9],
-  },
-
-  group: {
-    display: "flex",
-    marginTop: "100px",
-    justifyContent: "center",
+        : theme.colors.gray[5],
   },
 }));
 
@@ -79,10 +67,9 @@ interface phoneInfo {
     info: { label: string; icon: TablerIcon }[];
     value: { for: string; price: string }[];
   };
-  info: string;
 }
 
-export function SellPhone({ data, info }: phoneInfo) {
+export function SellPhone({ data }: phoneInfo) {
   const naviget = useNavigate();
   const { classes } = useStyles();
   const features = data.info.map((feature) => (
@@ -102,29 +89,58 @@ export function SellPhone({ data, info }: phoneInfo) {
         <Image src={data.img} />
       </Card.Section>
 
-      <Card.Section className={classes.section}>
-        <Group position="apart" className={classes.group}>
-          <div>
-            <Text className="text-6xl" weight={500}>
-              {data.name}
-            </Text>
-          </div>
+      <Group position="apart" my="md">
+        <div>
+          <Text className="text-3xl" weight={500}>
+            {data.name}
+          </Text>
+        </div>
+      </Group>
+
+      {/* <Card.Section className={classes.section}>
+        <Group my="md" spacing={30} className="w-fit">
+          <Text className="text-3xl mb-2" weight={400} sx={{ lineHeight: 1 }}>
+            ₹ {data.value[0].price}
+          </Text>
         </Group>
-        <Group spacing={30} className={classes.group}>
+
+        <Text my="md" size="sm" color="dimmed" className={classes.label}>
+          Basic Information
+        </Text>
+
+        <Group my="md" spacing={8} className="w-fit">
+          {features}
+        </Group>
+
+        <Button
+          className="w-fit mb-5"
+          mt={20}
+          size="md"
+          radius="md"
+          variant="outline"
+          color="violet"
+          style={{ flex: 1 }}
+        >
+          Sell Now
+        </Button>
+      </Card.Section> */}
+
+      <Card.Section className={classes.section}>
+        <Group spacing={30}>
           <div>
-            <Text className="text-3xl" weight={700} sx={{ lineHeight: 1 }}>
+            <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
               ₹ {data.value[0].price}
             </Text>
-            <Button
-              className="text-purple-600 hover:text-purple-700 rounded-md border-purple-700 my-10"
-              radius="xl"
-              variant="outline"
-              style={{ flex: 1 }}
-              // onClick={(e) => badding(data.name)}
-            >
-              {info}
-            </Button>
           </div>
+
+          <Button
+            radius="md"
+            variant="outline"
+            color="violet"
+            style={{ flex: 1 }}
+          >
+            Sell Now
+          </Button>
         </Group>
       </Card.Section>
     </Card>

@@ -7,10 +7,10 @@ import { NotificationsProvider } from "@mantine/notifications";
 import { Phone } from "./Components/Phone";
 import { BuyPhone } from "./Components/BuyPhone";
 import { IconUsers } from "@tabler/icons";
-
-import mi from "./assets/Mi10.jpg";
-import Buyphone from "./Pages/buy/Buyphone";
+import { SellPhone } from "./Components/SellPhone";
 import Phoneinfo from "./Components/Phoneinfo";
+import Buyphone from "./Pages/buy/Buyphone";
+import mi from "./assets/Mi10.jpg";
 
 const Expr = () => {
   let [banner, setBanner] = useState([
@@ -51,7 +51,6 @@ const Expr = () => {
       {/* <NotificationsProvider position="bottom-right" zIndex={2077} limit={5}>
         <Demo />
       </NotificationsProvider> */}
-
       {/* <Carousel
         // slideSize="10%"
         orientation="vertical"
@@ -68,12 +67,13 @@ const Expr = () => {
           </Carousel.Slide>
         ))}
       </Carousel> */}
-      <Phoneinfo />
+      {/* <Phoneinfo /> */}
       <div className="container mx-auto pt-10 h-fit mb-10">
         <div className="flex flex-col justify-center overflow-hidden">
           <div className="w-full p-2 m-auto lg:max-w-4xl">
             <div className="flex flex-col justify-center flex-wrap">
               <div className="link button flex flex-col justify-center content-center flex-wrap max-h-max">
+                <SellPhone data={phoneinfo} />
                 {/* <BuyPhone info={phoneinfo} /> */}
                 {/* <Phone data={phoneinfo} info="sell phone" /> */}
                 {/* <Autocomplete
