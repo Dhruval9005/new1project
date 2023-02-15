@@ -171,7 +171,7 @@ const Buyphone = () => {
     setPhoneinfo(phoneInfo.filter((x) => {}));
   }
 
-  function Price() {}
+  // function Price() {}
 
   async function getPhoneInfo() {
     // let response = await axios.get("");
@@ -182,9 +182,9 @@ const Buyphone = () => {
     setFilter(phoneInfo);
   }
 
-  function buyphone(phone: string) {
-    naviget(`${window.location.pathname}/${phone}`);
-  }
+  // function buyphone(phone: string) {
+  //   naviget(`${window.location.pathname}/${phone}`);
+  // }
 
   return (
     <div className="buy h-fit md:mt-10 mb-28">

@@ -32,20 +32,22 @@ const Login = () => {
           } catch (err) {
             console.log(err);
           }
-        } else {
+        }
+      } catch (err) {
+        console.log(err.response.data.error);
+        if (
+          err.response.data.error == "No user found with this phone number."
+        ) {
           try {
             let res = await axios.post(`http://localhost:3000/user/send-otp`, {
               mobileNo: mobileNumber,
             });
             naviget(`/logininfo`);
-            setCookie("user", response, { path: "/" });
             setCookie("otp", res, { path: "/otp" });
           } catch (err) {
             console.log(err);
           }
         }
-      } catch (err) {
-        console.log(err);
       }
     } else {
       setMassage("please enter valid mobile number");

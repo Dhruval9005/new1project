@@ -91,10 +91,22 @@ const Home = () => {
     },
   ];
   let brand = [
-    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/2e7cdc22-5a5f.jpg", link: "/apple"},
-    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/cb96df6e-080f.jpg", link: "/mi"},
-    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/406a512d-e8dd.jpg", link: "/samsung"},
-    { img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/dacc50a2-77a9.jpg", link: "/google"},
+    {
+      img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/2e7cdc22-5a5f.jpg",
+      link: "/apple",
+    },
+    {
+      img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/cb96df6e-080f.jpg",
+      link: "/mi",
+    },
+    {
+      img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/406a512d-e8dd.jpg",
+      link: "/samsung",
+    },
+    {
+      img: "https://s3n.cashify.in/cashify/brand/img/xhdpi/dacc50a2-77a9.jpg",
+      link: "/google",
+    },
   ];
 
   return (
@@ -129,6 +141,9 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="container mx-auto pt-10">
+
         </div>
       </div>
     </div>

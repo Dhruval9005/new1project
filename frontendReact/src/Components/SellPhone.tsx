@@ -20,8 +20,15 @@ import {
 
 const useStyles = createStyles((theme) => ({
   card: {
+    display: "flex",
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    width: "800px",
+
+    [theme.fn.smallerThan("md")]: {
+      display: "block",
+      width: "100%",
+    },
   },
 
   imageSection: {
@@ -29,9 +36,11 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    borderBottom: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    }`,
+    width: "50%",
+
+    [theme.fn.smallerThan("md")]: {
+      width: "100%",
+    },
   },
 
   label: {
@@ -45,9 +54,12 @@ const useStyles = createStyles((theme) => ({
 
   section: {
     padding: theme.spacing.md,
-    borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    }`,
+    width: "50%",
+
+    [theme.fn.smallerThan("md")]: {
+      width: "100%",
+      marginLeft: "0px",
+    },
   },
 
   icon: {
@@ -82,20 +94,15 @@ export function SellPhone({ data }: phoneInfo) {
   // function badding(phone: string) {
   //   naviget(`${window.location.pathname}/${phone}`);
   // }
+  function Sell() {
+    naviget(`${window.location.pathname}/${data.name}`);
+  }
 
   return (
-    <Card withBorder radius="md" className={classes.card}>
-      <Card.Section className={classes.imageSection}>
+    <Card withBorder radius="md" className={classes.card} shadow="lg">
+      <Card.Section className={classes.imageSection} mb={-16}>
         <Image src={data.img} />
       </Card.Section>
-
-      <Group position="apart" my="md">
-        <div>
-          <Text className="text-3xl" weight={500}>
-            {data.name}
-          </Text>
-        </div>
-      </Group>
 
       {/* <Card.Section className={classes.section}>
         <Group my="md" spacing={30} className="w-fit">
@@ -125,22 +132,33 @@ export function SellPhone({ data }: phoneInfo) {
         </Button>
       </Card.Section> */}
 
-      <Card.Section className={classes.section}>
-        <Group spacing={30}>
-          <div>
-            <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
-              ₹ {data.value[0].price}
-            </Text>
-          </div>
-
-          <Button
-            radius="md"
-            variant="outline"
-            color="violet"
-            style={{ flex: 1 }}
-          >
-            Sell Now
-          </Button>
+      <Card.Section className={classes.section} mt={-16}>
+        <Group position="apart" h="100%">
+          <Group my="md">
+            <div>
+              <Text className="text-3xl" weight={500}>
+                {data.name} ( {data.value[0].for} )
+              </Text>
+            </div>
+          </Group>
+          <Group spacing={30} position="apart">
+            <div>
+              <Text weight={600}>Sell for :</Text>
+              <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
+                ₹ {data.value[0].price}
+              </Text>
+              <Button
+                mt="lg"
+                radius="md"
+                variant="outline"
+                color="violet"
+                style={{ flex: 1 }}
+                onClick={Sell}
+              >
+                Sell Now
+              </Button>
+            </div>
+          </Group>
         </Group>
       </Card.Section>
     </Card>

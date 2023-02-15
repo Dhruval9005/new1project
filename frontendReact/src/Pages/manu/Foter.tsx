@@ -1,11 +1,78 @@
-// import React from "react";
 import { Footer } from "flowbite-react";
 import { BsTwitter, BsFacebook, BsInstagram, BsGithub } from "react-icons/bs";
+import { Foot } from "../../Foot";
 
 const Foter = () => {
+  const data = [
+    {
+      title: "About",
+      links: [
+        {
+          label: "Features",
+          link: "#",
+        },
+        {
+          label: "Pricing",
+          link: "#",
+        },
+        {
+          label: "Support",
+          link: "#",
+        },
+        {
+          label: "Forums",
+          link: "#",
+        },
+      ],
+    },
+    {
+      title: "Project",
+      links: [
+        {
+          label: "Contribute",
+          link: "#",
+        },
+        {
+          label: "Media assets",
+          link: "#",
+        },
+        {
+          label: "Changelog",
+          link: "#",
+        },
+        {
+          label: "Releases",
+          link: "#",
+        },
+      ],
+    },
+    {
+      title: "Community",
+      links: [
+        {
+          label: "Join Discord",
+          link: "#",
+        },
+        {
+          label: "Follow on Twitter",
+          link: "#",
+        },
+        {
+          label: "Email newsletter",
+          link: "#",
+        },
+        {
+          label: "GitHub discussions",
+          link: "#",
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="footer">
-      <div className="container mx-auto">
+      <Foot data={data} />
+      {/* <div className="container mx-auto">
         <Footer>
           <div className="w-full">
             <div className="grid w-full grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
@@ -56,7 +123,7 @@ const Foter = () => {
             </div>
           </div>
         </Footer>
-      </div>
+      </div> */}
     </div>
   );
 };

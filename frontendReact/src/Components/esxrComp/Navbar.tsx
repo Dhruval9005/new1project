@@ -1,9 +1,4 @@
-import {
-  createStyles,
-  Header,
-  Autocomplete,
-  Group,
-} from "@mantine/core";
+import { createStyles, Header, Autocomplete, Group } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 import UserinfoDropdown from "../UserinfoDropdown";
 import Sidebar from "../SideBar";

@@ -105,9 +105,6 @@ export function Phone({ data, info }: phoneInfo) {
           <Text className="text-3xl" weight={500}>
             {data.name}
           </Text>
-          {/* <Text size="xs" color="dimmed">
-            Free recharge at any station
-          </Text> */}
         </div>
         <Badge color="red" variant="outline">
           25% off

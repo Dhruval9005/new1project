@@ -66,11 +66,14 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
             })}
           >
             <Group spacing={7}>
-              <div className="rounded-md w-7 h-7 bg-purple-500 grid justify-center content-center uppercase font-bold text-md text-white">
+              {/* <div className="rounded-md w-7 h-7 bg-purple-500 grid justify-center content-center uppercase font-bold text-md text-white">
                 {user.fname.charAt(0)}
                 {user.lname.charAt(0)}
-              </div>
-              {/* <Avatar src={user.image} alt={user.fname} radius="xl" size={20} /> */}
+              </div> */}
+              <Avatar color="violet" size="sm" variant="filled">
+                {user.fname.charAt(0).toUpperCase()}
+                {user.lname.charAt(0).toUpperCase()}
+              </Avatar>
               <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
                 {user.fname + " " + user.lname}
               </Text>

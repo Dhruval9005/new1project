@@ -1,25 +1,15 @@
-import { useState } from "react";
 import { Autocomplete } from "@mantine/core";
 import { Image } from "@mantine/core";
-import { Carousel } from "@mantine/carousel";
 import { Demo } from "./Components/Demo";
 import { NotificationsProvider } from "@mantine/notifications";
 import { Phone } from "./Components/Phone";
 import { BuyPhone } from "./Components/BuyPhone";
 import { IconUsers } from "@tabler/icons";
 import { SellPhone } from "./Components/SellPhone";
-import Phoneinfo from "./Components/Phoneinfo";
-import Buyphone from "./Pages/buy/Buyphone";
 import mi from "./assets/Mi10.jpg";
+import Phoneinfo from "./Components/Phoneinfo";
 
 const Expr = () => {
-  let [banner, setBanner] = useState([
-    "https://flowbite.com/docs/images/carousel/carousel-1.svg",
-    "https://flowbite.com/docs/images/carousel/carousel-2.svg",
-    "https://flowbite.com/docs/images/carousel/carousel-3.svg",
-    "https://flowbite.com/docs/images/carousel/carousel-4.svg",
-    "https://flowbite.com/docs/images/carousel/carousel-5.svg",
-  ]);
   const phoneinfo = {
     name: "Mi 10",
     img: mi,
@@ -40,51 +30,24 @@ const Expr = () => {
       },
     ],
     value: [
-      { for: "128 Gb", price: "21,000" },
-      { for: "246 Gb", price: "25,000" },
+      { for: "6 GB/128 GB", price: "21,000" },
+      { for: "8 GB/246 GB", price: "25,000" },
     ],
   };
 
   return (
     <div>
-      {/* <Navbar links={link} user={users} /> */}
       {/* <NotificationsProvider position="bottom-right" zIndex={2077} limit={5}>
         <Demo />
       </NotificationsProvider> */}
-      {/* <Carousel
-        // slideSize="10%"
-        orientation="vertical"
-        height="30vh"
-        slideGap="md"
-        controlsOffset="xs"
-        controlSize={20}
-        loop
-        withIndicators
-      >
-        {banner.map((x) => (
-          <Carousel.Slide key={x}>
-            <Image src={x} />
-          </Carousel.Slide>
-        ))}
-      </Carousel> */}
-      {/* <Phoneinfo /> */}
+      <Phoneinfo />
       <div className="container mx-auto pt-10 h-fit mb-10">
         <div className="flex flex-col justify-center overflow-hidden">
           <div className="w-full p-2 m-auto lg:max-w-4xl">
             <div className="flex flex-col justify-center flex-wrap">
               <div className="link button flex flex-col justify-center content-center flex-wrap max-h-max">
-                <SellPhone data={phoneinfo} />
-                {/* <BuyPhone info={phoneinfo} /> */}
-                {/* <Phone data={phoneinfo} info="sell phone" /> */}
-                {/* <Autocomplete
-                  placeholder="Pick one"
-                  label="Your favorite framework/library"
-                  radius="md"
-                  size="md"
-                  withAsterisk
-                  data={["React", "Angular", "Svelte", "Vue"]}
-                />
-                <Card
+                {/* <SellPhone data={phoneinfo} /> */}
+                {/* <Card
                   className="w-96"
                   shadow="sm"
                   p="lg"
