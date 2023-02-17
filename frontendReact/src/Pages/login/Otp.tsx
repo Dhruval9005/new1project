@@ -15,17 +15,23 @@ const Otp = () => {
   let [massage, setMassage] = useState("");
   let user = cookies.user.data.data;
 
+  
   async function login() {
     if (cookies.user.data.success) {
       let id = cookies.user.data.data._id;
+      console.log(user);
       try {
-        let res = await axios.post("http://localhost:3000/user/verify-otp", {
-          otp: OTP,
-          user: { id },
-        });
+        let res = await axios.post(
+          `${import.meta.env.VITE_AXIOS_URL}/user/verify-otp`,
+          {
+            otp: OTP,
+            user: { id },
+          }
+        );
         if (res.data.success) {
           navigate("/");
           removeCookie("otp");
+          removeCookie("user");
           setCookie("userdata", res.data.userData, { path: "/" });
         }
       } catch (err) {
@@ -34,13 +40,17 @@ const Otp = () => {
       }
     } else {
       try {
-        let res = await axios.post("http://localhost:3000/user/verify-otp", {
-          otp: OTP,
-          user: cookies.userdata,
-        });
+        let res = await axios.post(
+          `${import.meta.env.VITE_AXIOS_URL}/user/verify-otp`,
+          {
+            otp: OTP,
+            user: cookies.userdata,
+          }
+        );
         if (res.data.success) {
           navigate("/");
           removeCookie("otp");
+          removeCookie("user");
           setCookie("userdata", res.data.userData, { path: "/" });
         }
         console.log(res);
@@ -53,11 +63,15 @@ const Otp = () => {
 
   async function Resendotp() {
     try {
-      let res = await axios.post(`http://localhost:3000/user/send-otp`, {
-        mobileNo: Number(user.phone_number),
-      });
-      setCookie("otp", res, { path: "/otp" });
-      setCookie("user", user, { path: "/otp" });
+      let res = await axios.post(
+        `${import.meta.env.VITE_AXIOS_URL}/user/send-otp`,
+        {
+          mobileNo: Number(user.phone_number),
+        }
+      );
+      navigate("/login/otp");
+      setCookie("otp", res, { path: "/" });
+      setCookie("user", user, { path: "/" });
     } catch (err) {
       console.log(err);
     }

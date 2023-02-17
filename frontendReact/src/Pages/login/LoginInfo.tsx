@@ -11,8 +11,8 @@ const LoginInfo = () => {
   const [cookies, setCookie] = useCookies(["userdata"]);
 
   function sendData() {
-    setCookie("userdata", userdata, { path: "/" });
-    naviget("/otp");
+    setCookie("userdata", userdata, { path: "/login" });
+    naviget("/login");
   }
 
   return (

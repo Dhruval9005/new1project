@@ -56,7 +56,7 @@ const useStyles = createStyles((theme) => ({
 
 interface HeaderSearchProps {
   links: { link: string; label: string }[];
-  user?: { fname: string; lname: string; image: string };
+  user?: { fname: string; lname: string };
 }
 
 export function Navbar({ links, user }: HeaderSearchProps) {
@@ -105,6 +105,7 @@ export function Navbar({ links, user }: HeaderSearchProps) {
             ]}
           /> */}
         </Group>
+
         {user ? (
           <UserinfoDropdown user={user} />
         ) : (

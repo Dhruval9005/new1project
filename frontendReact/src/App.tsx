@@ -36,8 +36,8 @@ function App() {
         <Route path="/buy" element={<Buyphone />} />
         <Route path="/buy/:model" element={<Buyphoneinfo />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/otp" element={<Otp />} />
-        <Route path="/logininfo" element={<LoginInfo />} />
+        <Route path="/login/otp" element={<Otp />} />
+        <Route path="/signup" element={<LoginInfo />} />
         <Route path="/store" element={<Store />} />
         <Route path="/bidding" element={<Bidding />} />
         <Route path="/bidding/:id" element={<Biddingphone />} />

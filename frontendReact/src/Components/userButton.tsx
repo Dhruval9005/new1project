@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useCookies } from "react-cookie";
+import { BsCart } from "react-icons/bs";
 import {
   UnstyledButton,
   UnstyledButtonProps,
@@ -15,8 +18,6 @@ import {
   IconSettings,
   IconChevronUp,
 } from "@tabler/icons";
-import { useState } from "react";
-import { useCookies } from "react-cookie";
 
 const useStyles = createStyles((theme) => ({
   user: {
@@ -40,15 +41,13 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface UserButtonProps extends UnstyledButtonProps {
-  image: string;
-  name: string;
+  fname: string;
+  lname: string;
   icon?: React.ReactNode;
 }
 
-export function UserButton({ image, name, icon, ...others }: UserButtonProps) {
+export function UserButton({ fname, lname, icon, ...others }: UserButtonProps) {
   const [cookies, setCookie, removeCookie] = useCookies(["user", "userdata"]);
-  const defoltimage =
-    "https://png.pngtree.com/png-vector/20190909/ourlarge/pngtree-outline-user-icon-png-image_1727916.jpg";
   const { classes, theme, cx } = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
 
@@ -68,13 +67,14 @@ export function UserButton({ image, name, icon, ...others }: UserButtonProps) {
       <Menu.Target>
         <UnstyledButton className={classes.user} {...others}>
           <Group>
-            {<Avatar src={image} alt={name} radius="xl" size={20} /> || (
-              <Avatar src={defoltimage} alt={name} radius="xl" size={20} />
-            )}
+            <Avatar color="violet" size="sm" variant="filled">
+              {fname.charAt(0).toUpperCase()}
+              {lname.charAt(0).toUpperCase()}
+            </Avatar>
 
             <div style={{ flex: 1 }}>
               <Text size="md" weight={500}>
-                {name}
+                {fname + " " + lname}
               </Text>
             </div>
 
@@ -82,7 +82,51 @@ export function UserButton({ image, name, icon, ...others }: UserButtonProps) {
           </Group>
         </UnstyledButton>
       </Menu.Target>
+
       <Menu.Dropdown>
+        <Menu.Item icon={<BsCart size={14} color={theme.colors.violet[6]} />}>
+          Cart
+        </Menu.Item>
+
+        {/* <Menu.Item
+          icon={
+            <IconStar size={14} color={theme.colors.yellow[6]} stroke={1.5} />
+          }
+        >
+          Saved posts
+        </Menu.Item>
+        <Menu.Item
+          icon={
+            <IconMessage size={14} color={theme.colors.blue[6]} stroke={1.5} />
+          }
+        >
+          Your comments
+        </Menu.Item> */}
+
+        <Menu.Label>Settings</Menu.Label>
+
+        <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
+          Account settings
+        </Menu.Item>
+
+        <Menu.Item
+          icon={<IconLogout size={20} color="red" stroke={1.5} />}
+          onClick={Logout}
+        >
+          Logout
+        </Menu.Item>
+
+        {/* <Menu.Divider />
+        <Menu.Label>Danger zone</Menu.Label>
+        <Menu.Item icon={<IconPlayerPause size={14} stroke={1.5} />}>
+          Pause subscription
+        </Menu.Item>
+        <Menu.Item color="red" icon={<IconTrash size={14} stroke={1.5} />}>
+          Delete account
+        </Menu.Item> */}
+      </Menu.Dropdown>
+
+      {/* <Menu.Dropdown>
         <Menu.Item
           icon={
             <IconHeart size={14} color={theme.colors.red[6]} stroke={1.5} />
@@ -104,7 +148,9 @@ export function UserButton({ image, name, icon, ...others }: UserButtonProps) {
         >
           Your comments
         </Menu.Item>
-        {/* <Menu.Label>Settings</Menu.Label> */}
+
+        <Menu.Label>Settings</Menu.Label>
+
         <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
           Account settings
         </Menu.Item>
@@ -116,7 +162,7 @@ export function UserButton({ image, name, icon, ...others }: UserButtonProps) {
         >
           Logout
         </Menu.Item>
-      </Menu.Dropdown>
+      </Menu.Dropdown> */}
     </Menu>
   );
 }

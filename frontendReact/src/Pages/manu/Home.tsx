@@ -2,8 +2,8 @@ import { useState } from "react";
 import PhoneCard from "../../Components/PhoneCard";
 import Banner from "../../Components/Banner";
 import Navbutton from "../../Components/Navbutton";
-
 import mi from "../../assets/Mi10.jpg";
+import Phoneinfo from "../../Components/Phoneinfo";
 
 const Home = () => {
   let [banner, setBanner] = useState([
@@ -142,8 +142,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="container mx-auto pt-10">
-
+        <div className="container mx-auto mt-40">
+          <Phoneinfo />
         </div>
       </div>
     </div>

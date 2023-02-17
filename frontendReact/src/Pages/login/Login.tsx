@@ -1,4 +1,5 @@
 import axios from "axios";
+import keys from "../../../config/keys";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -14,36 +15,43 @@ const Login = () => {
   const [cookies, setCookie] = useCookies(["otp", "user"]);
 
   async function SendMobile() {
+    console.log(keys.server_url);
+    
     if (numAuth.test(mobileNumber)) {
       setMassage("");
       try {
         let response = await axios.get(
-          `http://localhost:3000/user/find-user/${mobileNumber}`
+          `${keys.server_url}/user/find-user/${mobileNumber}`
         );
         if (response.data.success) {
           try {
-            let res = await axios.post(`http://localhost:3000/user/send-otp`, {
-              mobileNo: Number(response.data.data.phone_number),
-              id: response.data.data._id,
-            });
-            naviget(`/otp`);
+            let res = await axios.post(
+              `${keys.server_url}/user/send-otp`,
+              {
+                mobileNo: Number(response.data.data.phone_number),
+                id: response.data.data._id,
+              }
+            );
+            naviget(`/login/otp`);
             setCookie("user", response, { path: "/" });
-            setCookie("otp", res, { path: "/otp" });
+            setCookie("otp", res, { path: "/" });
           } catch (err) {
             console.log(err);
           }
         }
-      } catch (err) {
-        console.log(err.response.data.error);
+      } catch (err: any) {
+        console.log(err);
+        
         if (
           err.response.data.error == "No user found with this phone number."
         ) {
           try {
-            let res = await axios.post(`http://localhost:3000/user/send-otp`, {
+            let res = await axios.post(`${keys.server_url}/user/send-otp`, {
               mobileNo: mobileNumber,
             });
-            naviget(`/logininfo`);
-            setCookie("otp", res, { path: "/otp" });
+            naviget(`/signup`);
+            setCookie("user", err.response, { path: "/" });
+            setCookie("otp", res, { path: "/" });
           } catch (err) {
             console.log(err);
           }
@@ -57,7 +65,7 @@ const Login = () => {
   return (
     <div className="Login md:pt-32 my-32 h-fit">
       <div className="container relative flex flex-col justify-center overflow-hidden mx-auto">
-        <div className="w-96 p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl sm:max-w-fit">
+        <div className="w-96 p-6 m-auto bg-white rounded-md shadow-md">
           <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
             Login
           </h1>

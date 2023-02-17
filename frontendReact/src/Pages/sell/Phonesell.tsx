@@ -37,7 +37,7 @@ const Phonesell = () => {
                 Final Price
               </h3>
               <div className="w-fit mx-auto">
-                <SellPhone data={phoneinfo} info="Sell Phone" />
+                <SellPhone data={phoneinfo}  />
               </div>
             </div>
           </div>

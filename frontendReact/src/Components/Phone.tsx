@@ -114,7 +114,7 @@ export function Phone({ data, info }: phoneInfo) {
       <Card.Section className={classes.section} mt="md">
         <Text size="sm" color="dimmed" className={classes.label}>
           Basic Info
-        </Text>
+        </Text> 
 
         <Group spacing={8} mb={-8}>
           {features}

@@ -97,7 +97,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function SideBarManu({ user }: any) {
+interface HeaderSearchProps {
+  user?: { fname: string; lname: string };
+}
+
+export function SideBarManu({ user }: HeaderSearchProps) {
   const { classes } = useStyles();
   const links = mockdata.map((item) => (
     <LinksGroup {...item} key={item.label} />
@@ -128,7 +132,7 @@ export function SideBarManu({ user }: any) {
 
       {user ? (
         <Navbar.Section className={classes.footer}>
-          <UserButton image={user.image} name={user.fname + " " + user.lname} />
+          <UserButton fname={user.fname} lname={user.lname} />
         </Navbar.Section>
       ) : (
         <div className="mx-3">

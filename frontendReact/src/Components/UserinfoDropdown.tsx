@@ -38,7 +38,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface HeaderTabsProps {
-  user: { fname: string; lname: string; image: string };
+  user: { fname: string; lname: string };
 }
 
 const UserinfoDropdown = ({ user }: HeaderTabsProps) => {

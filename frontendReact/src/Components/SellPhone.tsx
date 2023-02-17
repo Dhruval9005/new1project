@@ -91,9 +91,6 @@ export function SellPhone({ data }: phoneInfo) {
     </Center>
   ));
 
-  // function badding(phone: string) {
-  //   naviget(`${window.location.pathname}/${phone}`);
-  // }
   function Sell() {
     naviget(`${window.location.pathname}/${data.name}`);
   }
@@ -134,13 +131,14 @@ export function SellPhone({ data }: phoneInfo) {
 
       <Card.Section className={classes.section} mt={-16}>
         <Group position="apart" h="100%">
-          <Group my="md">
+          <Group my="md" w="100%">
             <div>
               <Text className="text-3xl" weight={500}>
                 {data.name} ( {data.value[0].for} )
               </Text>
             </div>
           </Group>
+
           <Group spacing={30} position="apart">
             <div>
               <Text weight={600}>Sell for :</Text>
