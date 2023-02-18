@@ -17,6 +17,7 @@ import {
 } from "@tabler/icons";
 import { useCookies } from "react-cookie";
 import { BsCart } from "react-icons/bs";
+import { showNotification } from "@mantine/notifications";
 
 const useStyles = createStyles((theme) => ({
   user: {
@@ -46,6 +47,13 @@ const UserinfoDropdown = ({ user }: HeaderTabsProps) => {
   const { classes, theme, cx } = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
   function Logout() {
+    showNotification({
+      title: "Logout",
+      message: "",
+      autoClose: 2000,
+      color: "red",
+      disallowClose: false,
+    });
     removeCookie("userdata");
     removeCookie("user");
   }

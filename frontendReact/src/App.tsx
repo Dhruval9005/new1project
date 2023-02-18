@@ -19,32 +19,38 @@ import Store from "./Pages/store/Store";
 import Biddingphone from "./Pages/Bidding/Biddingphone";
 import ComparePhones from "./Pages/compare/ComparePhones";
 import Phonesell from "./Pages/sell/Phonesell";
+import { NotificationsProvider } from "@mantine/notifications";
 
 function App() {
   return (
     <div className="App">
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sell" element={<SellPhone />} />
-        <Route path="/sell/:model" element={<PhoneInfo />} />
-        <Route path="/sell/:model/opti" element={<Phoneoptions />} />
-        <Route path="/sell/:model/opti/defects" element={<PhoneDefects />} />
-        <Route path="/sell/:model/opti/defects/price" element={<Phonesell />} />
-        <Route path="/repair" element={<RepairPhone />} />
-        <Route path="/repair/:model" element={<Repairoptions />} />
-        <Route path="/buy" element={<Buyphone />} />
-        <Route path="/buy/:model" element={<Buyphoneinfo />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/login/otp" element={<Otp />} />
-        <Route path="/signup" element={<LoginInfo />} />
-        <Route path="/store" element={<Store />} />
-        <Route path="/bidding" element={<Bidding />} />
-        <Route path="/bidding/:id" element={<Biddingphone />} />
-        <Route path="/compare" element={<ComparePhones />} />
-        <Route path="/expr" element={<Expr />} />
-      </Routes>
-      <Foter />
+      <NotificationsProvider position="bottom-right" zIndex={2077} limit={50}>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sell" element={<SellPhone />} />
+          <Route path="/sell/:model" element={<PhoneInfo />} />
+          <Route path="/sell/:model/opti" element={<Phoneoptions />} />
+          <Route path="/sell/:model/opti/defects" element={<PhoneDefects />} />
+          <Route
+            path="/sell/:model/opti/defects/price"
+            element={<Phonesell />}
+          />
+          <Route path="/repair" element={<RepairPhone />} />
+          <Route path="/repair/:model" element={<Repairoptions />} />
+          <Route path="/buy" element={<Buyphone />} />
+          <Route path="/buy/:model" element={<Buyphoneinfo />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/login/otp" element={<Otp />} />
+          <Route path="/signup" element={<LoginInfo />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/bidding" element={<Bidding />} />
+          <Route path="/bidding/:id" element={<Biddingphone />} />
+          <Route path="/compare" element={<ComparePhones />} />
+          <Route path="/expr" element={<Expr />} />
+        </Routes>
+        <Foter />
+      </NotificationsProvider>
     </div>
   );
 }

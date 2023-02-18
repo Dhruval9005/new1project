@@ -1,8 +1,5 @@
-// import axios from "axios";
-// import { Label } from "flowbite-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { TransitionGroup } from "semantic-ui-react";
 
 const Phoneoptions = () => {
   let navigate = useNavigate();
@@ -152,7 +149,9 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full md:text-lg text-sm font-semibold">Yes</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">
+                        Yes
+                      </div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -171,7 +170,9 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full md:text-lg text-sm font-semibold">No</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">
+                        No
+                      </div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -197,7 +198,9 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full md:text-lg text-sm font-semibold">Yes</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">
+                        Yes
+                      </div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -216,7 +219,9 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full md:text-lg text-sm font-semibold">No</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">
+                        No
+                      </div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -242,7 +247,9 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full md:text-lg text-sm font-semibold">Yes</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">
+                        Yes
+                      </div>
                       <div className="w-full"></div>
                     </div>
                   </label>
@@ -261,7 +268,9 @@ const Phoneoptions = () => {
                     className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-purple-500 peer-checked:border-purple-600 peer-checked:text-purple-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <div className="block">
-                      <div className="w-full md:text-lg text-sm font-semibold">No</div>
+                      <div className="w-full md:text-lg text-sm font-semibold">
+                        No
+                      </div>
                       <div className="w-full"></div>
                     </div>
                   </label>

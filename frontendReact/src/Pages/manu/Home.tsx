@@ -15,8 +15,8 @@ const Home = () => {
   ]);
   let phoneInfo = [
     {
-      name: "Xiaomi 13",
-      img: mi,
+      name: "Xiaomi 12 Pro",
+      img: "https://m.media-amazon.com/images/I/31UhwG+XTJL._SY300_SX300_.jpg",
       grand: "mi",
       link: "/Xiami 13",
       info: [
@@ -25,13 +25,88 @@ const Home = () => {
         "16.94cm (6.67) 3D Curved E3 AMOLED Display",
       ],
       value: [
-        { for: "128 GB", price: "1000" },
+        { for: "128 GB", price: "55,999" },
+        { for: "246 GB", price: "5000" },
+      ],
+    },
+    {
+      name: "realme narzo 50",
+      img: "https://m.media-amazon.com/images/I/81gRC3KTeaL._SX679_.jpg",
+      link: "/Xiami 13",
+      grand: "mi",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "12,999" },
+        { for: "246 GB", price: "15,000" },
+      ],
+    },
+    {
+      name: "OnePlus 11 5G",
+      img: "https://m.media-amazon.com/images/I/414+xRBltFL._SY300_SX300_.jpg",
+      grand: "OnePlus",
+      link: "/Xiami 13",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "56,999" },
+        { for: "246 GB", price: "59,999" },
+      ],
+    },
+    {
+      name: "samsung s23",
+      img: "https://m.media-amazon.com/images/I/61bM8Mojf6L._SX679_.jpg",
+      grand: "samsung",
+      link: "/samsung s23",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "94,999" },
+        { for: "246 GB", price: "17,000" },
+      ],
+    },
+    {
+      name: "SAMSUNG Galaxy Z",
+      img: "https://m.media-amazon.com/images/I/41qW6++dNmL.jpg",
+      grand: "samsung",
+      link: "/Xiami 13",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "49,490" },
+        { for: "246 GB", price: "35,000" },
+      ],
+    },
+    {
+      name: "Xiaomi 13",
+      img: "https://m.media-amazon.com/images/I/71zDl128yGL._SX679_.jpg",
+      grand: "mi",
+      link: "/Xiami 13",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "99,999" },
         { for: "246 GB", price: "5000" },
       ],
     },
     {
       name: "Xiaomi 13",
-      img: mi,
+      img: "https://m.media-amazon.com/images/I/41kg-+XWoxL._SY300_SX300_.jpg",
       link: "/Xiami 13",
       grand: "mi",
       info: [
@@ -45,8 +120,8 @@ const Home = () => {
       ],
     },
     {
-      name: "iphone 14",
-      img: mi,
+      name: "iQOO 11 5G",
+      img: "https://m.media-amazon.com/images/I/71ZeuCAbcSL._SX679_.jpg",
       grand: "apple",
       link: "/Xiami 13",
       info: [
@@ -55,13 +130,13 @@ const Home = () => {
         "16.94cm (6.67) 3D Curved E3 AMOLED Display",
       ],
       value: [
-        { for: "128 GB", price: "25,000" },
+        { for: "128 GB", price: "59,999" },
         { for: "246 GB", price: "27,000" },
       ],
     },
     {
-      name: "samsung s22",
-      img: mi,
+      name: "Tecno Phantom X2 5G",
+      img: "https://m.media-amazon.com/images/I/61k7BDoL7dL._SX679_.jpg",
       grand: "samsung",
       link: "/Xiami 13",
       info: [
@@ -70,13 +145,13 @@ const Home = () => {
         "16.94cm (6.67) 3D Curved E3 AMOLED Display",
       ],
       value: [
-        { for: "128 GB", price: "15,000" },
+        { for: "128 GB", price: "39,999" },
         { for: "246 GB", price: "17,000" },
       ],
     },
     {
-      name: "samsung s20",
-      img: mi,
+      name: "iQOO 9 SE 5G",
+      img: "https://m.media-amazon.com/images/I/618gFHEnXUL._SX679_.jpg",
       grand: "samsung",
       link: "/Xiami 13",
       info: [
@@ -85,8 +160,23 @@ const Home = () => {
         "16.94cm (6.67) 3D Curved E3 AMOLED Display",
       ],
       value: [
-        { for: "128 GB", price: "30,000" },
+        { for: "128 GB", price: "30,999" },
         { for: "246 GB", price: "35,000" },
+      ],
+    },
+    {
+      name: "iQOO 9 Pro 5G",
+      img: "https://m.media-amazon.com/images/I/616FcX9aiEL._SX679_.jpg",
+      grand: "mi",
+      link: "/Xiami 13",
+      info: [
+        "108MP Quad Camera + OIS",
+        "Qualcomm® Snapdragon™ 865",
+        "16.94cm (6.67) 3D Curved E3 AMOLED Display",
+      ],
+      value: [
+        { for: "128 GB", price: "57,990" },
+        { for: "246 GB", price: "5000" },
       ],
     },
   ];
@@ -123,10 +213,10 @@ const Home = () => {
           <div className="container mx-auto pt-10">
             <h2 className="text-3xl">Brand</h2>
             <div className="mt-10 flex gap-10 overflow-y-auto">
-              {brand.map((x) => (
-                <div className="flex justify-center">
+              {brand.map((x, n) => (
+                <div className="flex justify-center p-3">
                   <div className="rounded-lg shadow-lg bg-white w-40 h-40">
-                    <a href={x.link}>
+                    <a key={n} href={x.link}>
                       <img
                         className="rounded-t-lg mx-auto w-40 h-40"
                         src={x.img}
@@ -142,7 +232,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="container mx-auto mt-40">
+        <div className="container mx-auto p-32 h-screen">
           <Phoneinfo />
         </div>
       </div>

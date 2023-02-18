@@ -1,4 +1,6 @@
-import React from "react";
+import { Carousel } from "@mantine/carousel";
+import { useNavigate } from "react-router-dom";
+import { Button, Card, Group, Image, Text, createStyles } from "@mantine/core";
 
 interface PhoneProps {
   name: string;
@@ -10,41 +12,109 @@ interface PhoneProps {
   }[];
   path: string;
 }
+const useStyles = createStyles((theme) => ({
+  card: {
+    width: "300px",
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+
+    [theme.fn.smallerThan("md")]: {
+      display: "block",
+    },
+  },
+
+  imageSection: {
+    padding: theme.spacing.md,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  label: {
+    marginBottom: theme.spacing.xs,
+    lineHeight: 1,
+    fontWeight: 700,
+    fontSize: theme.fontSizes.xs,
+    letterSpacing: -0.25,
+    textTransform: "uppercase",
+  },
+
+  section: {
+    padding: theme.spacing.md,
+
+    [theme.fn.smallerThan("md")]: {
+      marginLeft: "0px",
+    },
+  },
+
+  icon: {
+    marginRight: 5,
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[2]
+        : theme.colors.gray[5],
+  },
+}));
 
 const PhoneCard = ({ name, phones, path }: PhoneProps) => {
+  const naviget = useNavigate();
+  const { classes } = useStyles();
+
+  function Sell(name: string) {
+    naviget(`${window.location.pathname}buy/${name}`);
+  }
+
   return (
     <div className="container mx-auto pt-10">
       <h2 className="text-3xl">{name}</h2>
-      <div className="mt-10 flex gap-10 overflow-y-auto">
-        {phones.map((x: any) => (
-          <div className="flex justify-center">
-            <div className="rounded-lg shadow-lg bg-white w-60">
-              <a href={path + x.link}>
-                <img className="rounded-t-lg mx-auto" src={x.img} alt="" />
-              </a>
-              <hr />
-              <div className="p-6">
-                <h5 className="text-gray-900 text-xl font-medium mb-2">
-                  {x.name}
-                </h5>
-                <h6 className="text-gray-700 text-base mb-4"></h6>
-                <h6 className="text-gray-700 text-base mb-4">
-                  ₹ {x.value[0].price}
-                </h6>
-                <a
-                  href={path + x.link}
-                  className="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  Buy
-                </a>
-              </div>
+      <Carousel
+        controlsOffset="xl"
+        height={500}
+        slideSize="20%"
+        slideGap="md"
+        align="start"
+        controlSize={30}
+        loop
+      >
+        {phones.map((x, n) => (
+          <Carousel.Slide key={n}>
+            <div className="p-4">
+              <Card withBorder radius="md" className={classes.card} shadow="lg">
+                <Card.Section className={classes.imageSection} mb={-16}>
+                  <Image width={300} height={300} fit="contain" src={x.img} />
+                </Card.Section>
+
+                <Card.Section className={classes.section} mt={-16}>
+                  <Group position="apart" h="100%">
+                    <Group my="md" w="100%">
+                      <div>
+                        <Text className="text-2xl" weight={500}>
+                          {x.name}
+                        </Text>
+                      </div>
+                    </Group>
+
+                    <Group spacing={50} position="apart">
+                      <Text size="xl" weight={500} sx={{ lineHeight: 1 }}>
+                        ₹ {x.value[0].price}
+                      </Text>
+                      <Button
+                        radius="md"
+                        variant="outline"
+                        color="violet"
+                        style={{ flex: 1 }}
+                        onClick={() => Sell(x.name)}
+                      >
+                        Buy
+                      </Button>
+                    </Group>
+                  </Group>
+                </Card.Section>
+              </Card>
             </div>
-          </div>
+          </Carousel.Slide>
         ))}
-        <div className="md:w-14 mt-auto underline text-purple-700">
-          <a href="\">view all</a>
-        </div>
-      </div>
+      </Carousel>
     </div>
   );
 };

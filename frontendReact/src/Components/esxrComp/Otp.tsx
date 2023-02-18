@@ -82,12 +82,12 @@ const Otp = () => {
   }
 
   return (
-    <div className="otp md:pt-20 my-28 h-fit">
-      <div className="container relative flex flex-col justify-center mt-10 overflow-hidden mx-auto">
-        <div className="sm:w-96 w-full p-6 m-auto bg-white rounded-md shadow-lg my-3">
-          <h1 className="md:text-2xl text-xl font-semibold text-center">
-            Otp send to {user.phone_number}
-          </h1>
+    <div className="otp">
+      <div className="container relative flex flex-col justify-center overflow-hidden mx-auto">
+        <div className="m-auto bg-white rounded-md lg:max-w-xl sm:max-w-fit">
+          {/* <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
+            {cookies.user.data.success ? "Login" : "SignUp"}
+          </h1> */}
           <div className="input-group w-full mt-10 text-center">
             <label className="label">OTP</label>
             <div className="p-3 flex justify-center">
@@ -104,22 +104,14 @@ const Otp = () => {
             <ResendOTP onResendClick={Resendotp} />
           </div>
           {/* {massage && <label className="text-red-700">{massage}</label>} */}
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <button
               onClick={login}
               className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
             >
-              Verify
+              {cookies.user.data.success ? "Login" : "SignUp"}
             </button>
-          </div>
-          <div className="mt-6">
-            <button
-              className="w-full px-4 py-2 tracking-wide text-purple-600 transition-colors duration-200 transform border-purple-700 rounded-md hover:border-purple-600 focus:outline-none focus:border-purple-600"
-              onClick={() => navigate("/login")}
-            >
-              Go back to login
-            </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

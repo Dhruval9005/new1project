@@ -3,20 +3,19 @@ import keys from "../../../config/keys";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { showNotification } from "@mantine/notifications";
 
 const numAuth = new RegExp(
   "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
 );
 
 const Login = () => {
-  let naviget = useNavigate();
+  let navigate = useNavigate();
   let [mobileNumber, setMobileNumber] = useState("");
   let [massage, setMassage] = useState("");
   const [cookies, setCookie] = useCookies(["otp", "user"]);
 
   async function SendMobile() {
-    console.log(keys.server_url);
-    
     if (numAuth.test(mobileNumber)) {
       setMassage("");
       try {
@@ -25,14 +24,11 @@ const Login = () => {
         );
         if (response.data.success) {
           try {
-            let res = await axios.post(
-              `${keys.server_url}/user/send-otp`,
-              {
-                mobileNo: Number(response.data.data.phone_number),
-                id: response.data.data._id,
-              }
-            );
-            naviget(`/login/otp`);
+            let res = await axios.post(`${keys.server_url}/user/send-otp`, {
+              mobileNo: Number(response.data.data.phone_number),
+              id: response.data.data._id,
+            });
+            navigate(`/login/otp`);
             setCookie("user", response, { path: "/" });
             setCookie("otp", res, { path: "/" });
           } catch (err) {
@@ -40,8 +36,6 @@ const Login = () => {
           }
         }
       } catch (err: any) {
-        console.log(err);
-        
         if (
           err.response.data.error == "No user found with this phone number."
         ) {
@@ -49,7 +43,7 @@ const Login = () => {
             let res = await axios.post(`${keys.server_url}/user/send-otp`, {
               mobileNo: mobileNumber,
             });
-            naviget(`/signup`);
+            navigate(`/signup`);
             setCookie("user", err.response, { path: "/" });
             setCookie("otp", res, { path: "/" });
           } catch (err) {
@@ -58,14 +52,21 @@ const Login = () => {
         }
       }
     } else {
-      setMassage("please enter valid mobile number");
+      showNotification({
+        title: "please enter valid mobile number",
+        message: "",
+        autoClose: 2000,
+        color: "red",
+        disallowClose: false,
+      });
+      // setMassage("please enter valid mobile number");
     }
   }
 
   return (
-    <div className="Login md:pt-32 my-32 h-fit">
+    <div className="Login md:pt-32 my-28 h-fit">
       <div className="container relative flex flex-col justify-center overflow-hidden mx-auto">
-        <div className="w-96 p-6 m-auto bg-white rounded-md shadow-md">
+        <div className="sm:w-96 w-full p-6 m-auto bg-white rounded-md shadow-lg my-3">
           <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
             Login
           </h1>
@@ -79,14 +80,22 @@ const Login = () => {
               onChange={(e) => setMobileNumber(e.target.value)}
               required
             />
-            {massage && <label className="text-red-700">{massage}</label>}
+            {/* {massage && <label className="text-red-700">{massage}</label>} */}
           </div>
           <div className="mt-6">
             <button
               className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
               onClick={SendMobile}
             >
-              Login
+              Send otp
+            </button>
+          </div>
+          <div className="mt-6">
+            <button
+              className="w-full px-4 py-2 tracking-wide text-purple-600 transition-colors duration-200 transform border-purple-700 rounded-md hover:border-purple-600 focus:outline-none focus:border-purple-600"
+              onClick={() => navigate("/signup")}
+            >
+              Create an account
             </button>
           </div>
         </div>

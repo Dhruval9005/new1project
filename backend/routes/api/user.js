@@ -3,8 +3,10 @@ const jwt = require("jsonwebtoken");
 const axios = require("axios");
 const User = require("../../models/user");
 const keys = require("../../config/keys");
+const { requireUserAuth } = require("../../middleware/auth");
 const { red } = require("../../utils/consoleColor");
 
+// FIND-USER BY PHONE NO API //
 router.get("/find-user/:phone_number", async (req, res) => {
   try {
     console.log(`req data:>>`, req.params);
@@ -29,7 +31,6 @@ router.get("/find-user/:phone_number", async (req, res) => {
         error: "No user found with this phone number.",
       });
     }
-
     console.log(`response:>>`, user);
     res.status(200).json({ success: true, data: user });
   } catch (error) {
@@ -42,6 +43,7 @@ router.get("/find-user/:phone_number", async (req, res) => {
 
 const OTP = {};
 
+// SEND OTP TO PHONE NO API //
 router.post("/send-otp", async (req, res) => {
   const { mobileNo, id } = req.body;
 
@@ -73,6 +75,7 @@ router.post("/send-otp", async (req, res) => {
   });
 });
 
+// OTP VERIFICATION API FOR CUSTOMER LOGIN-SIGNUP //
 router.post("/verify-otp", async (req, res) => {
   try {
     const { otp, user } = req.body;
@@ -121,6 +124,17 @@ router.post("/verify-otp", async (req, res) => {
         message: "Error in fetched data",
       });
     }
+
+    ///////////////////////////////
+    // set-cookie for testing
+    ///////////////////////////////
+    // const { token } = userData;
+    // console.log(token);
+    // res.cookie(keys.cookie_name.customer, token, {
+    //   httpOnly: true,
+    // });
+    ///////////////////////////////
+
     // SUCCESSFULLY AUTHENTICATION //
     res.status(200).json({
       success: true,
@@ -128,28 +142,72 @@ router.post("/verify-otp", async (req, res) => {
       userData,
       // testVariable: { otp, OTP, userData: userData },
     });
+
     destroyOTP();
   } catch (error) {
     console.log(red, `Catched Errorr >>> `);
     console.log(error);
 
     if (error.message.includes("Missing required fields")) {
-      res.status(400).json({ success: false, message: error.message });
+      res.status(400).json({ success: false, error: error.message });
     }
 
     if (error.message.includes("Error in fetching data from Database")) {
       res.status(400).json({
         success: false,
-        message: error.message,
+        error: error.message,
       });
     }
 
     if (error.code === 1000) {
       res.status(400).json({
         success: false,
-        message: "Phone number is already linked to a another account",
+        error: "Phone number is already linked to a another account",
       });
     }
+  }
+});
+
+// GET CUSTOMER DETAILS API //
+router.get("/profile", requireUserAuth, (req, res) => {
+  try {
+    res.status(200).json({ success: true, userData: req.user });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      error: "Your request could not be processed. Please try again.",
+    });
+  }
+});
+
+// UPDATE CUSTOMER DETAILS API //
+router.put("/update", requireUserAuth, async (req, res) => {
+  try {
+    // console.log(req);
+    if (!req.user || Object.keys(req.body).length === 0) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Missing required fields" });
+    }
+    const userId = req.user._id;
+    const update = req.body;
+    const query = { _id: userId };
+
+    const userUpdate = await User.findOneAndUpdate(query, update, {
+      new: true,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Your profile is successfully updated",
+      user: userUpdate,
+    });
+  } catch (error) {
+    console.log("update error", error);
+    res.status(400).json({
+      success: false,
+      error: "Your request could not be processed. Please try again",
+    });
   }
 });
 
@@ -208,18 +266,20 @@ const createToken = (payload) => {
   return jwt.sign(payload, keys.secret_key, { expiresIn: maxAge });
 };
 
-// FETCH USER DATA //
+// FETCH USER-DATA & JWT //
 const fetchUserData = (user) => {
   const payload = {
     id: user.id,
   };
 
   return {
-    id: user.id,
-    fname: user.fname,
-    lname: user.lname,
-    phone_number: user.phone_number,
-    created: user.created,
+    // id: user.id,
+    // fname: user.fname,
+    // lname: user.lname,
+    // phone_number: user.phone_number,
+    // created: user.created,
+    // token: createToken(payload),
+    ...user._doc,
     token: createToken(payload),
   };
 };
@@ -258,6 +318,7 @@ const signup = async (fname, lname, phone_number) => {
 
   // const { token, userData } = fetchUserData(registeredUser);
   // return token and user detail //
+
   return fetchUserData(registeredUser);
 };
 

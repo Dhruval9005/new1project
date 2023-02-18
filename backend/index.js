@@ -8,7 +8,7 @@ const morgan = require("morgan");
 const app = express();
 const connectDB = require("./config/db");
 const routes = require("./routes");
-const { port } = require("./config/keys");
+const { port, base_url } = require("./config/keys");
 const { blue } = require("./utils/consoleColor");
 
 connectDB();
@@ -34,8 +34,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(
-    blue,
-    `✓ Listening on Port:${port}. Visit http://localhost:${port}/`
-  );
+  console.log(blue, `✓ Listening on Port:${port}. Visit ${base_url}`);
 });

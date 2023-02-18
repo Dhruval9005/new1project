@@ -40,7 +40,8 @@ const Expr = () => {
       {/* <NotificationsProvider position="bottom-right" zIndex={2077} limit={5}>
         <Demo />
       </NotificationsProvider> */}
-      <Phoneinfo />
+      {/* <Phoneinfo /> */}
+
       <div className="container mx-auto pt-10 h-fit mb-10">
         <div className="flex flex-col justify-center overflow-hidden">
           <div className="w-full p-2 m-auto lg:max-w-4xl">
