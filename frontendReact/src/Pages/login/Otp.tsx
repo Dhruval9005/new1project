@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { showNotification } from "@mantine/notifications";
+import { IconCheck } from "@tabler/icons";
 
 const Otp = () => {
   const navigate = useNavigate();
@@ -14,12 +15,11 @@ const Otp = () => {
     "userdata",
   ]);
   const [OTP, setOTP] = useState("");
-  // let [massage, setMassage] = useState("");
-  let user = cookies.user.data.data;
+  let user = cookies.user;
 
   async function login() {
-    if (cookies.user.data.success) {
-      let id = cookies.user.data.data._id;
+    if (cookies.user._id) {
+      let id = cookies.user._id;
       console.log(keys.server_url);
       try {
         let res = await axios.post(`${keys.server_url}/user/verify-otp`, {
@@ -34,7 +34,6 @@ const Otp = () => {
         }
       } catch (err) {
         console.log(err);
-        // setMassage("OTP Verification Failed");
         showNotification({
           title: "OTP Verification Failed",
           message: "",
@@ -47,7 +46,7 @@ const Otp = () => {
       try {
         let res = await axios.post(`${keys.server_url}/user/verify-otp`, {
           otp: OTP,
-          user: cookies.userdata,
+          user: cookies.user,
         });
         if (res.data.success) {
           navigate("/");
@@ -58,7 +57,6 @@ const Otp = () => {
         console.log(res);
       } catch (err) {
         console.log(err);
-        // setMassage("OTP Verification Failed");
         showNotification({
           title: "OTP Verification Failed",
           message: "",
@@ -76,6 +74,14 @@ const Otp = () => {
         mobileNo: Number(user.phone_number),
       });
       setCookie("otp", res, { path: "/" });
+      showNotification({
+        title: "OTP Send",
+        message: "",
+        autoClose: 2000,
+        color: "green",
+        icon: <IconCheck size={16} />,
+        disallowClose: false,
+      });
     } catch (err) {
       console.log(err);
     }

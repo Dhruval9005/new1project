@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { showNotification } from "@mantine/notifications";
+import { IconCheck } from "@tabler/icons";
 
 const numAuth = new RegExp(
   "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
@@ -17,7 +18,7 @@ const Login = () => {
 
   async function SendMobile() {
     if (numAuth.test(mobileNumber)) {
-      setMassage("");
+      // setMassage("");
       try {
         let response = await axios.get(
           `${keys.server_url}/user/find-user/${mobileNumber}`
@@ -29,8 +30,16 @@ const Login = () => {
               id: response.data.data._id,
             });
             navigate(`/login/otp`);
-            setCookie("user", response, { path: "/" });
+            setCookie("user", response.data.data, { path: "/" });
             setCookie("otp", res, { path: "/" });
+            showNotification({
+              title: "OTP Send",
+              message: "",
+              autoClose: 2000,
+              color: "green",
+              icon: <IconCheck size={16} />,
+              disallowClose: false,
+            });
           } catch (err) {
             console.log(err);
           }
@@ -39,16 +48,13 @@ const Login = () => {
         if (
           err.response.data.error == "No user found with this phone number."
         ) {
-          try {
-            let res = await axios.post(`${keys.server_url}/user/send-otp`, {
-              mobileNo: mobileNumber,
-            });
-            navigate(`/signup`);
-            setCookie("user", err.response, { path: "/" });
-            setCookie("otp", res, { path: "/" });
-          } catch (err) {
-            console.log(err);
-          }
+          showNotification({
+            title: "No User Found",
+            message: "",
+            autoClose: 2000,
+            color: "red",
+            disallowClose: false,
+          });
         }
       }
     } else {

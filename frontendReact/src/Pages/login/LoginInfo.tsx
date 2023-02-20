@@ -1,6 +1,14 @@
+import { showNotification } from "@mantine/notifications";
+import axios from "axios";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import keys from "../../../config/keys";
+import { IconCheck } from "@tabler/icons";
+
+const numAuth = new RegExp(
+  "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
+);
 
 const LoginInfo = () => {
   let navigate = useNavigate();
@@ -8,11 +16,57 @@ const LoginInfo = () => {
   let [lname, setLname] = useState("");
   let [phone_number, setPhone_Number] = useState("");
   let userdata = { fname, lname, phone_number };
-  const [cookies, setCookie] = useCookies(["userdata"]);
+  const [cookies, setCookie] = useCookies(["otp", "user"]);
 
-  function sendData() {
-    setCookie("userdata", userdata, { path: "/login" });
-    navigate("/login");
+  async function sendData() {
+    if (numAuth.test(phone_number)) {
+      try {
+        let response = await axios.get(
+          `${keys.server_url}/user/find-user/${phone_number}`
+        );
+        console.log(response);
+        if (response.data.success) {
+          showNotification({
+            title: "User Already Exists",
+            message: "",
+            autoClose: 2000,
+            color: "green",
+            disallowClose: false,
+          });
+        }
+      } catch (err: any) {
+        if (
+          err.response.data.error == "No user found with this phone number."
+        ) {
+          try {
+            let res = await axios.post(`${keys.server_url}/user/send-otp`, {
+              mobileNo: phone_number,
+            });
+            navigate(`/login/otp`);
+            setCookie("user", userdata, { path: "/" });
+            setCookie("otp", res, { path: "/" });
+            showNotification({
+              title: "OTP Send",
+              message: "",
+              autoClose: 2000,
+              color: "green",
+              icon: <IconCheck size={16} />,
+              disallowClose: false,
+            });
+          } catch (err) {
+            console.log(err);
+          }
+        }
+      }
+    } else {
+      showNotification({
+        title: "please enter valid mobile number",
+        message: "",
+        autoClose: 2000,
+        color: "red",
+        disallowClose: false,
+      });
+    }
   }
 
   return (

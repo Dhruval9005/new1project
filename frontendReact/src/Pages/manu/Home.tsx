@@ -32,8 +32,8 @@ const Home = () => {
     {
       name: "realme narzo 50",
       img: "https://m.media-amazon.com/images/I/81gRC3KTeaL._SX679_.jpg",
-      link: "/Xiami 13",
       grand: "mi",
+      link: "/Xiami 13",
       info: [
         "108MP Quad Camera + OIS",
         "Qualcomm® Snapdragon™ 865",
@@ -214,9 +214,9 @@ const Home = () => {
             <h2 className="text-3xl">Brand</h2>
             <div className="mt-10 flex gap-10 overflow-y-auto">
               {brand.map((x, n) => (
-                <div className="flex justify-center p-3">
+                <div key={n} className="flex justify-center p-3">
                   <div className="rounded-lg shadow-lg bg-white w-40 h-40">
-                    <a key={n} href={x.link}>
+                    <a href={x.link}>
                       <img
                         className="rounded-t-lg mx-auto w-40 h-40"
                         src={x.img}
@@ -226,13 +226,10 @@ const Home = () => {
                   </div>
                 </div>
               ))}
-              <div className="mt-auto underline text-purple-700 mr-10">
-                <a href="\">view all</a>
-              </div>
             </div>
           </div>
         </div>
-        <div className="container mx-auto p-32 h-screen">
+        <div className="container mx-auto pt-28 h-fit">
           <Phoneinfo />
         </div>
       </div>

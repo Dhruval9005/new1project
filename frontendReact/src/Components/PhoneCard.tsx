@@ -68,13 +68,24 @@ const PhoneCard = ({ name, phones, path }: PhoneProps) => {
     <div className="container mx-auto pt-10">
       <h2 className="text-3xl">{name}</h2>
       <Carousel
-        controlsOffset="xl"
+        loop                  
         height={500}
         slideSize="20%"
         slideGap="md"
         align="start"
-        controlSize={30}
-        loop
+        controlSize={40}
+        styles={{
+          control: {
+            backgroundColor: "#374151",
+            marginLeft: "-70px",
+            marginRight: "-70px",
+            borderRadius: "10%",
+            height: "100px",
+          },
+          controls: {
+            height: "0px",
+          },
+        }}
       >
         {phones.map((x, n) => (
           <Carousel.Slide key={n}>

@@ -192,7 +192,7 @@ const Buyphone = () => {
         <h1 className="md:text-4xl text-2xl mt-6 mx-10">Buy Old Phone</h1>
         <div className="flex md:flex-row flex-col">
           <div className="filter md:w-1/4 my-9 mx-10 hidden md:block">
-            <div className="brand flex flex-col my-5">
+            <div className="brand mt-2 mb-5">
               <label
                 htmlFor="steps-range"
                 className="block mb-2 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
@@ -200,26 +200,13 @@ const Buyphone = () => {
                 Brand
               </label>
               <Chip.Group multiple mt={15}>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="apple"
-                >
+                <Chip color="violet" variant="filled" radius="md" value="apple">
                   Apple
                 </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="mi"
-                >
+                <Chip color="violet" variant="filled" radius="md" value="mi">
                   Mi
                 </Chip>
                 <Chip
-                  className="w-full"
                   color="violet"
                   variant="filled"
                   radius="md"
@@ -228,70 +215,41 @@ const Buyphone = () => {
                   Samsung
                 </Chip>
               </Chip.Group>
-              {/* <div>
-                <input
-                  type="checkbox"
-                  name="brand"
-                  id="apple"
-                  value="apple"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="apple">Apple</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="brand"
-                  id="mi"
-                  value="mi"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="mi">Mi</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="brand"
-                  id="samsung"
-                  value="samsung"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="samsung">Samsung</label>
-              </div> */}
             </div>
             <hr className="border-purple-700" />
-            <div className="price my-10">
-              <div>
-                <RangeSlider
-                  color="violet"
-                  size="lg"
-                  radius="lg"
-                  min={5000}
-                  max={100000}
-                  step={5000}
-                  marks={[
-                    { value: 20000, label: "₹ 20,000" },
-                    { value: 50000, label: "₹ 50,000" },
-                    { value: 80000, label: "₹ 80,000" },
-                  ]}
-                  value={rangeValue}
-                  onChange={setRangeValue}
-                />
-                {/* <NumberInput
-                  label="Price"
-                  defaultValue={1000}
-                  variant="unstyled"
-                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
-                  formatter={(value) =>
-                    !Number.isNaN(parseFloat(value))
-                      ? `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                      : "$ "
-                  }
-                /> */}
-              </div>
+            <div className="price mt-2 mb-10">
+              <label
+                htmlFor="steps-range"
+                className="block mb-5 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
+              >
+                Price
+              </label>
+              <RangeSlider
+                label={(value) =>
+                  !Number.isNaN(parseFloat(value))
+                    ? `₹ ${value}`.replace(
+                        /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                        ","
+                      )
+                    : "₹ "
+                }
+                color="violet"
+                size="md"
+                radius="lg"
+                min={5000}
+                max={100000}
+                step={5000}
+                marks={[
+                  { value: 20000, label: "₹ 20,000" },
+                  { value: 50000, label: "₹ 50,000" },
+                  { value: 80000, label: "₹ 80,000" },
+                ]}
+                value={rangeValue}
+                onChange={setRangeValue}
+              />
             </div>
             <hr className="border-purple-700" />
-            <div className="ram my-5">
+            <div className="ram mt-2 mb-5">
               <label
                 className="block mb-2 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
                 htmlFor=""
@@ -387,7 +345,7 @@ const Buyphone = () => {
               </div> */}
             </div>
             <hr className="border-purple-700" />
-            <div className="storage my-5">
+            <div className="storage mt-2 mb-5">
               <label
                 className="block mb-2 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
                 htmlFor=""
