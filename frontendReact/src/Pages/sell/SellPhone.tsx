@@ -5,7 +5,7 @@ import Select from "react-select";
 
 const SellPhone = () => {
   let naviget = useNavigate();
-  let [phoneModel, setphoneModel] = useState();
+  let [phoneModel, setphoneModel] = useState({ value: String, label: String });
 
   function next() {
     if (phoneModel != undefined && phoneModel != null) {

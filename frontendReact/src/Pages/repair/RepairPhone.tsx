@@ -1,10 +1,10 @@
+import Select from "react-select";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Select from "react-select";
 
 const RepairPhone = () => {
   let naviget = useNavigate();
-  let [phoneModel, setphoneModel] = useState();
+  let [phoneModel, setphoneModel] = useState({ value: String, label: String });
 
   const brand = [
     { value: "samsung", label: "Samsung" },
@@ -22,7 +22,10 @@ const RepairPhone = () => {
   }
 
   function next() {
-    naviget(`/Repair/${phoneModel}`);
+    if (phoneModel != undefined && phoneModel != null) {
+      let model = phoneModel.label;
+      naviget(`/Repair/${model}`);
+    }
   }
   return (
     <div className="repair h-fit md:mt-28 mb-28">

@@ -41,9 +41,9 @@ const Navbutton = () => {
                 </div>
                 <div className="flex justify-center">
                   <a href="/bidding" className="">
-                    <button className="w-[335px] h-44 text-center">
+                    <button className="w-[335px] max-[320px]:w-40 h-44 text-center">
                       <img src={bidding} className="w-16 mx-auto mb-2" />
-                      <span className="text-2xl">Bid on Phone</span>
+                      <span className="sm:text-2xl">Bid on Phone</span>
                     </button>
                   </a>
                 </div>

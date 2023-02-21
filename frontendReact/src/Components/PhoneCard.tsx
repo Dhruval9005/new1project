@@ -8,7 +8,7 @@ interface PhoneProps {
     name: string;
     img: string;
     link: string;
-    value: { for: string; price: string }[];
+    value: { for: string; price: Number }[];
   }[];
   path: string;
 }
@@ -68,7 +68,7 @@ const PhoneCard = ({ name, phones, path }: PhoneProps) => {
     <div className="container mx-auto pt-10">
       <h2 className="text-3xl">{name}</h2>
       <Carousel
-        loop                  
+        loop
         height={500}
         slideSize="20%"
         slideGap="md"
@@ -107,7 +107,11 @@ const PhoneCard = ({ name, phones, path }: PhoneProps) => {
 
                     <Group spacing={50} position="apart">
                       <Text size="xl" weight={500} sx={{ lineHeight: 1 }}>
-                        ₹ {x.value[0].price}
+                        {/* ₹ {x.value[0].price} */}
+                        {`₹ ${x.value[0].price}`.replace(
+                          /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                          ","
+                        )}
                       </Text>
                       <Button
                         radius="md"

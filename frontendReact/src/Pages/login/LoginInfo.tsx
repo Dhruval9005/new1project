@@ -24,7 +24,6 @@ const LoginInfo = () => {
         let response = await axios.get(
           `${keys.server_url}/user/find-user/${phone_number}`
         );
-        console.log(response);
         if (response.data.success) {
           showNotification({
             title: "User Already Exists",

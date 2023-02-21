@@ -87,7 +87,7 @@ export function Navbar({ links, user }: HeaderSearchProps) {
         </Group>
 
         <Group>
-          <Group ml={50} spacing={5} className={classes.links}>
+          <Group spacing={5} className={classes.links}>
             {items}
           </Group>
           {/* <Autocomplete

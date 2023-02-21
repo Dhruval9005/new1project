@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-// import { Card } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import mi from "../../assets/Mi10.jpg";
-import {
-  // IconGasStation,
-  // IconGauge,
-  // IconManualGearbox,
-  IconUsers,
-  // IconCamera,
-  // TablerIcon,
-} from "@tabler/icons";
 import { Phone } from "../../Components/Phone";
+import {
+  IconGasStation,
+  IconGauge,
+  IconManualGearbox,
+  IconUsers,
+  IconCamera,
+  TablerIcon,
+} from "@tabler/icons";
 
 const Bidding = () => {
   let naviget = useNavigate();
@@ -38,8 +37,8 @@ const Bidding = () => {
         },
       ],
       value: [
-        { for: "128 Gb", price: "21,000" },
-        { for: "246 Gb", price: "25,000" },
+        { for: "128 Gb", price: 21000 },
+        { for: "246 Gb", price: 25000 },
       ],
     },
     {
@@ -65,8 +64,8 @@ const Bidding = () => {
         },
       ],
       value: [
-        { for: "128 Gb", price: "21,000" },
-        { for: "246 Gb", price: "25,000" },
+        { for: "128 Gb", price: 21000 },
+        { for: "246 Gb", price: 25000 },
       ],
     },
     {
@@ -92,8 +91,8 @@ const Bidding = () => {
         },
       ],
       value: [
-        { for: "128 Gb", price: "21,000" },
-        { for: "246 Gb", price: "25,000" },
+        { for: "128 Gb", price: 21000 },
+        { for: "246 Gb", price: 25000 },
       ],
     },
     {
@@ -119,8 +118,8 @@ const Bidding = () => {
         },
       ],
       value: [
-        { for: "128 Gb", price: "21,000" },
-        { for: "246 Gb", price: "25,000" },
+        { for: "128 Gb", price: 21000 },
+        { for: "246 Gb", price: 25000 },
       ],
     },
     {
@@ -146,8 +145,8 @@ const Bidding = () => {
         },
       ],
       value: [
-        { for: "128 Gb", price: "21,000" },
-        { for: "246 Gb", price: "25,000" },
+        { for: "128 Gb", price: 21000 },
+        { for: "246 Gb", price: 25000 },
       ],
     },
   ]);
@@ -163,35 +162,7 @@ const Bidding = () => {
           <div className="main flex justify-center my-9 flex-wrap">
             {phoneInfo.map((x) => (
               <div className="m-4">
-                <Phone data={x} info="Bid on phone"/>
-                {/* <Card imgSrc={x.img} className="p-4">
-                  <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {x.name}
-                  </h5>
-                  <div>
-                    <ul className="font-medium list-disc">
-                      {x.info.map((i) => (
-                        <li>{i}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h1 className="text-2xl font-bold text-red-600">
-                      ₹ {x.value[0].price}
-                    </h1>
-                    <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
-                  </div>
-                  <div>
-                    <button
-                      value={x.name}
-                      onClick={(e) => badding(x.name)}
-                      className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
-                    >
-                      Bid on {x.name}
-                      <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
-                    </button>
-                  </div>
-                </Card> */}
+                <Phone data={x} info="Bid on phone" />
               </div>
             ))}
           </div>

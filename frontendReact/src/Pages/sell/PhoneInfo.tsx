@@ -44,7 +44,7 @@ const PhoneInfo = () => {
       <div className="container w-full mx-auto">
         <h1 className="md:text-4xl text-2xl mt-6 ml-3 ">
           Sell Your Old
-          <span className="text-purple-700">{phoneinfo.name}</span>
+          <span className="text-purple-700"> {phoneinfo.name}</span>
         </h1>
         <div className="md:w-3/4 w-fit flex flex-col md:flex-row mx-auto shadow-lg md:my-40">
           <img
@@ -58,14 +58,15 @@ const PhoneInfo = () => {
                 {phoneinfo.name}
               </h1>
               <ul className="font-medium list-disc">
-                {phoneinfo.info.map((i) => (
-                  <li>{i}</li>
+                {phoneinfo.info.map((i, n) => (
+                  <li key={n}>{i}</li>
                 ))}
               </ul>
             </div>
             <div>
-              {phoneinfo.value.map((i) => (
+              {phoneinfo.value.map((i, n) => (
                 <button
+                  key={n}
                   className="mx-4 my-4 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
                   onClick={(e) => setPrice(i.price)}
                   value={i.price}

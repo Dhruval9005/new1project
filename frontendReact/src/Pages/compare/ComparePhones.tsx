@@ -37,7 +37,7 @@ const ComparePhones = () => {
   function FirstSelect(selectedOption: any) {
     setFirstPhone(selectedOption);
   }
-  
+
   function SecondSelect(selectedOption: any) {
     setSecondPhone(selectedOption);
   }

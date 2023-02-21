@@ -17,7 +17,6 @@ import {
   IconCamera,
   TablerIcon,
 } from "@tabler/icons";
-// import mi from "../assets/Mi10.jpg";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -61,21 +60,13 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const mockdata = [
-  { label: "4 passengers", icon: IconUsers },
-  { label: "100 km/h in 4 seconds", icon: IconGauge },
-  { label: "Automatic gearbox", icon: IconManualGearbox },
-  { label: "Electric", icon: IconGasStation },
-  { label: "20-megapixel", icon: IconCamera },
-];
-
 interface phoneInfo {
   data: {
     name: string;
     img: string;
     brand: string;
     info: { label: string; icon: TablerIcon }[];
-    value: { for: string; price: string }[];
+    value: { for: string; price: Number }[];
   };
   info: string;
 }
@@ -97,7 +88,7 @@ export function Phone({ data, info }: phoneInfo) {
   return (
     <Card withBorder radius="md" className={classes.card}>
       <Card.Section className={classes.imageSection}>
-        <Image src={data.img} />
+        <Image width={400} height={400} fit="contain" src={data.img} />
       </Card.Section>
 
       <Group position="apart" mt="md">
@@ -114,7 +105,7 @@ export function Phone({ data, info }: phoneInfo) {
       <Card.Section className={classes.section} mt="md">
         <Text size="sm" color="dimmed" className={classes.label}>
           Basic Info
-        </Text> 
+        </Text>
 
         <Group spacing={8} mb={-8}>
           {features}
@@ -125,17 +116,20 @@ export function Phone({ data, info }: phoneInfo) {
         <Group spacing={30}>
           <div>
             <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
-              {data.value[0].price}
+              {`₹ ${data.value[0].price}`.replace(
+                /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                ","
+              )}
             </Text>
-            {/* <Text
+            <Text
               size="sm"
               color="dimmed"
               weight={500}
               sx={{ lineHeight: 1 }}
               mt={3}
             >
-              per day
-            </Text> */}
+              {/* per day */}
+            </Text>
           </div>
 
           <Button

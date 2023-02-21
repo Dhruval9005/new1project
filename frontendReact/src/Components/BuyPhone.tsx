@@ -95,8 +95,8 @@ export function BuyPhone({ info }: phoneInfo) {
     <Card withBorder radius="md" className={classes.card} shadow="lg">
       <Card.Section className={classes.imageSection} mb={-16}>
         <Tabs defaultValue={info.img[0].label} inverted className="">
-          {info.img.map((x) => (
-            <Tabs.Panel value={x.label} pb="xs">
+          {info.img.map((x, n) => (
+            <Tabs.Panel key={n} value={x.label} pb="xs">
               <Image
                 width={300}
                 height={400}
@@ -107,8 +107,8 @@ export function BuyPhone({ info }: phoneInfo) {
             </Tabs.Panel>
           ))}
           <Tabs.List className="w-fit mx-auto">
-            {info.img.map((x) => (
-              <Tabs.Tab value={x.label}>
+            {info.img.map((x, n) => (
+              <Tabs.Tab key={n} value={x.label}>
                 <Image
                   width={50}
                   height={50}

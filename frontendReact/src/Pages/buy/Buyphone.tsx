@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-// import { Card } from "flowbite-react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
-import { RangeSlider } from "@mantine/core";
+import { Accordion, RangeSlider } from "@mantine/core";
 import { Chip } from "@mantine/core";
 import {
   // IconGasStation,
@@ -12,7 +10,6 @@ import {
   // IconCamera,
   // TablerIcon,
 } from "@tabler/icons";
-import { NumberInput } from "@mantine/core";
 
 import xiaomi from "../../assets/Mi10.jpg";
 import { Phone } from "../../Components/Phone";
@@ -21,14 +18,14 @@ const Buyphone = () => {
   const [rangeValue, setRangeValue] = useState<[number, number]>([
     20000, 80000,
   ]);
-  let naviget = useNavigate();
   // let [price, setPrice] = useState("");
+  let naviget = useNavigate();
   let [filter, setFilter] = useState([{}]);
   let [phoneInfo, setPhoneinfo] = useState([
     {
-      name: "Mi 10",
-      img: xiaomi,
-      brand: "Mi",
+      name: "Xiaomi 12 Pro",
+      img: "https://m.media-amazon.com/images/I/31UhwG+XTJL._SY300_SX300_.jpg",
+      brand: "mi",
       info: [
         { label: "108MP Quad Camera + OIS", icon: IconUsers },
         { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
@@ -48,14 +45,14 @@ const Buyphone = () => {
         },
       ],
       value: [
-        { for: "128 Gb", price: "21,000" },
-        { for: "246 Gb", price: "25,000" },
+        { for: "128 Gb", price: 21000 },
+        { for: "246 Gb", price: 25000 },
       ],
     },
     {
-      name: "Mi 10",
-      img: xiaomi,
-      brand: "Mi",
+      name: "realme narzo 50",
+      img: "https://m.media-amazon.com/images/I/81gRC3KTeaL._SX679_.jpg",
+      brand: "mi",
       info: [
         { label: "108MP Quad Camera + OIS", icon: IconUsers },
         { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
@@ -75,14 +72,14 @@ const Buyphone = () => {
         },
       ],
       value: [
-        { for: "128 Gb", price: "21,000" },
-        { for: "246 Gb", price: "25,000" },
+        { for: "128 Gb", price: 21000 },
+        { for: "246 Gb", price: 25000 },
       ],
     },
     {
-      name: "Mi 10",
-      img: xiaomi,
-      brand: "Mi",
+      name: "OnePlus 11 5G",
+      img: "https://m.media-amazon.com/images/I/414+xRBltFL._SY300_SX300_.jpg",
+      brand: "OnePlus",
       info: [
         { label: "108MP Quad Camera + OIS", icon: IconUsers },
         { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
@@ -102,14 +99,14 @@ const Buyphone = () => {
         },
       ],
       value: [
-        { for: "128 Gb", price: "21,000" },
-        { for: "246 Gb", price: "25,000" },
+        { for: "128 Gb", price: 21000 },
+        { for: "246 Gb", price: 25000 },
       ],
     },
     {
-      name: "Mi 10",
-      img: xiaomi,
-      brand: "Mi",
+      name: "samsung s23",
+      img: "https://m.media-amazon.com/images/I/61bM8Mojf6L._SX679_.jpg",
+      brand: "samsung",
       info: [
         { label: "108MP Quad Camera + OIS", icon: IconUsers },
         { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
@@ -129,14 +126,14 @@ const Buyphone = () => {
         },
       ],
       value: [
-        { for: "128 Gb", price: "21,000" },
-        { for: "246 Gb", price: "25,000" },
+        { for: "128 Gb", price: 21000 },
+        { for: "246 Gb", price: 25000 },
       ],
     },
     {
-      name: "Mi 10",
-      img: xiaomi,
-      brand: "Mi",
+      name: "SAMSUNG Galaxy Z",
+      img: "https://m.media-amazon.com/images/I/41qW6++dNmL.jpg",
+      brand: "samsung",
       info: [
         { label: "108MP Quad Camera + OIS", icon: IconUsers },
         { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
@@ -156,22 +153,22 @@ const Buyphone = () => {
         },
       ],
       value: [
-        { for: "128 Gb", price: "21,000" },
-        { for: "246 Gb", price: "25,000" },
+        { for: "128 Gb", price: 21000 },
+        { for: "246 Gb", price: 25000 },
       ],
     },
   ]);
 
   useEffect(() => {
     getPhoneInfo();
-    getFilter();
-  }, []);
+    Price();
+  }, [rangeValue]);
 
   function Filter(brand: string, checked: boolean) {
     setPhoneinfo(phoneInfo.filter((x) => {}));
   }
 
-  // function Price() {}
+  function Price() {}
 
   async function getPhoneInfo() {
     // let response = await axios.get("");
@@ -195,18 +192,31 @@ const Buyphone = () => {
             <div className="brand mt-2 mb-5">
               <label
                 htmlFor="steps-range"
-                className="block mb-2 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
+                className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
               >
                 Brand
               </label>
               <Chip.Group multiple mt={15}>
-                <Chip color="violet" variant="filled" radius="md" value="apple">
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="apple"
+                >
                   Apple
                 </Chip>
-                <Chip color="violet" variant="filled" radius="md" value="mi">
+                <Chip
+                  className="w-full"
+                  color="violet"
+                  variant="filled"
+                  radius="md"
+                  value="mi"
+                >
                   Mi
                 </Chip>
                 <Chip
+                  className="w-full"
                   color="violet"
                   variant="filled"
                   radius="md"
@@ -220,18 +230,13 @@ const Buyphone = () => {
             <div className="price mt-2 mb-10">
               <label
                 htmlFor="steps-range"
-                className="block mb-5 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
+                className="block mb-5 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
               >
                 Price
               </label>
               <RangeSlider
                 label={(value) =>
-                  !Number.isNaN(parseFloat(value))
-                    ? `₹ ${value}`.replace(
-                        /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
-                        ","
-                      )
-                    : "₹ "
+                  `₹ ${value}`.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
                 }
                 color="violet"
                 size="md"
@@ -251,7 +256,7 @@ const Buyphone = () => {
             <hr className="border-purple-700" />
             <div className="ram mt-2 mb-5">
               <label
-                className="block mb-2 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
+                className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
                 htmlFor=""
               >
                 RAM
@@ -303,51 +308,11 @@ const Buyphone = () => {
                   8 GB
                 </Chip>
               </Chip.Group>
-              {/* <div>
-                <input
-                  type="checkbox"
-                  name="ram"
-                  id="2"
-                  value="2"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="2">2 GB</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="ram"
-                  id="4"
-                  value="4"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="4">4 GB</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="ram"
-                  id="8"
-                  value="8"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="8">8 GB</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="ram"
-                  id="12"
-                  value="12"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="12">12 GB</label>
-              </div> */}
             </div>
             <hr className="border-purple-700" />
             <div className="storage mt-2 mb-5">
               <label
-                className="block mb-2 md:text-2xl text-lg font-bold text-gray-900 dark:text-white"
+                className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
                 htmlFor=""
               >
                 STORAGE
@@ -399,102 +364,199 @@ const Buyphone = () => {
                   256 GB
                 </Chip>
               </Chip.Group>
-              {/* <div>
-                <input
-                  type="checkbox"
-                  name="ram"
-                  id="16"
-                  value="16"
-                  className="text-purple-700 mr-3 inputlable"
-                />
-                <label htmlFor="16">16 GB</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="ram"
-                  id="32"
-                  value="32"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="32">32 GB</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="ram"
-                  id="64"
-                  value="64"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="64">64 GB</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="ram"
-                  id="128"
-                  value="128"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="128">128 GB</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  name="ram"
-                  id="256"
-                  value="256"
-                  className="text-purple-700 mr-3"
-                />
-                <label htmlFor="256">256 GB</label>
-              </div> */}
             </div>
           </div>
-          <div className="main flex justify-center my-9 flex-wrap gap-2">
+          <div className="md:hidden block">
+            <Accordion variant="separated" radius="md">
+              <Accordion.Item value="customization">
+                <Accordion.Control>Filter</Accordion.Control>
+                <Accordion.Panel>
+                  <div className="brand mt-2 mb-5">
+                    <label
+                      htmlFor="steps-range"
+                      className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
+                    >
+                      Brand
+                    </label>
+                    <Chip.Group multiple mt={15}>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="apple"
+                      >
+                        Apple
+                      </Chip>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="mi"
+                      >
+                        Mi
+                      </Chip>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="samsung"
+                      >
+                        Samsung
+                      </Chip>
+                    </Chip.Group>
+                  </div>
+                  <hr className="border-purple-700" />
+                  <div className="price mt-2 mb-10">
+                    <label
+                      htmlFor="steps-range"
+                      className="block mb-5 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
+                    >
+                      Price
+                    </label>
+                    <RangeSlider
+                      label={(value) =>
+                        `₹ ${value}`.replace(
+                          /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                          ","
+                        )
+                      }
+                      color="violet"
+                      size="md"
+                      radius="lg"
+                      min={5000}
+                      max={100000}
+                      step={5000}
+                      marks={[
+                        { value: 20000, label: "₹ 20,000" },
+                        { value: 50000, label: "₹ 50,000" },
+                        { value: 80000, label: "₹ 80,000" },
+                      ]}
+                      value={rangeValue}
+                      onChange={setRangeValue}
+                    />
+                  </div>
+                  <hr className="border-purple-700" />
+                  <div className="ram mt-2 mb-5">
+                    <label
+                      className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
+                      htmlFor=""
+                    >
+                      RAM
+                    </label>
+                    <Chip.Group multiple mt={15}>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="2"
+                      >
+                        2 GB
+                      </Chip>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="3"
+                      >
+                        3 GB
+                      </Chip>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="4"
+                      >
+                        4 GB
+                      </Chip>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="6"
+                      >
+                        6 GB
+                      </Chip>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="8"
+                      >
+                        8 GB
+                      </Chip>
+                    </Chip.Group>
+                  </div>
+                  <hr className="border-purple-700" />
+                  <div className="storage mt-2 mb-5">
+                    <label
+                      className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
+                      htmlFor=""
+                    >
+                      STORAGE
+                    </label>
+                    <Chip.Group multiple mt={15}>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="16"
+                      >
+                        16 GB
+                      </Chip>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="32"
+                      >
+                        32 GB
+                      </Chip>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="64"
+                      >
+                        64 GB
+                      </Chip>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="128"
+                      >
+                        128 GB
+                      </Chip>
+                      <Chip
+                        className="w-full"
+                        color="violet"
+                        variant="filled"
+                        radius="md"
+                        value="256"
+                      >
+                        256 GB
+                      </Chip>
+                    </Chip.Group>
+                  </div>
+                </Accordion.Panel>
+              </Accordion.Item>
+            </Accordion>
+          </div>
+          <div className="main flex justify-center my-9 flex-wrap gap-20">
             {phoneInfo.map((x, n) => (
-              <div className="">
-                <Phone data={x} info="Buy Phone" />
-                {/* <Card imgSrc={x.img} className="p-4">
-                  <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {x.name}
-                  </h5>
-                  <div>
-                    <ul className="font-medium list-disc">
-                      {x.info.map((i, n) => (
-                        <li key={n}>{i}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                  {x.value.map((i) => (
-                    <button
-                      className="mx-4 my-4 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
-                      onClick={(e) => setPrice(e.target.value)}
-                      value={i.price}
-                    >
-                      {i.for}
-                    </button>
-                  ))}
-                  </div>
-                  <div>
-                    <h1 className="text-2xl font-bold text-red-600">
-                      ₹ {x.value[0].price}
-                    </h1>
-                    <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
-                  </div>
-                  <div>
-                    <button
-                      value={x.name}
-                      onClick={(e) => buyphone(e.target.value)}
-                      className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
-                    >
-                      Buy
-                      <i className="fas fa-map-marker-alt fa-sm mt-[3px]" />
-                    </button>
-                  </div>
-                </Card> */}
-              </div>
+              <Phone key={n} data={x} info="Buy Phone" />
             ))}
           </div>
         </div>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import mi from "../../assets/Mi10.jpg";
 import { useState, useEffect } from "react";
 
 const Repairoptions = () => {
@@ -10,7 +11,7 @@ const Repairoptions = () => {
   let [price, setprice] = useState(Number);
 
   useEffect(() => {
-    getPhoneinfo();
+    // getPhoneinfo();
   }, [phoneInfo]);
 
   async function getPhoneinfo() {
@@ -60,7 +61,7 @@ const Repairoptions = () => {
 
   let phoneinfo = {
     name: "Xiaomi 10",
-    img: "../public/Mi10.jpg",
+    img: mi,
     info: [
       "108MP Quad Camera + OIS",
       "Qualcomm® Snapdragon™ 865",
