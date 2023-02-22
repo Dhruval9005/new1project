@@ -12,6 +12,13 @@ const Home = () => {
     "https://flowbite.com/docs/images/carousel/carousel-4.svg",
     "https://flowbite.com/docs/images/carousel/carousel-5.svg",
   ]);
+  let [banner2, setBanner2] = useState([
+    "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+    "https://flowbite.com/docs/images/carousel/carousel-3.svg",
+    "https://flowbite.com/docs/images/carousel/carousel-5.svg",
+    "https://flowbite.com/docs/images/carousel/carousel-4.svg",
+    "https://flowbite.com/docs/images/carousel/carousel-2.svg",
+  ]);
   let phoneInfo = [
     {
       name: "Xiaomi 12 Pro",
@@ -202,7 +209,7 @@ const Home = () => {
     <div className="Home h-fit mb-28">
       <Banner banner={banner} />
       <Navbutton />
-      <Banner banner={banner} />
+      <Banner banner={banner2} />
       <div className="ml-3">
         <PhoneCard name="Most Search" phones={phoneInfo} path="/buy" />
         <PhoneCard name="Latest Phone" phones={phoneInfo} path="/buy" />

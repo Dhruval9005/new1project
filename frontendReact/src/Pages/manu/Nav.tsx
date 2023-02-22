@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { Navbar } from "../../Components/esxrComp/Navbar";
+import { Navbar } from "../../Components/nav/Navbar";
+import { UserContext } from "../../context/UserContext";
 
 const Nav = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user", "userdata"]);
-  let [user, setUser] = useState();
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     setUser(cookies?.userdata);
@@ -33,7 +34,7 @@ const Nav = () => {
   return (
     <div className="nav">
       <div className="mx-auto">
-        <Navbar links={link} user={user} />
+        <Navbar links={link} />
       </div>
     </div>
   );

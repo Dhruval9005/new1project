@@ -2,6 +2,8 @@ import { Navbar, Group, ScrollArea, createStyles } from "@mantine/core";
 import { IconGauge } from "@tabler/icons";
 import { UserButton } from "./userButton";
 import { LinksGroup } from "./NavbarLinksGroup";
+import { UserContext } from "../../context/UserContext";
+import { useContext } from "react";
 
 const mockdata = [
   {
@@ -97,12 +99,9 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface HeaderSearchProps {
-  user?: { fname: string; lname: string };
-}
-
-export function SideBarManu({ user }: HeaderSearchProps) {
+export function SideBarManu() {
   const { classes } = useStyles();
+  const { user } = useContext(UserContext);
   const links = mockdata.map((item) => (
     <LinksGroup {...item} key={item.label} />
   ));
@@ -132,16 +131,10 @@ export function SideBarManu({ user }: HeaderSearchProps) {
 
       {user ? (
         <Navbar.Section className={classes.footer}>
-          <UserButton fname={user.fname} lname={user.lname} />
+          <UserButton />
         </Navbar.Section>
       ) : (
-        <div className="mx-3">
-          {/* <a href="/login">
-              <button className="text-sm w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-500 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-                Login
-              </button>
-            </a> */}
-        </div>
+        <></>
       )}
     </Navbar>
   );

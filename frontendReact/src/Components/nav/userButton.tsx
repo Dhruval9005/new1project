@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useCookies } from "react-cookie";
 import { BsCart } from "react-icons/bs";
 import {
@@ -18,6 +18,7 @@ import {
   IconSettings,
   IconChevronUp,
 } from "@tabler/icons";
+import { UserContext } from "../../context/UserContext";
 
 const useStyles = createStyles((theme) => ({
   user: {
@@ -40,17 +41,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface UserButtonProps extends UnstyledButtonProps {
-  fname: string;
-  lname: string;
-  icon?: React.ReactNode;
-}
-
-export function UserButton({ fname, lname, icon, ...others }: UserButtonProps) {
+export function UserButton() {
   const [cookies, setCookie, removeCookie] = useCookies(["user", "userdata"]);
   const { classes, theme, cx } = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
-
+  const { user } = useContext(UserContext);
   function Logout() {
     removeCookie("userdata");
     removeCookie("user");
@@ -65,20 +60,20 @@ export function UserButton({ fname, lname, icon, ...others }: UserButtonProps) {
       onOpen={() => setUserMenuOpened(true)}
     >
       <Menu.Target>
-        <UnstyledButton className={classes.user} {...others}>
+        <UnstyledButton className={classes.user}>
           <Group>
             <Avatar color="violet" size="sm" variant="filled">
-              {fname.charAt(0).toUpperCase()}
-              {lname.charAt(0).toUpperCase()}
+              {user.fname.charAt(0).toUpperCase()}
+              {user.lname.charAt(0).toUpperCase()}
             </Avatar>
 
             <div style={{ flex: 1 }}>
               <Text size="md" weight={500}>
-                {fname + " " + lname}
+                {user.fname + " " + user.lname}
               </Text>
             </div>
 
-            {icon || <IconChevronUp size={14} stroke={1.5} />}
+            <IconChevronUp size={14} stroke={1.5} />
           </Group>
         </UnstyledButton>
       </Menu.Target>

@@ -27,7 +27,7 @@ const placeholder =
 const Phoneinfo = () => {
   const { classes } = useStyles();
   return (
-    <div className="phoneinfo">
+    <>
       <Container size="sm" className={classes.wrapper}>
         <Title align="center" className={classes.title}>
           Frequently Asked Questions
@@ -68,7 +68,7 @@ const Phoneinfo = () => {
           </Accordion.Item>
         </Accordion>
       </Container>
-    </div>
+    </>
   );
 };
 

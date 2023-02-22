@@ -107,7 +107,6 @@ const PhoneCard = ({ name, phones, path }: PhoneProps) => {
 
                     <Group spacing={50} position="apart">
                       <Text size="xl" weight={500} sx={{ lineHeight: 1 }}>
-                        {/* ₹ {x.value[0].price} */}
                         {`₹ ${x.value[0].price}`.replace(
                           /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
                           ","

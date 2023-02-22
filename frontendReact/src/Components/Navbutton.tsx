@@ -1,4 +1,3 @@
-// import React from "react";
 import buying from "../assets/buying.png";
 import commerce from "../assets/commerce.png";
 import repairing from "../assets/repairing.png";
@@ -7,7 +6,7 @@ import bidding from "../assets/auction.png";
 
 const Navbutton = () => {
   return (
-    <div className="navbutton">
+    <>
       <div className="container mx-auto pt-10 h-fit mb-10">
         <div className="flex flex-col justify-center overflow-hidden">
           <div className="w-full p-2 m-auto lg:max-w-4xl">
@@ -41,7 +40,7 @@ const Navbutton = () => {
                 </div>
                 <div className="flex justify-center">
                   <a href="/bidding" className="">
-                    <button className="w-[335px] max-[320px]:w-40 h-44 text-center">
+                    <button className="w-[335px] max-[320px]:w-40 h-36 text-center">
                       <img src={bidding} className="w-16 mx-auto mb-2" />
                       <span className="sm:text-2xl">Bid on Phone</span>
                     </button>
@@ -52,7 +51,7 @@ const Navbutton = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

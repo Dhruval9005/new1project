@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Accordion, RangeSlider } from "@mantine/core";
-import { Chip } from "@mantine/core";
+import { Accordion } from "@mantine/core";
 import {
   // IconGasStation,
   // IconGauge,
@@ -13,6 +12,7 @@ import {
 
 import xiaomi from "../../assets/Mi10.jpg";
 import { Phone } from "../../Components/Phone";
+import Filters from "../../Components/Filters";
 
 const Buyphone = () => {
   const [rangeValue, setRangeValue] = useState<[number, number]>([
@@ -168,7 +168,13 @@ const Buyphone = () => {
     setPhoneinfo(phoneInfo.filter((x) => {}));
   }
 
-  function Price() {}
+  function Price() {
+    phoneInfo = phoneInfo.filter((croElm) => {
+      console.log(phoneInfo);
+
+      return croElm.value[0].price >= rangeValue[0];
+    });
+  }
 
   async function getPhoneInfo() {
     // let response = await axios.get("");
@@ -189,367 +195,14 @@ const Buyphone = () => {
         <h1 className="md:text-4xl text-2xl mt-6 mx-10">Buy Old Phone</h1>
         <div className="flex md:flex-row flex-col">
           <div className="filter md:w-1/4 my-9 mx-10 hidden md:block">
-            <div className="brand mt-2 mb-5">
-              <label
-                htmlFor="steps-range"
-                className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
-              >
-                Brand
-              </label>
-              <Chip.Group multiple mt={15}>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="apple"
-                >
-                  Apple
-                </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="mi"
-                >
-                  Mi
-                </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="samsung"
-                >
-                  Samsung
-                </Chip>
-              </Chip.Group>
-            </div>
-            <hr className="border-purple-700" />
-            <div className="price mt-2 mb-10">
-              <label
-                htmlFor="steps-range"
-                className="block mb-5 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
-              >
-                Price
-              </label>
-              <RangeSlider
-                label={(value) =>
-                  `₹ ${value}`.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
-                }
-                color="violet"
-                size="md"
-                radius="lg"
-                min={5000}
-                max={100000}
-                step={5000}
-                marks={[
-                  { value: 20000, label: "₹ 20,000" },
-                  { value: 50000, label: "₹ 50,000" },
-                  { value: 80000, label: "₹ 80,000" },
-                ]}
-                value={rangeValue}
-                onChange={setRangeValue}
-              />
-            </div>
-            <hr className="border-purple-700" />
-            <div className="ram mt-2 mb-5">
-              <label
-                className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
-                htmlFor=""
-              >
-                RAM
-              </label>
-              <Chip.Group multiple mt={15}>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="2"
-                >
-                  2 GB
-                </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="3"
-                >
-                  3 GB
-                </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="4"
-                >
-                  4 GB
-                </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="6"
-                >
-                  6 GB
-                </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="8"
-                >
-                  8 GB
-                </Chip>
-              </Chip.Group>
-            </div>
-            <hr className="border-purple-700" />
-            <div className="storage mt-2 mb-5">
-              <label
-                className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
-                htmlFor=""
-              >
-                STORAGE
-              </label>
-              <Chip.Group multiple mt={15}>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="16"
-                >
-                  16 GB
-                </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="32"
-                >
-                  32 GB
-                </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="64"
-                >
-                  64 GB
-                </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="128"
-                >
-                  128 GB
-                </Chip>
-                <Chip
-                  className="w-full"
-                  color="violet"
-                  variant="filled"
-                  radius="md"
-                  value="256"
-                >
-                  256 GB
-                </Chip>
-              </Chip.Group>
-            </div>
+            <Filters />
           </div>
           <div className="md:hidden block">
             <Accordion variant="separated" radius="md">
               <Accordion.Item value="customization">
                 <Accordion.Control>Filter</Accordion.Control>
                 <Accordion.Panel>
-                  <div className="brand mt-2 mb-5">
-                    <label
-                      htmlFor="steps-range"
-                      className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
-                    >
-                      Brand
-                    </label>
-                    <Chip.Group multiple mt={15}>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="apple"
-                      >
-                        Apple
-                      </Chip>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="mi"
-                      >
-                        Mi
-                      </Chip>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="samsung"
-                      >
-                        Samsung
-                      </Chip>
-                    </Chip.Group>
-                  </div>
-                  <hr className="border-purple-700" />
-                  <div className="price mt-2 mb-10">
-                    <label
-                      htmlFor="steps-range"
-                      className="block mb-5 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
-                    >
-                      Price
-                    </label>
-                    <RangeSlider
-                      label={(value) =>
-                        `₹ ${value}`.replace(
-                          /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
-                          ","
-                        )
-                      }
-                      color="violet"
-                      size="md"
-                      radius="lg"
-                      min={5000}
-                      max={100000}
-                      step={5000}
-                      marks={[
-                        { value: 20000, label: "₹ 20,000" },
-                        { value: 50000, label: "₹ 50,000" },
-                        { value: 80000, label: "₹ 80,000" },
-                      ]}
-                      value={rangeValue}
-                      onChange={setRangeValue}
-                    />
-                  </div>
-                  <hr className="border-purple-700" />
-                  <div className="ram mt-2 mb-5">
-                    <label
-                      className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
-                      htmlFor=""
-                    >
-                      RAM
-                    </label>
-                    <Chip.Group multiple mt={15}>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="2"
-                      >
-                        2 GB
-                      </Chip>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="3"
-                      >
-                        3 GB
-                      </Chip>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="4"
-                      >
-                        4 GB
-                      </Chip>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="6"
-                      >
-                        6 GB
-                      </Chip>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="8"
-                      >
-                        8 GB
-                      </Chip>
-                    </Chip.Group>
-                  </div>
-                  <hr className="border-purple-700" />
-                  <div className="storage mt-2 mb-5">
-                    <label
-                      className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white"
-                      htmlFor=""
-                    >
-                      STORAGE
-                    </label>
-                    <Chip.Group multiple mt={15}>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="16"
-                      >
-                        16 GB
-                      </Chip>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="32"
-                      >
-                        32 GB
-                      </Chip>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="64"
-                      >
-                        64 GB
-                      </Chip>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="128"
-                      >
-                        128 GB
-                      </Chip>
-                      <Chip
-                        className="w-full"
-                        color="violet"
-                        variant="filled"
-                        radius="md"
-                        value="256"
-                      >
-                        256 GB
-                      </Chip>
-                    </Chip.Group>
-                  </div>
+                  <Filters />
                 </Accordion.Panel>
               </Accordion.Item>
             </Accordion>

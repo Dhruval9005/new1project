@@ -28,7 +28,7 @@ const Phonesell = () => {
     ],
   };
   return (
-    <div className="h-screen">
+    <div className="sell h-screen">
       <div className="md:container mx-auto">
         <div className="relative flex flex-col min-h-full justify-center">
           <div className="w-full p-6 m-auto lg:max-w-4xl flex flex-col">
