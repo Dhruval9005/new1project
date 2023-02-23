@@ -9,7 +9,7 @@ import {
 } from "@mantine/core";
 import {
   IconLogout,
-  // IconHeart,
+  IconHeart,
   IconStar,
   IconMessage,
   IconSettings,
@@ -59,79 +59,91 @@ const UserinfoDropdown = () => {
   }
 
   return (
-    <div>
-      <Menu
-        width={220}
-        position="bottom-end"
-        transition="pop-top-right"
-        onClose={() => setUserMenuOpened(false)}
-        onOpen={() => setUserMenuOpened(true)}
-      >
-        <Menu.Target>
-          <UnstyledButton
-            className={cx(classes.user, {
-              [classes.userActive]: userMenuOpened,
-            })}
-          >
-            <Group spacing={7}>
-              <Avatar color="violet" size="sm" variant="filled">
-                {user.fname.charAt(0).toUpperCase()}
-                {user.lname.charAt(0).toUpperCase()}
-              </Avatar>
-              <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
-                {user.fname + " " + user.lname}
-              </Text>
-              <IconChevronDown size={12} stroke={1.5} />
-            </Group>
-          </UnstyledButton>
-        </Menu.Target>
-        <Menu.Dropdown>
-          <Menu.Item icon={<BsCart size={14} color={theme.colors.violet[6]} />}>
-            Cart
-          </Menu.Item>
-
-          {/* <Menu.Item
-            icon={
-              <IconStar size={14} color={theme.colors.yellow[6]} stroke={1.5} />
-            }
-          >
-            Saved posts
-          </Menu.Item> */}
-          {/* <Menu.Item
-            icon={
-              <IconMessage
-                size={14}
-                color={theme.colors.blue[6]}
-                stroke={1.5}
-              />
-            }
-          >
-            Your comments
-          </Menu.Item> */}
-
-          <Menu.Label>Settings</Menu.Label>
-          <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
-            Account settings
-          </Menu.Item>
-          <Menu.Item
-            icon={<IconLogout size={20} color="red" stroke={1.5} />}
-            onClick={Logout}
-          >
-            Logout
-          </Menu.Item>
-
-          {/* <Menu.Divider /> */}
-
-          {/* <Menu.Label>Danger zone</Menu.Label>
-          <Menu.Item icon={<IconMenu size={14} stroke={1.5} />}>
-            Pause subscription
-          </Menu.Item>
-          <Menu.Item color="red" icon={<IconTrash size={14} stroke={1.5} />}>
-            Delete account
-          </Menu.Item> */}
-        </Menu.Dropdown>
-      </Menu>
-    </div>
+    <>
+      {user ? (
+        <Menu
+          width={220}
+          position="bottom-end"
+          transition="pop-top-right"
+          onClose={() => setUserMenuOpened(false)}
+          onOpen={() => setUserMenuOpened(true)}
+        >
+          <Menu.Target>
+            <UnstyledButton
+              className={cx(classes.user, {
+                [classes.userActive]: userMenuOpened,
+              })}
+            >
+              <Group spacing={7}>
+                <Avatar color="violet" size="sm" variant="filled">
+                  {user.fname.charAt(0).toUpperCase()}
+                  {user.lname.charAt(0).toUpperCase()}
+                </Avatar>
+                <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
+                  {user.fname + " " + user.lname}
+                </Text>
+                <IconChevronDown size={12} stroke={1.5} />
+              </Group>
+            </UnstyledButton>
+          </Menu.Target>
+          <Menu.Dropdown>
+            <Menu.Item
+              icon={<BsCart size={14} color={theme.colors.violet[6]} />}
+            >
+              Cart
+            </Menu.Item>
+            <Menu.Item
+              icon={
+                <IconStar
+                  size={14}
+                  color={theme.colors.yellow[6]}
+                  stroke={1.5}
+                />
+              }
+            >
+              Saved posts
+            </Menu.Item>
+            <Menu.Item
+              icon={
+                <IconMessage
+                  size={14}
+                  color={theme.colors.blue[6]}
+                  stroke={1.5}
+                />
+              }
+            >
+              Your comments
+            </Menu.Item>
+            <Menu.Label>Settings</Menu.Label>
+            <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
+              Account settings
+            </Menu.Item>
+            <Menu.Item
+              icon={<IconLogout size={20} color="red" stroke={1.5} />}
+              onClick={Logout}
+            >
+              Logout
+            </Menu.Item>
+            <Menu.Divider />
+            <Menu.Label>Danger zone</Menu.Label>
+            <Menu.Item icon={<IconMenu size={14} stroke={1.5} />}>
+              Pause subscription
+            </Menu.Item>
+            <Menu.Item color="red" icon={<IconTrash size={14} stroke={1.5} />}>
+              Delete account
+            </Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
+      ) : (
+        <div className="mx-3">
+          <a href="/login">
+            <button className="text-sm w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-500 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+              Login
+            </button>
+          </a>
+        </div>
+      )}
+    </>
   );
 };
 

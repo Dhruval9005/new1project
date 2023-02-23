@@ -121,7 +121,6 @@ export function BuyPhone({ info }: phoneInfo) {
           </Tabs.List>
         </Tabs>
       </Card.Section>
-
       <Card.Section className={classes.section} p={0} mt={-16}>
         <Group my="md" className="w-fit">
           <div>
@@ -130,7 +129,6 @@ export function BuyPhone({ info }: phoneInfo) {
             </Text>
           </div>
         </Group>
-
         <Group my="md" spacing={30} className="w-fit">
           <div>
             <Text className="text-3xl mb-2" weight={400} sx={{ lineHeight: 1 }}>
@@ -142,15 +140,12 @@ export function BuyPhone({ info }: phoneInfo) {
             25% off
           </Badge>
         </Group>
-
         <Text my="md" size="sm" color="dimmed" className={classes.label}>
           Basic Information
         </Text>
-
         <Group my="md" spacing={8} className="w-fit">
           {features}
         </Group>
-
         <div className=" w-fit">
           <Button
             className="w-fit mb-5 mr-5"

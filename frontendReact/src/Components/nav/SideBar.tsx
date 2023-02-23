@@ -7,10 +7,13 @@ function Sidebar() {
 
   return (
     <>
-      <Drawer opened={opened} onClose={() => setOpened(false)}>
+      <Drawer
+        opened={opened}
+        transition="slide-right"
+        onClose={() => setOpened(false)}
+      >
         <SideBarManu />
       </Drawer>
-
       <Group position="center">
         <Burger opened={opened} onClick={() => setOpened(true)} size="md" />
       </Group>

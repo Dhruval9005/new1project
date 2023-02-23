@@ -1,11 +1,11 @@
 import axios from "axios";
-import keys from "../../../config/keys";
-import OTPInput, { ResendOTP } from "otp-input-react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import keys from "../../../config/keys";
 import { useCookies } from "react-cookie";
-import { showNotification } from "@mantine/notifications";
 import { IconCheck } from "@tabler/icons";
+import { useNavigate } from "react-router-dom";
+import OTPInput, { ResendOTP } from "otp-input-react";
+import { showNotification } from "@mantine/notifications";
 
 const Otp = () => {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 // import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Select from "react-select";
+import { useNavigate } from "react-router-dom";
 
 const SellPhone = () => {
   let naviget = useNavigate();

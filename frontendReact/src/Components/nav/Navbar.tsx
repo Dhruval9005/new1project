@@ -1,7 +1,5 @@
 import Sidebar from "./SideBar";
-import { useContext } from "react";
 import UserinfoDropdown from "./UserinfoDropdown";
-import { UserContext } from "../../context/UserContext";
 import { createStyles, Header, Autocomplete, Group } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
@@ -61,7 +59,6 @@ interface HeaderSearchProps {
 
 export function Navbar({ links }: HeaderSearchProps) {
   const { classes } = useStyles();
-  const { user } = useContext(UserContext);
   const items = links.map((link) => (
     <a key={link.label} href={link.link} className={classes.link}>
       {link.label}
@@ -86,7 +83,6 @@ export function Navbar({ links }: HeaderSearchProps) {
           <Sidebar />
           <Logo />
         </Group>
-
         <Group>
           <Group spacing={5} className={classes.links}>
             {items}
@@ -105,18 +101,7 @@ export function Navbar({ links }: HeaderSearchProps) {
             ]}
           /> */}
         </Group>
-
-        {user ? (
-          <UserinfoDropdown />
-        ) : (
-          <div className="mx-3">
-            <a href="/login">
-              <button className="text-sm w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-500 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-                Login
-              </button>
-            </a>
-          </div>
-        )}
+        <UserinfoDropdown />
       </div>
     </Header>
   );

@@ -1,6 +1,6 @@
 import { Footer } from "flowbite-react";
 import { BsTwitter, BsFacebook, BsInstagram, BsGithub } from "react-icons/bs";
-import { Foot } from "../../Foot";
+import { Foot } from "../../Components/Foot";
 
 const Foter = () => {
   const data = [

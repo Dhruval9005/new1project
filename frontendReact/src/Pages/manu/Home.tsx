@@ -215,26 +215,24 @@ const Home = () => {
         <PhoneCard name="Latest Phone" phones={phoneInfo} path="/buy" />
         <PhoneCard name="UpComing Phone" phones={phoneInfo} path="/buy" />
         <PhoneCard name="Xiaomi" phones={phoneInfo} path="/buy" />
-        <div>
-          <div className="container mx-auto pt-10">
-            <h2 className="text-3xl">Brand</h2>
-            <div className="mt-10 flex gap-10 overflow-y-auto">
-              {brand.map((x, n) => (
-                <div key={n} className="flex justify-center p-3">
-                  <div className="rounded-lg shadow-lg bg-white w-40 h-40">
-                    <a href={x.link}>
-                      <button className="w-40 h-36 text-center">
-                        <img
-                          className="rounded-t-lg mx-auto w-40 h-40"
-                          src={x.img}
-                          alt=""
-                        />
-                      </button>
-                    </a>
-                  </div>
+        <div className="container mx-auto pt-10">
+          <h2 className="text-3xl">Brand</h2>
+          <div className="mt-10 flex gap-10 overflow-y-auto">
+            {brand.map((x, n) => (
+              <div key={n} className="flex justify-center p-3">
+                <div className="rounded-lg shadow-lg bg-white w-40 h-40">
+                  <a href={x.link}>
+                    <button className="w-40 h-36 text-center">
+                      <img
+                        className="rounded-t-lg mx-auto w-40 h-40"
+                        src={x.img}
+                        alt=""
+                      />
+                    </button>
+                  </a>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
         <div className="container mx-auto pt-28 h-fit">

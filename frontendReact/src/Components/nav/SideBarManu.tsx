@@ -2,8 +2,6 @@ import { Navbar, Group, ScrollArea, createStyles } from "@mantine/core";
 import { IconGauge } from "@tabler/icons";
 import { UserButton } from "./userButton";
 import { LinksGroup } from "./NavbarLinksGroup";
-import { UserContext } from "../../context/UserContext";
-import { useContext } from "react";
 
 const mockdata = [
   {
@@ -101,7 +99,6 @@ const useStyles = createStyles((theme) => ({
 
 export function SideBarManu() {
   const { classes } = useStyles();
-  const { user } = useContext(UserContext);
   const links = mockdata.map((item) => (
     <LinksGroup {...item} key={item.label} />
   ));
@@ -124,18 +121,12 @@ export function SideBarManu() {
           <Logo />
         </Group>
       </Navbar.Section>
-
       <Navbar.Section grow className={classes.links} component={ScrollArea}>
         <div className={classes.linksInner}>{links}</div>
       </Navbar.Section>
-
-      {user ? (
-        <Navbar.Section className={classes.footer}>
-          <UserButton />
-        </Navbar.Section>
-      ) : (
-        <></>
-      )}
+      <Navbar.Section className={classes.footer}>
+        <UserButton />
+      </Navbar.Section>
     </Navbar>
   );
 }

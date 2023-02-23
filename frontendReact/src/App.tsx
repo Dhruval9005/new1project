@@ -20,6 +20,7 @@ import Biddingphone from "./Pages/Bidding/Biddingphone";
 import ComparePhones from "./Pages/compare/ComparePhones";
 import Phonesell from "./Pages/sell/Phonesell";
 import { NotificationsProvider } from "@mantine/notifications";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path="/bidding/:id" element={<Biddingphone />} />
           <Route path="/compare" element={<ComparePhones />} />
           <Route path="/expr" element={<Expr />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Foter />
       </NotificationsProvider>

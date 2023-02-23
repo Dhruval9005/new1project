@@ -1,10 +1,10 @@
 import axios from "axios";
-import keys from "../../../config/keys";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
-import { showNotification } from "@mantine/notifications";
+import keys from "../../../config/keys";
 import { IconCheck } from "@tabler/icons";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+import { showNotification } from "@mantine/notifications";
 
 const numAuth = new RegExp(
   "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
