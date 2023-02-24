@@ -1,62 +1,69 @@
 import { Chip, Slider } from "@mantine/core";
+import { useContext, useEffect, useReducer, useState } from "react";
+import FilterReducer, { InitialState } from "../reducer/FilterReducer";
 import { phoneInfo } from "../context/PhoneContext";
-import { useContext, useReducer, useState } from "react";
-import { FilterContext } from "../context/Filterscontext";
+import { FilterContext, useFilterContext } from "../context/Filterscontext";
 
-const initialState = {
-  filter_products: [],
-  all_products: [],
-  grid_view: true,
-  sorting_value: "lowest",
-  filters: {
-    text: "",
-    category: "all",
-    company: "all",
-    color: "all",
-    maxPrice: 0,
-    price: 0,
-    minPrice: 0,
-  },
+const getUniqueData = (data: typeof phoneInfo, attr: string) => {
+  let newVal = data.map((curElem: any) => {
+    return curElem[attr];
+  });
+
+  return (newVal = ["all", ...new Set(newVal)]);
 };
 
-export function reducer(state: any, action: any) {
-  let tempFilterProduct = phoneInfo;
-  switch (action.type) {
-    case "PRICE_FLTER":
-      if (action.price === 0) {
-        tempFilterProduct = tempFilterProduct.filter(
-          (curElem) => curElem.value[0].price == action.price
-        );
-      } else {
-        tempFilterProduct = tempFilterProduct.filter(
-          (curElem) => curElem.value[0].price <= action.price
-        );
-      }
-      return {
-        ...state,
-        filter_products: tempFilterProduct,
-      };
-  }
-}
-
 const Filters = () => {
+  const Brands = getUniqueData(phoneInfo, "brand");
+  const Ram = getUniqueData(phoneInfo, "ram");
+  const Storage = getUniqueData(phoneInfo, "storage");
   const [value, setValue] = useState(30000);
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { filter, updateFilterValue } = useContext(FilterContext);
+  const {
+    FilterPhone,
+    FilterPrice,
+    filters: { brand, price, ram, storage },
+  } = useFilterContext();
+
+  useEffect(() => {
+    FilterPrice(value);
+  }, [value]);
+
   return (
     <>
-      <div className="brand mt-2 mb-5">
+      <div className="brand mt-2 mb-5 md:w-52">
         <label className="block mb-2 md:text-xl text-lg font-bold text-gray-900 dark:text-white">
           Brand
         </label>
         <Chip.Group multiple mt={15}>
-          <Chip
+          {Brands.map((brand: any, n) => (
+            <Chip
+              key={n}
+              className="w-full"
+              color="violet"
+              variant="filled"
+              radius="md"
+              value={brand}
+              name="brand"
+              styles={{
+                label: {
+                  width: "100%",
+                },
+                root: {
+                  display: "flex",
+                },
+              }}
+              onClick={FilterPhone}
+            >
+              {brand}
+            </Chip>
+          ))}
+          {/* <Chip
             className="w-full"
             color="violet"
             variant="filled"
             radius="md"
             value="apple"
-            name="brand"
+            name="apple"
+            onClick={(e) => console.log(e.target)}
           >
             Apple
           </Chip>
@@ -79,7 +86,7 @@ const Filters = () => {
             name="brand"
           >
             Samsung
-          </Chip>
+          </Chip> */}
         </Chip.Group>
       </div>
       <hr className="border-purple-700" />
@@ -101,7 +108,7 @@ const Filters = () => {
             { value: 50000, label: "₹ 50,000" },
           ]}
           value={value}
-          onChangeEnd={setValue}
+          onChange={setValue}
         />
       </div>
       <hr className="border-purple-700" />
@@ -110,7 +117,29 @@ const Filters = () => {
           RAM
         </label>
         <Chip.Group multiple mt={15}>
-          <Chip
+          {Ram.map((ram: any, n) => (
+            <Chip
+              key={n}
+              className="w-full"
+              color="violet"
+              variant="filled"
+              radius="md"
+              value={ram}
+              name="ram"
+              styles={{
+                label: {
+                  width: "100%",
+                },
+                root: {
+                  display: "flex",
+                },
+              }}
+              onClick={FilterPhone}
+            >
+              {ram}
+            </Chip>
+          ))}
+          {/* <Chip
             className="w-full"
             color="violet"
             variant="filled"
@@ -157,7 +186,7 @@ const Filters = () => {
             name="ram"
           >
             8 GB
-          </Chip>
+          </Chip> */}
         </Chip.Group>
       </div>
       <hr className="border-purple-700" />
@@ -166,7 +195,29 @@ const Filters = () => {
           STORAGE
         </label>
         <Chip.Group multiple mt={15}>
-          <Chip
+          {Storage.map((ram: any, n) => (
+            <Chip
+              key={n}
+              className="w-full"
+              color="violet"
+              variant="filled"
+              radius="md"
+              value={ram}
+              name="storage"
+              styles={{
+                label: {
+                  width: "100%",
+                },
+                root: {
+                  display: "flex",
+                },
+              }}
+              onClick={FilterPhone}
+            >
+              {ram}
+            </Chip>
+          ))}
+          {/* <Chip
             className="w-full"
             color="violet"
             variant="filled"
@@ -214,7 +265,7 @@ const Filters = () => {
             name="storage"
           >
             256 GB
-          </Chip>
+          </Chip> */}
         </Chip.Group>
       </div>
     </>

@@ -24,14 +24,16 @@ export const phoneInfo = [
       },
     ],
     value: [
-      { for: "128 Gb", price: 21000 },
+      { for: "128 Gb", price: 0 },
       { for: "246 Gb", price: 25000 },
     ],
+    ram: "8gb",
+    storage: "128gb",
   },
   {
     name: "realme narzo 50",
     img: "https://m.media-amazon.com/images/I/81gRC3KTeaL._SX679_.jpg",
-    brand: "mi",
+    brand: "realme",
     info: [
       { label: "108MP Quad Camera + OIS", icon: IconUsers },
       { label: "Qualcomm® Snapdragon™ 865", icon: IconUsers },
@@ -54,6 +56,8 @@ export const phoneInfo = [
       { for: "128 Gb", price: 21000 },
       { for: "246 Gb", price: 25000 },
     ],
+    ram: "8gb",
+    storage: "128gb",
   },
   {
     name: "OnePlus 11 5G",
@@ -81,6 +85,8 @@ export const phoneInfo = [
       { for: "128 Gb", price: 21000 },
       { for: "246 Gb", price: 25000 },
     ],
+    ram: "8gb",
+    storage: "128gb",
   },
   {
     name: "samsung s23",
@@ -108,6 +114,8 @@ export const phoneInfo = [
       { for: "128 Gb", price: 21000 },
       { for: "246 Gb", price: 25000 },
     ],
+    ram: "8gb",
+    storage: "128gb",
   },
   {
     name: "SAMSUNG Galaxy Z",
@@ -135,5 +143,7 @@ export const phoneInfo = [
       { for: "128 Gb", price: 21000 },
       { for: "246 Gb", price: 25000 },
     ],
+    ram: "8gb",
+    storage: "128gb",
   },
 ];

@@ -161,7 +161,7 @@ const Bidding = () => {
         <div className="flex md:flex-row flex-col">
           <div className="main flex justify-center my-9 flex-wrap">
             {phoneInfo.map((x) => (
-              <div className="m-4">
+              <div key={x.name} className="m-4">
                 <Phone data={x} info="Bid on phone" />
               </div>
             ))}

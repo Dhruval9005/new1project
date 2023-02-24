@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Accordion } from "@mantine/core";
-import { phoneInfo } from "../../context/PhoneContext";
+// import { phoneInfo } from "../../context/PhoneContext";
 import { Phone } from "../../Components/Phone";
 import Filters from "../../Components/Filters";
 import { TablerIcon } from "@tabler/icons";
+import FilterReducer, { InitialState } from "../../reducer/FilterReducer";
+import { FilterContext, useFilterContext } from "../../context/Filterscontext";
+import PhoneList from "../../Components/PhoneList";
 
 type phone = {
   name: string;
@@ -19,17 +22,21 @@ type phone = {
     price: number;
   }[];
 }[];
+
 const Buyphone = () => {
   let naviget = useNavigate();
   let [phoneinfo, setPhoneinfo] = useState<phone>();
+  const [state, dispatch] = useReducer(FilterReducer, InitialState);
+  const { filter_phone } = useFilterContext();
 
   useEffect(() => {
     getPhoneInfo();
-    // Price();
-  }, []);
+  }, [filter_phone]);
+
+  console.log(filter_phone);
 
   async function getPhoneInfo() {
-    setPhoneinfo(phoneInfo);
+    setPhoneinfo(filter_phone);
   }
 
   // function buyphone(phone: string) {
@@ -55,7 +62,7 @@ const Buyphone = () => {
             </Accordion>
           </div>
           <div className="main flex justify-center my-9 flex-wrap gap-20">
-            {phoneInfo.map((x, n) => (
+            {phoneinfo?.map((x, n) => (
               <Phone key={n} data={x} info="Buy Phone" />
             ))}
           </div>

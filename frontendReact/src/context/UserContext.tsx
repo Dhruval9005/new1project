@@ -38,6 +38,9 @@ export default function UserPeovider({ children }: userProvideProps) {
     lname: "",
     phone_number: "",
   });
+  function update(value: number) {
+     value++;
+  }
   return (
     <UserContext.Provider value={{ user, setUser }}>
       {children}
