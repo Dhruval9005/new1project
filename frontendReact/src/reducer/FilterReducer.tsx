@@ -1,16 +1,10 @@
-import { useContext } from "react";
 import { phoneInfo } from "../context/PhoneContext";
-import { FilterContext } from "../context/Filterscontext";
-
-export let FilterPhone = phoneInfo;
-
-// export interface State {}
 
 export interface Action {
   type: string;
   payload: {
     name: string;
-    value: string;
+    filter_value: string[];
     fliter_price: number;
     all_phone: typeof phoneInfo;
   };
@@ -18,12 +12,12 @@ export interface Action {
 
 export const InitialState = {
   all_phone: phoneInfo,
-  filter_phone: FilterPhone,
+  filter_phone: [...phoneInfo],
   filters: {
-    brand: "",
+    brand: [""],
     price: 0,
-    ram: "",
-    storage: "",
+    ram: [""],
+    storage: [""],
   },
 };
 
@@ -32,20 +26,30 @@ const FilterReducer = (state: typeof InitialState, action: Action) => {
     case "LOAD_FILTER_PRODUCTS":
       return {
         ...state,
-        filter_products: [...action.payload.all_phone],
+        filter_phone: [...action.payload.all_phone],
         all_products: [...action.payload.all_phone],
         filters: { ...state.filters },
       };
 
     case "UPDATE_FILTERS_VALUE":
-      const { name, value } = action.payload;
-      console.log();
-
+      const { name, filter_value } = action.payload;
+      let ram_filter_value = [""];
+      let storage_filter_value = [""];
+      let brand_filter_value = [""];
+      if (name == "ram") {
+        ram_filter_value = filter_value;
+      } else if (name == "storage") {
+        storage_filter_value = filter_value;
+      } else if (name == "brand") {
+        brand_filter_value = filter_value;
+      }
       return {
         ...state,
         filters: {
           ...state.filters,
-          [name]: value,
+          ram: ram_filter_value,
+          storage: storage_filter_value,
+          brand: brand_filter_value,
         },
       };
 
@@ -61,84 +65,47 @@ const FilterReducer = (state: typeof InitialState, action: Action) => {
       };
 
     case "FILTER_PRODUCTS":
-      let { all_phone } = state;
-      let tampFilterPhone = [...all_phone];
-
       const { brand, price, ram, storage } = state.filters;
+      let tampFilterPhone = [...state.all_phone];
 
-      if (brand !== "all") {
-        tampFilterPhone = all_phone.filter(
-          (curElem) => curElem.brand === brand
-        );
+      const equalsCheck = (a: string[], b: string[]) => {
+        return JSON.stringify(a) === JSON.stringify(b);
+      };
+
+      if (!equalsCheck(brand, [""])) {
+        tampFilterPhone = tampFilterPhone.filter((curElem) => {
+          return brand.some((filter) => {
+            return curElem.brand === filter;
+          });
+        });
       }
 
-      if (ram !== "all") {
-        tampFilterPhone = all_phone.filter((curElem) => curElem.ram === ram);
+      if (!equalsCheck(ram, [""])) {
+        tampFilterPhone = tampFilterPhone.filter((curElem) => {
+          return ram.some((filter) => {
+            return curElem.ram == filter;
+          });
+        });
       }
 
-      if (storage !== "all") {
-        tampFilterPhone = all_phone.filter(
-          (curElem) => curElem.storage === storage
-        );
+      if (!equalsCheck(storage, [""])) {
+        tampFilterPhone = tampFilterPhone.filter((curElem) => {
+          return storage.some((filter) => {
+            return curElem.storage == filter;
+          });
+        });
       }
 
-      if (Number(price) === 0) {
-        tampFilterPhone = all_phone.filter(
-          (curElem) => curElem.value[0].price == Number(price)
-        );
-      } else {
-        tampFilterPhone = all_phone.filter(
-          (curElem) => curElem.value[0].price <= Number(price)
+      if (price != 0) {
+        tampFilterPhone = tampFilterPhone.filter(
+          (curElem) => curElem.value[0].price <= price
         );
       }
-      // console.log(tampFilterPhone);
-      
 
       return {
         ...state,
         filter_phone: tampFilterPhone,
       };
-
-    // case "FILTER_BRAND":
-    //   let { brand } = action.payload;
-    //   FilterPhone = phoneInfo.filter((curElem) => {
-    //     // brand.map((filter) => {
-
-    //     return curElem.brand == brand;
-
-    //     // });
-    //   });
-
-    //   return { ...FilterPhone };
-
-    // case "FILTER_RAM":
-    //   let { ram } = action.payload;
-    //   FilterPhone = phoneInfo.filter((curElem) => {
-    //     // ram.map((filter) => {
-    //     return curElem.ram == ram;
-    //     // });
-    //   });
-    //   return { ...FilterPhone };
-
-    // case "FILTER_STORAGE":
-    //   let { storage } = action.payload;
-    //   FilterPhone = phoneInfo.filter((curElem) => {
-    //     // storage.map((filter) => {
-    //     return curElem.storage == storage;
-    //     // });
-    //   });
-    //   return { ...FilterPhone };
-
-    // case "FILTER_PRICE":
-    //   let { price } = action.payload;
-    //   if (price == 0) {
-    //     return FilterPhone;
-    //   } else {
-    //     FilterPhone = phoneInfo.filter((curElem) => {
-    //       return curElem.value[0].price <= price;
-    //     });
-    //   }
-    //   return { ...FilterPhone };
 
     default:
       return state;

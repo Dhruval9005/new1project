@@ -24,11 +24,11 @@ export const phoneInfo = [
       },
     ],
     value: [
-      { for: "128 Gb", price: 0 },
+      { for: "128 Gb", price: 55999 },
       { for: "246 Gb", price: 25000 },
     ],
-    ram: "8gb",
-    storage: "128gb",
+    ram: "8 GB",
+    storage: "128 GB",
   },
   {
     name: "realme narzo 50",
@@ -53,11 +53,11 @@ export const phoneInfo = [
       },
     ],
     value: [
-      { for: "128 Gb", price: 21000 },
+      { for: "128 Gb", price: 12999 },
       { for: "246 Gb", price: 25000 },
     ],
-    ram: "8gb",
-    storage: "128gb",
+    ram: "6 GB",
+    storage: "128 GB",
   },
   {
     name: "OnePlus 11 5G",
@@ -82,11 +82,11 @@ export const phoneInfo = [
       },
     ],
     value: [
-      { for: "128 Gb", price: 21000 },
+      { for: "128 Gb", price: 61999 },
       { for: "246 Gb", price: 25000 },
     ],
-    ram: "8gb",
-    storage: "128gb",
+    ram: "4 GB",
+    storage: "64 GB",
   },
   {
     name: "samsung s23",
@@ -111,11 +111,11 @@ export const phoneInfo = [
       },
     ],
     value: [
-      { for: "128 Gb", price: 21000 },
+      { for: "128 Gb", price: 79999 },
       { for: "246 Gb", price: 25000 },
     ],
-    ram: "8gb",
-    storage: "128gb",
+    ram: "8 GB",
+    storage: "128 GB",
   },
   {
     name: "SAMSUNG Galaxy Z",
@@ -140,10 +140,10 @@ export const phoneInfo = [
       },
     ],
     value: [
-      { for: "128 Gb", price: 21000 },
+      { for: "128 Gb", price: 89999 },
       { for: "246 Gb", price: 25000 },
     ],
-    ram: "8gb",
-    storage: "128gb",
+    ram: "8 GB",
+    storage: "128 GB",
   },
 ];

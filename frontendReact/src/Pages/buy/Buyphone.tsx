@@ -33,8 +33,6 @@ const Buyphone = () => {
     getPhoneInfo();
   }, [filter_phone]);
 
-  console.log(filter_phone);
-
   async function getPhoneInfo() {
     setPhoneinfo(filter_phone);
   }
@@ -48,7 +46,7 @@ const Buyphone = () => {
       <div className="container mx-auto">
         <h1 className="md:text-4xl text-2xl mt-6 mx-10">Buy Old Phone</h1>
         <div className="flex md:flex-row flex-col">
-          <div className="filter md:w-1/4 my-9 mx-10 hidden md:block">
+          <div className="filter w-52 my-9 mx-10 hidden md:block">
             <Filters />
           </div>
           <div className="md:hidden block">
@@ -61,7 +59,7 @@ const Buyphone = () => {
               </Accordion.Item>
             </Accordion>
           </div>
-          <div className="main flex justify-center my-9 flex-wrap gap-20">
+          <div className="main flex justify-center my-9 flex-wrap gap-20 md:w-3/4">
             {phoneinfo?.map((x, n) => (
               <Phone key={n} data={x} info="Buy Phone" />
             ))}
