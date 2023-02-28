@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   email: {
     type: String,
     lowercase: true,
+    unique: true,
     validate: [isEmail, "Please enter a valid email id"],
   },
   fname: {

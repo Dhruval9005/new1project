@@ -1,4 +1,86 @@
-import { IconUsers } from "@tabler/icons";
+import { IconUsers, TablerIcon } from "@tabler/icons";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { Phone } from "../Components/Phone";
+
+export type Phone = {
+  name: string;
+  img: string;
+  brand: string;
+  info: {
+    label: string;
+    icon: TablerIcon | string;
+  }[];
+  value: {
+    for: string;
+    price: number;
+  }[];
+  ram: string;
+  storage: string;
+}[];
+
+export interface PhoneContextInterface {
+  phone: Phone;
+  setPhone: Dispatch<SetStateAction<Phone>>;
+}
+
+type phoneProviderProps = {
+  children: ReactNode;
+};
+
+const defaultState = {
+  phone: [
+    {
+      name: "",
+      img: "",
+      brand: "",
+      info: [
+        {
+          label: "",
+          icon: "",
+        },
+      ],
+      value: [
+        {
+          for: "",
+          price: 0,
+        },
+      ],
+      ram: "",
+      storage: "",
+    },
+  ],
+  setPhone: (phone: Phone) => {},
+} as PhoneContextInterface;
+
+export const PhoneContext = createContext(defaultState);
+
+export function PhoneContextProvider({ children }: phoneProviderProps) {
+  const [phone, setPhone] = useState<Phone>(defaultState.phone);
+
+  // const getPhone ()
+
+  // useEffect(()=>{
+  //   getPhone()
+  // },[])
+
+  return (
+    <PhoneContext.Provider value={{ phone, setPhone }}>
+      {children}
+    </PhoneContext.Provider>
+  );
+}
+
+export const usePhoneContext = () => {
+  return useContext(PhoneContext);
+};
 
 export const phoneInfo = [
   {

@@ -1,22 +1,20 @@
-import { showNotification } from "@mantine/notifications";
 import axios from "axios";
 import { useState } from "react";
-import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 import keys from "../../../config/keys";
 import { IconCheck } from "@tabler/icons";
+import { useNavigate } from "react-router-dom";
+import { showNotification } from "@mantine/notifications";
 
 const numAuth = new RegExp(
   "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
 );
 
-const LoginInfo = () => {
+const LoginInfo = ({ user }: any) => {
   let navigate = useNavigate();
   let [fname, setFname] = useState("");
   let [lname, setLname] = useState("");
   let [phone_number, setPhone_Number] = useState("");
   let userdata = { fname, lname, phone_number };
-  const [cookies, setCookie] = useCookies(["otp", "user"]);
 
   async function sendData() {
     if (numAuth.test(phone_number)) {
@@ -40,10 +38,12 @@ const LoginInfo = () => {
           try {
             let res = await axios.post(`${keys.server_url}/user/send-otp`, {
               mobileNo: phone_number,
+              actiontype: "register",
             });
-            navigate(`/login/otp`);
-            setCookie("user", userdata, { path: "/" });
-            setCookie("otp", res, { path: "/" });
+
+            user(userdata);
+            navigate("/login/otp");
+
             showNotification({
               title: "OTP Send",
               message: "",
@@ -70,6 +70,7 @@ const LoginInfo = () => {
 
   return (
     <div className="logininfo md:pt-20 h-screen">
+      {/* <form onSubmit={sendData}> */}
       <div className="container relative flex flex-col justify-center mt-10 overflow-hidden mx-auto">
         <div className="sm:w-96 w-full p-6 m-auto bg-white rounded-md shadow-lg my-3">
           <h1 className="md:text-2xl text-xl font-semibold text-center text-purple-700 underline">
@@ -106,6 +107,7 @@ const LoginInfo = () => {
           </div>
           <div className="mt-6">
             <button
+              // type="submit"
               onClick={sendData}
               className="font-bold md:text-lg text-sm w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
             >
@@ -122,6 +124,7 @@ const LoginInfo = () => {
           </div>
         </div>
       </div>
+      {/* </form> */}
     </div>
   );
 };

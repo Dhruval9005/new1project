@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import keys from "../../../config/keys";
 import { IconCheck } from "@tabler/icons";
-import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { showNotification } from "@mantine/notifications";
 
@@ -10,11 +9,10 @@ const numAuth = new RegExp(
   "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
 );
 
-const Login = () => {
-  let navigate = useNavigate();
+const Login = ({ user }: any) => {
+  const navigate = useNavigate();
   let [mobileNumber, setMobileNumber] = useState("");
   let [massage, setMassage] = useState("");
-  const [cookies, setCookie] = useCookies(["otp", "user"]);
 
   async function SendMobile() {
     if (numAuth.test(mobileNumber)) {
@@ -27,11 +25,12 @@ const Login = () => {
           try {
             let res = await axios.post(`${keys.server_url}/user/send-otp`, {
               mobileNo: Number(response.data.data.phone_number),
-              id: response.data.data._id,
+              actiontype: "login",
             });
+            user(response.data.data);
+          
             navigate(`/login/otp`);
-            setCookie("user", response.data.data, { path: "/" });
-            setCookie("otp", res, { path: "/" });
+
             showNotification({
               title: "OTP Send",
               message: "",
@@ -91,6 +90,7 @@ const Login = () => {
           <div className="mt-6">
             <button
               className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
+              // type="submit"
               onClick={SendMobile}
             >
               Send otp

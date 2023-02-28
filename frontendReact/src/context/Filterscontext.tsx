@@ -20,7 +20,7 @@ type filterProvideProps = {
   children: ReactNode;
 };
 
-export const FilterContext = createContext(defaultState);
+const FilterContext = createContext(defaultState);
 
 export default function FilterContextPeovider({
   children,

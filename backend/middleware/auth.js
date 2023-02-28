@@ -6,6 +6,8 @@ const requireUserAuth = async (req, res, next) => {
   const cookieName = keys.cookie_name.customer;
   const token = req.cookies[cookieName];
 
+  console.log(req.cookies);
+
   if (!token) {
     return res
       .status(401)

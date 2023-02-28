@@ -86,63 +86,66 @@ export function Phone({ data, info }: phoneInfo) {
   }
 
   return (
-    <Card withBorder radius="md" className={classes.card}>
-      <Card.Section className={classes.imageSection}>
-        <Image width={400} height={400} fit="contain" src={data.img} />
-      </Card.Section>
+    <>
+      <Card withBorder radius="md" className={classes.card}>
+        <Card.Section className={classes.imageSection}>
+          <Image width={400} height={400} fit="contain" src={data.img} />
+        </Card.Section>
 
-      <Group position="apart" mt="md">
-        <div>
-          <Text className="text-3xl" weight={500}>
-            {data.name}
-          </Text>
-        </div>
-        <Badge color="red" variant="outline">
-          25% off
-        </Badge>
-      </Group>
-
-      <Card.Section className={classes.section} mt="md">
-        <Text size="sm" color="dimmed" className={classes.label}>
-          Basic Info
-        </Text>
-
-        <Group spacing={8} mb={-8}>
-          {features}
-        </Group>
-      </Card.Section>
-
-      <Card.Section className={classes.section}>
-        <Group spacing={30}>
+        <Group position="apart" mt="md">
           <div>
-            <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
-              {`₹ ${data.value[0].price}`.replace(
-                /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
-                ","
-              )}
-            </Text>
-            <Text
-              size="sm"
-              color="dimmed"
-              weight={500}
-              sx={{ lineHeight: 1 }}
-              mt={3}
-            >
-              {/* per day */}
+            <Text className="text-3xl" weight={500}>
+              {data.name}
             </Text>
           </div>
-
-          <Button
-            className="text-purple-600 hover:text-purple-700 rounded-md border-purple-700"
-            radius="xl"
-            variant="outline"
-            style={{ flex: 1 }}
-            onClick={(e) => badding(data.name)}
-          >
-            {info}
-          </Button>
+          <Badge color="red" variant="outline">
+            25% off
+          </Badge>
         </Group>
-      </Card.Section>
-    </Card>
+
+        <Card.Section className={classes.section} mt="md">
+          <Text size="sm" color="dimmed" className={classes.label}>
+            Basic Info
+          </Text>
+
+          <Group spacing={8} mb={-8}>
+            {features}
+          </Group>
+        </Card.Section>
+
+        <Card.Section className={classes.section}>
+          <Group spacing={30}>
+            <div>
+              <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
+                {`₹ ${data.value[0].price}`.replace(
+                  /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                  ","
+                )}
+              </Text>
+              <Text
+                size="sm"
+                color="dimmed"
+                weight={500}
+                sx={{ lineHeight: 1 }}
+                mt={3}
+              >
+                {/* per day */}
+              </Text>
+            </div>
+
+            <Button
+              className="text-purple-600 hover:text-purple-700 rounded-md border-purple-700"
+              radius="xl"
+              variant="outline"
+              style={{ flex: 1 }}
+              onClick={(e) => badding(data.name)}
+            >
+              {info}
+            </Button>
+          </Group>
+        </Card.Section>
+      </Card>
+    </>
   );
 }
+ 

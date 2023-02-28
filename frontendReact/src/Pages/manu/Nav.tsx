@@ -2,14 +2,22 @@ import { useContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Navbar } from "../../Components/nav/Navbar";
 import { UserContext } from "../../context/UserContext";
+import axios from "axios";
+import keys from "../../../config/keys";
 
 const Nav = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(["user", "userdata"]);
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "user",
+    "customer_access_token",
+  ]);
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-    setUser(cookies?.userdata);
-  }, [cookies]);
+    getUser();
+    setUser(cookies?.user);
+  }, []);
+
+  // console.log(cookies.token);
 
   let link = [
     {
@@ -26,9 +34,16 @@ const Nav = () => {
     },
   ];
 
-  let users = {
-    fname: "Vedant",
-    lname: "Pandya",
+  const getUser = async () => {
+    if (!cookies) return;
+    try {
+      let res = await axios.get(`${keys.server_url}/user/profile`, {
+        withCredentials: true,
+      });
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

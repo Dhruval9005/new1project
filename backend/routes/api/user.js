@@ -1,10 +1,13 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
-const axios = require("axios");
 const User = require("../../models/user");
 const keys = require("../../config/keys");
 const { requireUserAuth } = require("../../middleware/auth");
 const { red } = require("../../utils/consoleColor");
+const { sendSMS } = require("../../utils/smsgateway");
+
+const OTP = {};
+const verifyOtp = require("../../middleware/verifyotp")(OTP);
 
 // FIND-USER BY PHONE NO API //
 router.get("/find-user/:phone_number", async (req, res) => {
@@ -41,19 +44,23 @@ router.get("/find-user/:phone_number", async (req, res) => {
   }
 });
 
-const OTP = {};
-
 // SEND OTP TO PHONE NO API //
 router.post("/send-otp", async (req, res) => {
-  const { mobileNo, id } = req.body;
+  const { mobileNo, actiontype } = req.body;
 
-  Object.assign(OTP, generateOTP());
+  Object.assign(OTP, generateOTP(actiontype));
   let message;
 
-  if (id) {
-    message = `Dear customer, your OTP for Login is ${OTP.otp}. Use this to validate your Login on Transx Movers App.`;
-  } else {
-    message = `Your OTP for Singup is ${OTP.otp}. Team- Transx Movers`;
+  switch (actiontype) {
+    case "register":
+      message = `Your OTP for Singup is ${OTP.otp}. Team- Transx Movers`;
+      break;
+    case "login":
+      message = `Dear customer, your OTP for Login is ${OTP.otp}. Use this to validate your Login on Transx Movers App.`;
+      break;
+    case "profile-update":
+      message = `${OTP.otp} is your verification code for updating your profile information. -Transx Movers`;
+      break;
   }
 
   const response = await sendSMS(mobileNo, message);
@@ -70,7 +77,7 @@ router.post("/send-otp", async (req, res) => {
 
   res.status(200).json({
     success: true,
-    message: "Otp sent successfully",
+    message: `Otp sent successfully for ${actiontype}`,
     testVariable: OTP,
   });
 });
@@ -104,17 +111,19 @@ router.post("/verify-otp", async (req, res) => {
     }
 
     const userData = {};
+    let status = "";
     if (user.hasOwnProperty("id")) {
       // LOGIN //
       Object.assign(userData, await login(user.id));
-
-      console.log("user logged in successfully");
+      status = "User logged in successfully";
+      console.log(status);
     } else {
       // SIGN UP //
       Object.assign(
         userData,
         await signup(user.fname, user.lname, user.phone_number)
       );
+      status = "User successfully registered";
       console.log("user created successfully");
     }
 
@@ -139,7 +148,8 @@ router.post("/verify-otp", async (req, res) => {
     res.status(200).json({
       success: true,
       message: "OTP Verification Successful",
-      userData,
+      status,
+      ...userData,
       // testVariable: { otp, OTP, userData: userData },
     });
 
@@ -147,31 +157,15 @@ router.post("/verify-otp", async (req, res) => {
   } catch (error) {
     console.log(red, `Catched Errorr >>> `);
     console.log(error);
-
-    if (error.message.includes("Missing required fields")) {
-      res.status(400).json({ success: false, error: error.message });
-    }
-
-    if (error.message.includes("Error in fetching data from Database")) {
-      res.status(400).json({
-        success: false,
-        error: error.message,
-      });
-    }
-
-    if (error.code === 1000) {
-      res.status(400).json({
-        success: false,
-        error: "Phone number is already linked to a another account",
-      });
-    }
+    const errorMessage = errorHandler(error);
+    res.status(400).json({ success: false, error: errorMessage });
   }
 });
 
 // GET CUSTOMER DETAILS API //
 router.get("/profile", requireUserAuth, (req, res) => {
   try {
-    res.status(200).json({ success: true, userData: req.user });
+    res.status(200).json({ success: true, user: req.user });
   } catch (error) {
     console.log(error);
     res.status(400).json({
@@ -181,9 +175,9 @@ router.get("/profile", requireUserAuth, (req, res) => {
 });
 
 // UPDATE CUSTOMER DETAILS API //
-router.put("/update", requireUserAuth, async (req, res) => {
+router.put("/update", requireUserAuth, verifyOtp, async (req, res) => {
   try {
-    // console.log(req);
+    console.log(req.body, "update");
     if (!req.user || Object.keys(req.body).length === 0) {
       return res
         .status(400)
@@ -202,6 +196,8 @@ router.put("/update", requireUserAuth, async (req, res) => {
       message: "Your profile is successfully updated",
       user: userUpdate,
     });
+
+    destroyOTP();
   } catch (error) {
     console.log("update error", error);
     res.status(400).json({
@@ -212,7 +208,7 @@ router.put("/update", requireUserAuth, async (req, res) => {
 });
 
 // GENERATE OTP //
-const generateOTP = () => {
+const generateOTP = (actiontype) => {
   const characters = keys.otp.characters;
   let otp = "";
   for (let i = 0; i < 6; i++) {
@@ -226,7 +222,7 @@ const generateOTP = () => {
   console.log(`otp generated at:  ${new Date(generationTime)}`);
   console.log(`otp expires at:  ${new Date(expirationTime)}`);
 
-  return { otp, otpValidity, generationTime, expirationTime };
+  return { otp, otpValidity, actiontype, generationTime, expirationTime };
 };
 
 // DESTROY OTP //
@@ -240,25 +236,25 @@ const destroyOTP = () => {
 };
 
 // SEND OTP TO MOBILE NO //
-const sendSMS = async (mobileNo, massage) => {
-  const apikey = keys.sms_gateway.api_key;
-  const apisender = keys.sms_gateway.api_sender;
-  const msg = massage;
-  const num = mobileNo;
-  const encoded_msg = encodeURIComponent(msg);
+// const sendSMS = async (mobileNo, massage) => {
+//   const apikey = keys.sms_gateway.api_key;
+//   const apisender = keys.sms_gateway.api_sender;
+//   const msg = massage;
+//   const num = mobileNo;
+//   const encoded_msg = encodeURIComponent(msg);
 
-  // Check if required parameters are present
-  if (!apikey || !apisender || !msg || !num || !encoded_msg) {
-    return {
-      ErrorCode: "Url Error",
-      ErrorMessage: "Error in required parameters in url of SMS gateway",
-    };
-  }
+//   // Check if required parameters are present
+//   if (!apikey || !apisender || !msg || !num || !encoded_msg) {
+//     return {
+//       ErrorCode: "Url Error",
+//       ErrorMessage: "Error in required parameters in url of SMS gateway",
+//     };
+//   }
 
-  const url = `https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=${apikey}&senderid=${apisender}&channel=2&DCS=0&flashsms=0&number=${num}&text=${encoded_msg}&route=1`;
-  const { data } = await axios.get(url);
-  return data;
-};
+//   const url = `https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=${apikey}&senderid=${apisender}&channel=2&DCS=0&flashsms=0&number=${num}&text=${encoded_msg}&route=1`;
+//   const { data } = await axios.get(url);
+//   return data;
+// };
 
 // CREATE TOKEN //
 const createToken = (payload) => {
@@ -279,7 +275,7 @@ const fetchUserData = (user) => {
     // phone_number: user.phone_number,
     // created: user.created,
     // token: createToken(payload),
-    ...user._doc,
+    user: user._doc,
     token: createToken(payload),
   };
 };
@@ -304,21 +300,6 @@ const signup = async (fname, lname, phone_number) => {
   if (!registeredUser) {
     throw new Error("Error in fetching data from Database");
   }
-  // create token //
-  // const payload = {
-  //   id: registeredUser.id,
-  // };
-  // const token = createToken(payload);
-  // const userData = {
-  //   id: registeredUser.id,
-  //   fname: registeredUser.fname,
-  //   lname: registeredUser.lname,
-  //   phone_number: registeredUser.phone_number,
-  // };
-
-  // const { token, userData } = fetchUserData(registeredUser);
-  // return token and user detail //
-
   return fetchUserData(registeredUser);
 };
 
@@ -333,22 +314,26 @@ const login = async (id) => {
   if (!user) {
     throw new Error("Error in fetching data from Database");
   }
-  // console.log(user);
-  // // create token //
-  // const payload = {
-  //   id: user.id,
-  // };
-  // const token = createToken(payload);
-  // const userData = {
-  //   id: user.id,
-  //   fname: user.fname,
-  //   lname: user.lname,
-  //   phone_number: user.phone_number,
-  // };
-
-  // const { token, userData } = fetchUserData(user);
-  // return token and user detail //
   return fetchUserData(user);
 };
 
+/**
+ * ERROR HANDLER
+ *
+ * @param {Error} object - The error object to handle.
+ * @returns {string} - The appropriate error message based on the error object.
+ */
+const errorHandler = (error) => {
+  if (error.message.includes("Missing required fields")) {
+    return error.message;
+  }
+
+  if (error.message.includes("Error in fetching data from Database")) {
+    return error.message;
+  }
+
+  if (error.code === 11000 && error.name === "MongoServerError") {
+    return "Phone number is already linked to a another account";
+  }
+};
 module.exports = router;

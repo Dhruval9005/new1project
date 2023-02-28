@@ -6,8 +6,9 @@ import { Phone } from "../../Components/Phone";
 import Filters from "../../Components/Filters";
 import { TablerIcon } from "@tabler/icons";
 import FilterReducer, { InitialState } from "../../reducer/FilterReducer";
-import { FilterContext, useFilterContext } from "../../context/Filterscontext";
+import { useFilterContext } from "../../context/Filterscontext";
 import PhoneList from "../../Components/PhoneList";
+import ErrorPage from "../ErrorPage";
 
 type phone = {
   name: string;
@@ -25,7 +26,7 @@ type phone = {
 
 const Buyphone = () => {
   let naviget = useNavigate();
-  let [phoneinfo, setPhoneinfo] = useState<phone>();
+  let [phoneinfo, setPhoneinfo] = useState<phone>([]);
   const [state, dispatch] = useReducer(FilterReducer, InitialState);
   const { filter_phone } = useFilterContext();
 
@@ -60,9 +61,13 @@ const Buyphone = () => {
             </Accordion>
           </div>
           <div className="main flex justify-center my-9 flex-wrap gap-20 md:w-3/4">
-            {phoneinfo?.map((x, n) => (
-              <Phone key={n} data={x} info="Buy Phone" />
-            ))}
+            {phoneinfo.length > 0 ? (
+              phoneinfo.map((curElem, index) => (
+                <Phone key={index} data={curElem} info="Buy Phone" />
+              ))
+            ) : (
+              <ErrorPage title="Phone Not Found" description="" />
+            )}
           </div>
         </div>
       </div>

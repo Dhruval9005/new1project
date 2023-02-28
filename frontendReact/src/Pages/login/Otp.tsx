@@ -7,30 +7,24 @@ import { useNavigate } from "react-router-dom";
 import OTPInput, { ResendOTP } from "otp-input-react";
 import { showNotification } from "@mantine/notifications";
 
-const Otp = () => {
+const Otp = ({ user, setUser }: any) => {
   const navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "otp",
-    "user",
-    "userdata",
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(["customer_access_token"]);
   const [OTP, setOTP] = useState("");
-  let user = cookies.user;
 
   async function login() {
-    if (cookies.user._id) {
-      let id = cookies.user._id;
-      console.log(keys.server_url);
+    if (user._id) {
+      let id = user._id;
+
       try {
         let res = await axios.post(`${keys.server_url}/user/verify-otp`, {
           otp: OTP,
           user: { id },
         });
         if (res.data.success) {
+          setUser(null);
+          setCookie("customer_access_token", res.data.token, { path: "/" });
           navigate("/");
-          removeCookie("otp");
-          removeCookie("user");
-          setCookie("userdata", res.data.userData, { path: "/" });
         }
       } catch (err) {
         console.log(err);
@@ -46,13 +40,12 @@ const Otp = () => {
       try {
         let res = await axios.post(`${keys.server_url}/user/verify-otp`, {
           otp: OTP,
-          user: cookies.user,
+          user: user,
         });
         if (res.data.success) {
+          setUser(null);
+          setCookie("customer_access_token", res.data.token, { path: "/" });
           navigate("/");
-          removeCookie("otp");
-          removeCookie("user");
-          setCookie("userdata", res.data.userData, { path: "/" });
         }
         console.log(res);
       } catch (err) {
@@ -73,7 +66,7 @@ const Otp = () => {
       let res = await axios.post(`${keys.server_url}/user/send-otp`, {
         mobileNo: Number(user.phone_number),
       });
-      setCookie("otp", res, { path: "/" });
+
       showNotification({
         title: "OTP Send",
         message: "",

@@ -21,8 +21,11 @@ import ComparePhones from "./Pages/compare/ComparePhones";
 import Phonesell from "./Pages/sell/Phonesell";
 import { NotificationsProvider } from "@mantine/notifications";
 import ErrorPage from "./Pages/ErrorPage";
+import { useState } from "react";
 
 function App() {
+  let [user, setUser] = useState({});
+
   return (
     <div className="App">
       <NotificationsProvider position="bottom-right" zIndex={2077} limit={50}>
@@ -41,15 +44,21 @@ function App() {
           <Route path="/repair/:model" element={<Repairoptions />} />
           <Route path="/buy" element={<Buyphone />} />
           <Route path="/buy/:model" element={<Buyphoneinfo />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/login/otp" element={<Otp />} />
-          <Route path="/signup" element={<LoginInfo />} />
+          <Route path="/login" element={<Login user={setUser} />} />
+          <Route
+            path="/login/otp"
+            element={<Otp user={user} setUser={setUser} />}
+          />
+          <Route path="/signup" element={<LoginInfo user={setUser} />} />
           <Route path="/store" element={<Store />} />
           <Route path="/bidding" element={<Bidding />} />
           <Route path="/bidding/:id" element={<Biddingphone />} />
           <Route path="/compare" element={<ComparePhones />} />
           <Route path="/expr" element={<Expr />} />
-          <Route path="*" element={<ErrorPage />} />
+          <Route
+            path="*"
+            element={<ErrorPage title="Page Not Found" description="" />}
+          />
         </Routes>
         <Foter />
       </NotificationsProvider>
