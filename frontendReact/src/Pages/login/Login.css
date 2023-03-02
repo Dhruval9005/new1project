@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+.loginfont{
+    font-family: 'Tilt Prism', cursive;
+    text-decoration: none !important;
+    font-weight: 1200 !important;
+}
+.mainddivlogin{
+    height: 400px !important;
+}
+.flex-container {
+    display: flex;
+    
+  }
+  .label{
+    font-size: 15px !important;
+    font-weight: bold !important;
+    font-weight: 500 !important;
+    font-family: 'Tilt Neon', cursive;
+  }
+ .block{
+    font-family: 'Tilt Neon', cursive;
+ }
+ .loginbtn{
+    font-family: 'Tilt Neon', cursive;
+ }
+  .style{
+    width: 50%;
+    margin-top: 70px !important;
+  }
+  .styles{
+    margin-top: 100px !important;
+    width: 50%;
+  }
+  

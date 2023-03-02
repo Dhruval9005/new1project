@@ -1,7 +1,7 @@
 import Sidebar from "./SideBar";
 import UserinfoDropdown from "./UserinfoDropdown";
 import { createStyles, Header, Autocomplete, Group } from "@mantine/core";
-
+ 
 const useStyles = createStyles((theme) => ({
   header: {
     paddingLeft: theme.spacing.md,
@@ -70,8 +70,9 @@ export function Navbar({ links }: HeaderSearchProps) {
       href="/"
     >
       <img src="" style={{ height: 15 }} loading="lazy" />
+ 
       <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
-        Tran<span className="text-purple-700">x</span>
+      Tran<span className="text-purple-700">x</span>
       </span>
     </a>
   );

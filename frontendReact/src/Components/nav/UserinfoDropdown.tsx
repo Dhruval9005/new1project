@@ -3,7 +3,7 @@ import {
   createStyles,
   Avatar,
   UnstyledButton,
-  Group,
+  // Group,
   Text,
   Menu,
 } from "@mantine/core";
@@ -21,6 +21,8 @@ import { useCookies } from "react-cookie";
 import { BsCart } from "react-icons/bs";
 import { showNotification } from "@mantine/notifications";
 import { UserContext } from "../../context/UserContext";
+import { Modal, Button, Group } from '@mantine/core';
+import Login from "../../Pages/login/Login";
 
 const useStyles = createStyles((theme) => ({
   user: {
@@ -57,6 +59,28 @@ const UserinfoDropdown = () => {
     removeCookie("userdata");
     removeCookie("user");
   }
+
+  // function Demo() {
+  //   const [opened, setOpened] = useState(false);
+  
+  //   return (
+  //     <>
+  //       <Modal
+  //         // className="w-1/2"
+  //         size="1200PX"
+  //         opened={opened}
+  //         onClose={() => setOpened(false)}
+  //         // title="Introduce yourself!"
+  //       >
+  //         <Login/>
+  //       </Modal>
+  
+  //       <Group position="center">
+  //         <Button variant="light" onClick={() => setOpened(true)}>login</Button>
+  //       </Group>
+  //     </>
+  //   );
+  // }
 
   return (
     <>
@@ -136,6 +160,7 @@ const UserinfoDropdown = () => {
         </Menu>
       ) : (
         <div className="mx-3">
+          {/* <Demo/> */}
           <a href="/login">
             <button className="text-sm w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-500 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
               Login

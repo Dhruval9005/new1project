@@ -81,7 +81,7 @@ const Otp = ({ user, setUser }: any) => {
   }
 
   return (
-    <div className="otp md:pt-20 my-28 h-fit">
+    <div className="otp md:pt- my-28 h-fit">
       <div className="container relative flex flex-col justify-center mt-10 overflow-hidden mx-auto">
         <div className="sm:w-96 w-full p-6 m-auto bg-white rounded-md shadow-lg my-3">
           <h1 className="md:text-2xl text-xl font-semibold text-center">

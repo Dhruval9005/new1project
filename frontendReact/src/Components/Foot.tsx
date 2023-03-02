@@ -157,6 +157,8 @@ export function Foot({ data }: FooterLinksProps) {
   });
 
   return (
+   <>
+   
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
@@ -186,5 +188,6 @@ export function Foot({ data }: FooterLinksProps) {
         </Group>
       </Container>
     </footer>
+   </>
   );
 }
